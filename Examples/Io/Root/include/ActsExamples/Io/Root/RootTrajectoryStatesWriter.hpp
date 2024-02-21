@@ -104,6 +104,11 @@ class RootTrajectoryStatesWriter final : public WriterT<TrajectoriesContainer> {
   std::vector<float> m_t_eQOP;    ///< truth parameter eQOP
   std::vector<float> m_t_eT;      ///< truth parameter eT
 
+  /// event-unique particle identifier a.k.a barcode for hits per each surface
+  std::vector<std::vector<double>> m_particleId; // using double (8 bytes) to save uint64_t (also 8 bytes)
+  // particle barcodes for a given track state (size depends on a type of digitization, for smeared digitization is not more than 1)
+  std::vector<double> m_thisState_particleIds; 
+
   unsigned int m_nStates{0};        ///< number of all states
   unsigned int m_nMeasurements{0};  ///< number of states with measurements
   std::vector<int> m_volumeID;      ///< volume identifier
