@@ -6,12 +6,20 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include <TROOT.h>
-
-#include <string>
 #include <fstream>
 #include <iostream>
 #include <sstream>
+#include <string>
+
+#include <TCanvas.h>
+#include <TChain.h>
+#include <TH2F.h>
+#include <TLegend.h>
+#include <TLine.h>
+#include <TProfile.h>
+#include <TROOT.h>
+#include <TStyle.h>
+#include <TText.h>
 
 using namespace std ;
 
