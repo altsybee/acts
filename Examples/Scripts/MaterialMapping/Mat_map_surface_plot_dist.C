@@ -6,13 +6,14 @@
 // License, v. 2.0. If a copy of the MPL was not distributed with this
 // file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
-#include <TROOT.h>
-
-#include "materialPlotHelper.cpp"
-
 #include <fstream>
 #include <iostream>
 #include <sstream>
+
+#include <TGraph.h>
+#include <TROOT.h>
+
+#include "materialPlotHelper.cpp"
 
 // Draw the plot for each surface.
 void plot(TGraph* Dist, const sinfo& surface_info, const std::string& name){
@@ -122,7 +123,10 @@ void Fill(std::map<std::uint64_t,TGraph*>& surface_hist,  std::map<std::uint64_t
   tree->SetBranchAddress("mat_z",&mat_z);
 
   tree->SetBranchAddress("sur_id",&sur_id);
-  tree->SetBranchAddress("sur_type",&sur_type);
+  if (tree->SetBranchAddress("sur_type", &sur_type)) {
+    Printf("ERROR!!! sur_type branch not found in the tree.");
+    // return;
+  }
   tree->SetBranchAddress("sur_x",&sur_x);
   tree->SetBranchAddress("sur_y",&sur_y);
   tree->SetBranchAddress("sur_z",&sur_z);

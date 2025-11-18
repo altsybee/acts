@@ -160,7 +160,10 @@ void Fill(std::map<std::uint64_t,std::vector<TH2F*>>& surface_hist,  std::map<st
   tree->SetBranchAddress("mat_step_length",&mat_step_length);
 
   tree->SetBranchAddress("sur_id",&sur_id);
-  tree->SetBranchAddress("sur_type",&sur_type);
+  if (tree->SetBranchAddress("sur_type", &sur_type)) {
+    Printf("ERROR!!! sur_type branch not found in the tree.");
+    // return;
+  }
   tree->SetBranchAddress("sur_x",&sur_x);
   tree->SetBranchAddress("sur_y",&sur_y);
   tree->SetBranchAddress("sur_z",&sur_z);

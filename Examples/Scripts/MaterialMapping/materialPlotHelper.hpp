@@ -11,6 +11,18 @@
 #include <cstdint>
 #include <iosfwd>
 
+#include <TCanvas.h>
+#include <TChain.h>
+#include <TH2F.h>
+#include <TLegend.h>
+#include <TLine.h>
+#include <TProfile.h>
+#include <TROOT.h>
+#include <TStyle.h>
+#include <TSystem.h>
+#include <TText.h>
+#include <TFile.h>
+
 namespace Acts {
 
 /// Reimplementation of GeometryIdentifier du to the fact that the default Root
