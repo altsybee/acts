@@ -1,3 +1,5 @@
+import os
+import argparse
 import json
 
 
@@ -141,8 +143,8 @@ def dump_geo(filename, plot, output_folder, dump_steering, steering_file):
                 index_to_extends_layers_discs[vol - 1].append(extends)
             else:
                 print(
-                    f"WARNING: Processing surface with unknown type '{entry["value"]["type"]}'. Only CylinderSurface and DiscSurface are considered."
-                )
+                    f"WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
+                    "'. Only CylinderSurface and DiscSurface are considered.")
 
         if "boundary" in entry:
             extends = []
@@ -176,8 +178,8 @@ def dump_geo(filename, plot, output_folder, dump_steering, steering_file):
                 index_to_extends_layers_bounds_discs[vol - 1].append(extends)
             else:
                 print(
-                    f"WARNING: Processing surface with unknown type '{entry["value"]["type"]}'. Only CylinderSurface and DiscSurface are considered."
-                )
+                    f"WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
+                    "'. Only CylinderSurface and DiscSurface are considered.")
 
     # Steering the information and collect it into an output file if needed
     from itertools import chain
@@ -550,8 +552,8 @@ def read_and_modify(filename, plot, output_folder, steering_file, output_file):
                             ]
                     else:
                         print(
-                            f"WARNING: Processing surface with unknown type '{entry["value"]["type"]}. Only CylinderSurface and DiscSurface are considered."
-                        )
+                            f"WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
+                            ". Only CylinderSurface and DiscSurface are considered.")
                     if val["bins"] == 0:
                         print(
                             "ERROR!!! Using binning value == 0! Check you input for",
@@ -626,8 +628,8 @@ def read_and_modify(filename, plot, output_folder, steering_file, output_file):
                         material_layer_discs[vol - 1].append(extends)
                 else:
                     print(
-                        f"WARNING: Processing surface with unknown type '{entry["value"]["type"]}'. Only CylinderSurface and DiscSurface are considered."
-                    )
+                        f"WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
+                        "'. Only CylinderSurface and DiscSurface are considered.")
 
             if "boundary" in entry:
                 extends = []
@@ -715,9 +717,6 @@ def read_and_modify(filename, plot, output_folder, steering_file, output_file):
         plt.legend(loc="center left", bbox_to_anchor=(1, 0.5))
         plt.savefig(output_folder + "/material_layers.png")
 
-
-import argparse
-import os
 
 # Initialize parser
 parser = argparse.ArgumentParser()
