@@ -143,7 +143,7 @@ def dump_geo(filename, plot, output_folder, dump_steering, steering_file):
                 index_to_extends_layers_discs[vol - 1].append(extends)
             else:
                 print(
-                    f"WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
+                    "WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
                     "'. Only CylinderSurface and DiscSurface are considered.")
 
         if "boundary" in entry:
@@ -178,7 +178,7 @@ def dump_geo(filename, plot, output_folder, dump_steering, steering_file):
                 index_to_extends_layers_bounds_discs[vol - 1].append(extends)
             else:
                 print(
-                    f"WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
+                    "WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
                     "'. Only CylinderSurface and DiscSurface are considered.")
 
     # Steering the information and collect it into an output file if needed
@@ -551,9 +551,8 @@ def read_and_modify(filename, plot, output_folder, steering_file, output_file):
                                 "passiveDiscBinningPhi"
                             ]
                     else:
-                        print(
-                            f"WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
-                            ". Only CylinderSurface and DiscSurface are considered.")
+                        print("WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
+                              "'. Only CylinderSurface and DiscSurface are considered.")
                     if val["bins"] == 0:
                         print(
                             "ERROR!!! Using binning value == 0! Check you input for",
@@ -627,8 +626,7 @@ def read_and_modify(filename, plot, output_folder, steering_file, output_file):
                     else:
                         material_layer_discs[vol - 1].append(extends)
                 else:
-                    print(
-                        f"WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
+                    print("WARNING: Processing surface with unknown type '" + entry["value"]["type"] +
                         "'. Only CylinderSurface and DiscSurface are considered.")
 
             if "boundary" in entry:
