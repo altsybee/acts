@@ -63,6 +63,8 @@ RootParticleReader::RootParticleReader(const RootParticleReader::Config& config,
   m_inputChain->SetBranchAddress("generation", &m_generation);
   m_inputChain->SetBranchAddress("sub_particle", &m_subParticle);
 
+  m_inputChain->SetBranchAddress("bc", &m_bc);
+
   m_inputChain->SetBranchAddress("e_loss", &m_eLoss);
   m_inputChain->SetBranchAddress("total_x0", &m_pathInX0);
   m_inputChain->SetBranchAddress("total_l0", &m_pathInL0);
@@ -119,6 +121,8 @@ RootParticleReader::~RootParticleReader() {
   delete m_generation;
   delete m_subParticle;
 
+  delete m_bc;
+
   delete m_eLoss;
   delete m_pathInX0;
   delete m_pathInL0;
@@ -167,7 +171,11 @@ ProcessCode RootParticleReader::read(const AlgorithmContext& context) {
     initialState.setDirection((*m_px).at(i), (*m_py).at(i), (*m_pz).at(i));
     initialState.setAbsoluteMomentum((*m_p).at(i) * Acts::UnitConstants::GeV);
 
+    initialState.setBC((*m_bc).at(i));  // IA
+
     SimParticleState& finalState = p.final();
+
+    finalState.setBC((*m_bc).at(i));  // IA
 
     // TODO eloss cannot be read since we need the final momentum
     finalState.setMaterialPassed((*m_pathInX0).at(i) * Acts::UnitConstants::mm,

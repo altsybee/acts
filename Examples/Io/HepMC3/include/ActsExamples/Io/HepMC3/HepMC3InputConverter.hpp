@@ -66,7 +66,7 @@ class HepMC3InputConverter : public IAlgorithm {
                     std::vector<SimVertex>& vertices,
                     std::vector<SimParticle>& particles,
                     std::size_t& nSecondaryVertices, std::size_t& nParticles,
-                    std::vector<bool>& seenVertices) const;
+                    std::vector<bool>& seenVertices, int BC) const;
 
   Config m_cfg;
 

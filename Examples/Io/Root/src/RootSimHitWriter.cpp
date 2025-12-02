@@ -66,6 +66,8 @@ ActsExamples::RootSimHitWriter::RootSimHitWriter(
   m_outputTree->Branch("layer_id", &m_layerId);
   m_outputTree->Branch("approach_id", &m_approachId);
   m_outputTree->Branch("sensitive_id", &m_sensitiveId);
+
+  m_outputTree->Branch("bc", &m_bc);
 }
 
 ActsExamples::RootSimHitWriter::~RootSimHitWriter() {
@@ -94,6 +96,8 @@ ActsExamples::ProcessCode ActsExamples::RootSimHitWriter::writeT(
   m_eventId = ctx.eventNumber;
   for (const auto& hit : hits) {
     m_particleId = hit.particleId().value();
+    m_particleId = hit.particleId().value();
+    m_bc = hit.BC();
     m_geometryId = hit.geometryId().value();
     // write hit position
     m_tx = hit.fourPosition().x() / Acts::UnitConstants::mm;

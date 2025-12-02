@@ -29,6 +29,8 @@
 
 using namespace Acts::UnitLiterals;
 
+const bool printIA = false;
+
 namespace ActsExamples {
 
 HepMC3InputConverter::HepMC3InputConverter(const Config& config,
@@ -105,13 +107,11 @@ std::string printListing(const auto& vertices, const auto& particles) {
 };
 }  // namespace
 
-void HepMC3InputConverter::handleVertex(const HepMC3::GenVertex& genVertex,
-                                        SimVertex& vertex,
-                                        std::vector<SimVertex>& vertices,
-                                        std::vector<SimParticle>& particles,
-                                        std::size_t& nSecondaryVertices,
-                                        std::size_t& nParticles,
-                                        std::vector<bool>& seenVertices) const {
+void HepMC3InputConverter::handleVertex(
+    const HepMC3::GenVertex& genVertex, SimVertex& vertex,
+    std::vector<SimVertex>& vertices, std::vector<SimParticle>& particles,
+    std::size_t& nSecondaryVertices, std::size_t& nParticles,
+    std::vector<bool>& seenVertices, int BC) const {
   for (const auto& particle : genVertex.particles_out()) {
     if (particle->end_vertex() != nullptr) {
       // This particle has an end vertex, we need to handle that vertex
@@ -134,7 +134,7 @@ void HepMC3InputConverter::handleVertex(const HepMC3::GenVertex& genVertex,
               m_cfg.vertexSpatialThreshold * m_cfg.vertexSpatialThreshold &&
           m_cfg.mergeSecondaries) {
         handleVertex(endVertex, vertex, vertices, particles, nSecondaryVertices,
-                     nParticles, seenVertices);
+                     nParticles, seenVertices, BC);
       } else {
         // Over threshold, make a new vertex
         SimVertex secondaryVertex;
@@ -144,7 +144,7 @@ void HepMC3InputConverter::handleVertex(const HepMC3::GenVertex& genVertex,
         secondaryVertex.position4 = convertPosition(endVertex.position());
 
         handleVertex(endVertex, secondaryVertex, vertices, particles,
-                     nSecondaryVertices, nParticles, seenVertices);
+                     nSecondaryVertices, nParticles, seenVertices, BC);
 
         // Only keep the secondary vertex if it has outgoing particles
         if (!secondaryVertex.outgoing.empty()) {
@@ -201,6 +201,7 @@ void HepMC3InputConverter::handleVertex(const HepMC3::GenVertex& genVertex,
 
       simParticle.initial().setDirection(momentum.normalized());
       simParticle.initial().setAbsoluteMomentum(p);
+      simParticle.initial().setBC(BC);
 
       particles.push_back(simParticle);
       vertex.outgoing.insert(particleId);
@@ -279,6 +280,20 @@ void HepMC3InputConverter::convertHepMC3ToInternalEdm(
     }
   }
 
+  // ### IA
+  // std::random_device rd;   // a seed source for the random number engine
+  // std::mt19937 gen(rd());  // mersenne_twister_engine seeded with rd()
+  using UniformIndex = std::uniform_int_distribution<std::uint8_t>;
+  // using UniformReal = std::uniform_real_distribution<double>;
+  // UniformIndex bcChoice(0, 19);  // single ROF pure
+  // UniformIndex bcChoice(0, 39); // single ROF with the "tail from the past"
+  // UniformIndex bcChoice(0, 59); // multi ROF
+
+  UniformIndex bcChoice(0, 19);  // for the short vs long ROF study (Oct 2024)
+  // UniformIndex bcChoice(0, 79 );  // for the short vs long ROF study (Oct
+  // 2024) UniformIndex bcChoice(0, 199);  // for the short vs long ROF study
+  // (Oct 2024)
+
   std::size_t nPrimaryVertices = 0;
   {
     Acts::ScopedTimer timer("Converting HepMC3 vertices to internal EDM",
@@ -312,10 +327,29 @@ void HepMC3InputConverter::convertHepMC3ToInternalEdm(
                    }()
                    << "--------------");
 
+      // ### IA:
+      int bc = nPrimaryVertices;  // assign 1 vertex per 1 bc by hand
+      // int bc = bcChoice(rng); // random bc for this vertex
+      // int bc = bcChoice(gen); // random bc for this vertex
+      // int bc = 10+nPrimaryVertices; // QA tests
+
       nPrimaryVertices += 1;
       SimVertex primaryVertex;
       primaryVertex.id = SimVertexBarcode{}.setVertexPrimary(nPrimaryVertices);
       primaryVertex.position4 = convertPosition(cluster.at(0)->position());
+
+      if (printIA) {
+        Acts::Vector4 vPos = primaryVertex.position4;
+        std::cout << "### nPrimaryVertices = " << nPrimaryVertices
+                  << ", primaryVertex.id = " << primaryVertex.id
+                  << ", >> BC = " << bc << ", vPos = " << vPos[0] << " "
+                  << vPos[1] << " " << vPos[2] << " " << vPos[3] << std::endl;
+
+        // vertexPosition[3] = bc * 25e-9 * 3e11;
+        vPos[3] = bc * 25e-9 * 3e11 /
+                  50;  // IA: TO IMPROVE VERTEXING w/ TIME!.. (Feb 2025)
+        std::cout << "### >> vPos TIME AFTER = " << vPos[3] << std::endl;
+      }
 
       std::size_t nSecondaryVertices = 0;
       std::size_t nParticles = 0;
@@ -323,7 +357,7 @@ void HepMC3InputConverter::convertHepMC3ToInternalEdm(
       for (auto& genVertex : cluster) {
         handleVertex(*genVertex, primaryVertex, verticesUnordered,
                      particlesUnordered, nSecondaryVertices, nParticles,
-                     seenVertices);
+                     seenVertices, bc);
       }
       verticesUnordered.push_back(primaryVertex);
     }

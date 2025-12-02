@@ -94,6 +94,9 @@ class RootSimHitWriter final : public WriterT<SimHitContainer> {
   std::uint32_t m_layerId = 0;
   std::uint32_t m_approachId = 0;
   std::uint32_t m_sensitiveId = 0;
+
+  std::int32_t m_bc = 0;
+
 };
 
 }  // namespace ActsExamples

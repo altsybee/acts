@@ -224,6 +224,10 @@ ProcessCode DigitizationAlgorithm::execute(const AlgorithmContext& ctx) const {
                   simHit, *surfacePtr, ctx.geoContext, driftDir,
                   cfg.segmentation, cfg.thickness);
               if (!channelsRes.ok() || channelsRes->empty()) {
+                if (!channelsRes.ok())
+                  ACTS_DEBUG("!channelsRes.ok()");
+                // if (channelsRes->empty())
+                  // ACTS_DEBUG("channelsRes is empty()");
                 ACTS_DEBUG(
                     "Geometric channelization did not work, skipping this "
                     "hit.");

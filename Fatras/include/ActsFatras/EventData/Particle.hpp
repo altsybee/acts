@@ -133,6 +133,12 @@ class Particle {
     return *this;
   }
 
+  Particle &setBC(int BC) {  // IA
+    m_BC = BC;
+    return *this;
+  }
+  const int &BC() const { return m_BC; }  // IA
+
   /// Change the energy by the given amount.
   ///
   /// Energy loss corresponds to a negative change. If the updated energy
@@ -323,6 +329,9 @@ class Particle {
   // accumulated material
   double m_pathInX0 = 0.;
   double m_pathInL0 = 0.;
+
+  int m_BC = -1;  // IA: bunch crossing id
+
   /// number of hits
   std::uint32_t m_numberOfHits = 0;
   /// reference surface

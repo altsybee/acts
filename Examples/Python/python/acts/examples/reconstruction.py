@@ -1595,7 +1595,7 @@ def addCKFTracks(
     reverseSearch: bool = False,
     outputDirCsv: Optional[Union[Path, str]] = None,
     outputDirRoot: Optional[Union[Path, str]] = None,
-    writeTrackSummary: bool = True,
+    writeTrackSummary: bool = False, # IA: was True
     writeTrackStates: bool = False,
     writePerformance: bool = True,
     writeCovMat=False,
@@ -1829,6 +1829,7 @@ def addTrackWriters(
                 level=customLogLevel(),
                 inputTracks=tracks,
                 inputParticles="particles_selected",
+                # inputSimHits="simhits", # try, IA
                 inputTrackParticleMatching="track_particle_matching",
                 filePath=str(outputDirRoot / f"tracksummary_{name}.root"),
                 treeName="tracksummary",
@@ -2057,7 +2058,7 @@ def addAmbiguityResolution(
     outputDirCsv: Optional[Union[Path, str]] = None,
     outputDirRoot: Optional[Union[Path, str]] = None,
     writeTrackSummary: bool = True,
-    writeTrackStates: bool = False,
+    writeTrackStates: bool = True, # IA: was False,
     writePerformance: bool = True,
     writeCovMat=False,
     logLevel: Optional[acts.logging.Level] = None,

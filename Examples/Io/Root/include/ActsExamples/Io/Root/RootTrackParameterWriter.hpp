@@ -139,6 +139,8 @@ class RootTrackParameterWriter final
   float m_t_pt{NaNfloat};
   float m_t_eta{NaNfloat};
 
+  float m_t_vz{NaNfloat}; // IA
+
   float m_res_loc0{NaNfloat};
   float m_res_loc1{NaNfloat};
   float m_res_phi{NaNfloat};

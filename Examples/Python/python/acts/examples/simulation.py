@@ -318,10 +318,11 @@ def addPythia8(
         raise RuntimeError("Invalid pythia config")
 
     generators = []
-    if nhard is not None and nhard > 0:
+    # if nhard is not None and nhard > 0:
+    if npileup > 0:
         generators.append(
             acts.examples.EventGenerator.Generator(
-                multiplicity=acts.examples.FixedMultiplicityGenerator(n=nhard),
+                multiplicity=acts.examples.FixedMultiplicityGenerator(n=npileup), #nhard),
                 vertex=vtxGen,
                 particles=acts.examples.pythia8.Pythia8Generator(
                     level=customLogLevel(),
@@ -337,22 +338,22 @@ def addPythia8(
                 ),
             )
         )
-    if npileup > 0:
-        generators.append(
-            acts.examples.EventGenerator.Generator(
-                multiplicity=acts.examples.FixedMultiplicityGenerator(n=npileup),
-                vertex=vtxGen,
-                particles=acts.examples.pythia8.Pythia8Generator(
-                    level=customLogLevel(),
-                    **acts.examples.defaultKWArgs(
-                        pdgBeam0=beam[0],
-                        pdgBeam1=beam[1],
-                        cmsEnergy=cmsEnergy,
-                        settings=pileupProcess,
-                    ),
-                ),
-            )
-        )
+    # if npileup > 0:
+    #     generators.append(
+    #         acts.examples.EventGenerator.Generator(
+    #             multiplicity=acts.examples.FixedMultiplicityGenerator(n=npileup),
+    #             vertex=vtxGen,
+    #             particles=acts.examples.pythia8.Pythia8Generator(
+    #                 level=customLogLevel(),
+    #                 **acts.examples.defaultKWArgs(
+    #                     pdgBeam0=beam[0],
+    #                     pdgBeam1=beam[1],
+    #                     cmsEnergy=cmsEnergy,
+    #                     settings=pileupProcess,
+    #                 ),
+    #             ),
+    #         )
+    #     )
 
     evGen = acts.examples.EventGenerator(
         level=customLogLevel(),
@@ -608,15 +609,15 @@ def addGeant4(
     inputParticles: str = "particles_generated_selected",
     outputParticles: str = "particles_simulated",
     outputSimHits: str = "simhits",
-    recordHitsOfSecondaries=True,
-    keepParticlesWithoutHits=True,
+    recordHitsOfSecondaries=True, #False,#True, ### IA
+    keepParticlesWithoutHits=False,#True, ### IA
     outputDirCsv: Optional[Union[Path, str]] = None,
     outputDirRoot: Optional[Union[Path, str]] = None,
     outputDirObj: Optional[Union[Path, str]] = None,
     logLevel: Optional[acts.logging.Level] = None,
     killVolume: Optional[acts.Volume] = None,
     killAfterTime: float = float("inf"),
-    killSecondaries: bool = False,
+    killSecondaries: bool = False, #True, #False, ### IA
     physicsList: str = "FTFP_BERT",
     regionList: List[Any] = [],
 ) -> None:

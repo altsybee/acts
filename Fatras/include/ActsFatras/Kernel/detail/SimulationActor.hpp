@@ -34,13 +34,20 @@ namespace ActsFatras::detail {
 /// @tparam decay_t decay module
 /// @tparam interactions_t interaction list
 /// @tparam hit_surface_selector_t selector for hit surfaces
+
+void IA_hit_checker(
+    const Acts::GeometryIdentifier& geoId, const Particle& before,
+    const Particle& after, bool& isInKineCuts, float& probToDetect,
+    bool& isInROF,
+    bool& isHitTOF);  // IA: to force recompilation of the .hpp code
+
 template <typename generator_t, typename decay_t, typename interactions_t,
           typename hit_surface_selector_t>
 struct SimulationActor {
   using result_type = SimulationResult;
 
   /// Random number generator used for the simulation.
-  generator_t *generator = nullptr;
+  generator_t* generator = nullptr;
   /// Decay module.
   decay_t decay;
   /// Interaction list containing the simulated interactions.
@@ -64,10 +71,13 @@ struct SimulationActor {
   /// @param logger a logger instance
   template <typename propagator_state_t, typename stepper_t,
             typename navigator_t>
-  void act(propagator_state_t &state, stepper_t &stepper,
-           navigator_t &navigator, result_type &result,
-           const Acts::Logger &logger) const {
+  void act(propagator_state_t& state, stepper_t& stepper,
+           navigator_t& navigator, result_type& result,
+           const Acts::Logger& logger) const {
     assert(generator != nullptr && "The generator pointer must be valid");
+    // if (1)
+    // std::cout << ">> we are at the beginning of act() in SimActor.hpp - test"
+    // << std::endl;
 
     if (state.stage == Acts::PropagatorStage::prePropagation) {
       // first step is special: there is no previous state and we need to arm
@@ -101,7 +111,7 @@ struct SimulationActor {
         (result.properTimeLimit - result.particle.properTime() <
          result.properTimeLimit * properTimeRelativeTolerance)) {
       auto descendants = decay.run(generator, result.particle);
-      for (const auto &descendant : descendants) {
+      for (const auto& descendant : descendants) {
         result.generatedParticles.emplace_back(descendant);
       }
       result.isAlive = false;
@@ -141,7 +151,7 @@ struct SimulationActor {
     if (!navigator.currentSurface(state.navigation)) {
       return;
     }
-    const Acts::Surface &surface = *navigator.currentSurface(state.navigation);
+    const Acts::Surface& surface = *navigator.currentSurface(state.navigation);
 
     // we need the particle state before and after the interaction for the hit
     // creation. create a copy since the particle will be modified in-place.
@@ -173,16 +183,105 @@ struct SimulationActor {
         }
       }
     }
-    Particle &after = result.particle;
+    Particle& after = result.particle;
+
+    // ### IA hit selection:
+    auto geoID = surface.geometryId();
+    bool isInKineCuts;
+    float probToDetect;
+    bool isInROF;
+    bool isHitTOF;
+
+    IA_hit_checker(geoID, before, after, isInKineCuts, probToDetect, isInROF,
+                   isHitTOF);
+
+    // // float etaCut = 0.9;//5;  // 4.5;//1;
+    // float etaCut = 2.5;//0.9;//5;  // 4.5;//1;
+    // float probToDetect = 1;
+    // // 1 ROF
+    // // if (1) {
+    // //   probToDetect = (after.BC() >= 0 && after.BC() < 20)
+    // //                      ? arr_hit_prob_vs_bc[after.BC()]
+    // //                      : 1.0;
+    // // }
+    // // // 2 ROFs
+    // // else if (0) {
+    // //   probToDetect = (after.BC() >= 0 && after.BC() < 40)
+    // //                      ? arr_hit_prob_vs_bc[after.BC()]
+    // //                      : 1.0;
+    // // }
+    // // // for multiROF:
+    // // else if (0) {
+    // //   if (after.BC() < 20)
+    // //     probToDetect = 0.1;  // "noise from the past"
+    // //   else
+    // //     probToDetect = 1.0;  // this and next event
+    // // }
+    // // vertPrimary == 1 ? 1 : ((double)rand() / (RAND_MAX)) < 0.2;
+
+    // float eta =
+    //     Acts::clampValue<float>(Acts::VectorHelpers::eta(after.direction()));
+    // if (0)
+    //   if (fabs(eta) < 0.5) {
+    //     std::uint32_t vertPrimary = after.particleId().vertexPrimary();
+    //     std::cout << "vertPrimary = " << vertPrimary
+    //               << ", afterBC = " << after.BC()
+    //               << ", beforeBC = " << before.BC() << std::endl;
+    //   }
+
+    // // ### IA: layer-by-layer check - to emulate short vs long ROFs
+    // bool isInROF = true;
+    // if (0 && geoID.sensitive() > 0) {
+    //   // check if we are in IRIS
+    //   if (geoID.volume() == 12 || geoID.volume() == 13 ||
+    //       geoID.volume() == 14) {
+    //     // check if we are in short ROF for inner layers
+    //     isInROF = after.BC() < 20 ? true : false;
+
+    //     if (0 && fabs(eta) < 0.5)
+    //       std::cout << geoID.sensitive() << " >> " << geoID.volume() << " "
+    //                 << geoID.layer() << " isInROF = " << isInROF
+    //                 << " BC =  " << after.BC() << ".   " << std::endl;
+    //   }
+
+    //   if (0)
+    //     std::cout << "    xyz = " << before.fourPosition().x() << " "
+    //               << before.fourPosition().y() << " "
+    //               << before.fourPosition().z() << std::endl;
+    // }
+
+    // // ### Feb 2025: try removal of hits from iTOF layer
+    // bool isHit = true;
+    // // std::cout << ">> lala IA TEST in SimActor" << std::endl;
+    // if (1 && geoID.sensitive() > 0) {
+    //   // check if we are in iTOF layer
+    //   if (geoID.volume() == 22 && geoID.layer() == 8 ) {
+    //     double tHit = after.fourPosition().w();
+    //     int bc = 0; // CONSIDER ONLY THE 1st BC!!! //after.BC();
+    //     isHit =  ( tHit/3e11 > (bc * 25e-9) - 5e-9 ) && ( tHit/3e11 < (bc *
+    //     25e-9) + 5e-9 );
+
+    //     // if (0 && fabs(eta) < 0.5)
+    //       std::cout << geoID.sensitive() << " >> " << geoID.volume() << " "
+    //                 << geoID.layer() << " tHit = " << tHit
+    //                 << " BC =  " << after.BC()
+    //                 << " isHit = " << isHit
+    //                 << ".   " << std::endl;
+    //   }
+    // }
 
     // store results of this interaction step, including potential hits
-    if (selectHitSurface(surface)) {
+    if (selectHitSurface(surface) &&
+        isInKineCuts  // fabs(eta) < etaCut   //&& pt > 0.5
+        && ((double)rand() / (RAND_MAX)) < probToDetect && isInROF &&
+        isHitTOF) {
       result.hits.emplace_back(
           surface.geometryId(), before.particleId(),
           // the interaction could potentially modify the particle position
           0.5 * (before.fourPosition() + after.fourPosition()),
           before.fourMomentum(), after.fourMomentum(), result.hits.size());
 
+      result.hits.back().setBC(after.BC());
       after.setNumberOfHits(result.hits.size());
     }
 
@@ -198,9 +297,9 @@ struct SimulationActor {
 
   template <typename propagator_state_t, typename stepper_t,
             typename navigator_t>
-  bool checkAbort(propagator_state_t & /*state*/, const stepper_t & /*stepper*/,
-                  const navigator_t & /*navigator*/, const result_type &result,
-                  const Acts::Logger & /*logger*/) const {
+  bool checkAbort(propagator_state_t& /*state*/, const stepper_t& /*stepper*/,
+                  const navigator_t& /*navigator*/, const result_type& result,
+                  const Acts::Logger& /*logger*/) const {
     // must return true if the propagation should abort
     return !result.isAlive;
   }
@@ -208,8 +307,8 @@ struct SimulationActor {
   /// Construct the current particle state from the propagation state.
   template <typename propagator_state_t, typename stepper_t,
             typename navigator_t>
-  Particle makeParticle(const Particle &previous, propagator_state_t &state,
-                        stepper_t &stepper, navigator_t &navigator) const {
+  Particle makeParticle(const Particle& previous, propagator_state_t& state,
+                        stepper_t& stepper, navigator_t& navigator) const {
     // a particle can lose energy and thus its gamma factor is not a constant
     // of motion. since the stepper provides only the lab time, we need to
     // compute the change in proper time for each step separately. this assumes
@@ -221,7 +320,7 @@ struct SimulationActor {
     //     1/gamma = m / sqrt(m² + p²) = m / E
     const auto gammaInv = previous.mass() / previous.energy();
     const auto properTime = previous.properTime() + gammaInv * deltaLabTime;
-    const Acts::Surface *currentSurface = nullptr;
+    const Acts::Surface* currentSurface = nullptr;
     if (navigator.currentSurface(state.navigation) != nullptr) {
       currentSurface = navigator.currentSurface(state.navigation);
     }
@@ -236,8 +335,8 @@ struct SimulationActor {
   }
 
   /// Prepare limits and process selection for the next point-like interaction.
-  void armPointLikeInteractions(const Particle &particle,
-                                result_type &result) const {
+  void armPointLikeInteractions(const Particle& particle,
+                                result_type& result) const {
     auto selection = interactions.armPointLike(*generator, particle);
     result.x0Limit = selection.x0Limit;
     result.l0Limit = selection.l0Limit;
@@ -249,7 +348,7 @@ struct SimulationActor {
   ///
   /// Simulate all continuous processes and at most one point-like process
   /// within the material.
-  void interact(const Acts::MaterialSlab &slab, result_type &result) const {
+  void interact(const Acts::MaterialSlab& slab, result_type& result) const {
     // run the continuous processes over a fraction of the material. returns
     // true on break condition (same as the underlying physics lists).
     auto runContinuousPartial = [&, this](float fraction) {

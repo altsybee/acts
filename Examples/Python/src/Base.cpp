@@ -279,6 +279,8 @@ void addPdgParticle(Acts::Python::Context& ctx) {
       .value("eAntiNeutron", Acts::PdgParticle::eAntiNeutron)
       .value("eProton", Acts::PdgParticle::eProton)
       .value("eAntiProton", Acts::PdgParticle::eAntiProton)
+      .value("eK0S", Acts::PdgParticle::eK0S)
+      .value("eLambda0", Acts::PdgParticle::eLambda0)
       .value("eLead", Acts::PdgParticle::eLead);
 }
 

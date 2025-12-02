@@ -44,6 +44,7 @@ class Channelizer {
     auto maskedSegmentRes = m_surfaceMask.apply(surface, driftedSegment);
 
     if (!maskedSegmentRes.ok()) {
+      // std::cout << "!maskedSegmentRes.ok()" << std::endl; // IA
       return maskedSegmentRes.error();
     }
 
@@ -59,6 +60,7 @@ class Channelizer {
     for (auto& seg : segments) {
       auto r = path2D != 0.0 ? (seg.activation / path2D) : 1.0;
       auto segThickness = r * thickness;
+      // std::cout << "thickness=" << thickness << ", segThickness=" << segThickness << ", path2D=" << path2D << ", seg.activation=" << seg.activation << std::endl; // IA
 
       seg.activation = std::hypot(segThickness, seg.activation);
     }

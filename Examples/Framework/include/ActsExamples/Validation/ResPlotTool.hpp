@@ -38,17 +38,17 @@ class ResPlotTool {
 
     /// Binning info for variables
     std::map<std::string, PlotHelpers::Binning> varBinning = {
-        {"Eta", PlotHelpers::Binning("#eta", 40, -4, 4)},
-        {"Pt", PlotHelpers::Binning("pT [GeV/c]", 40, 0, 100)},
+        {"Eta", PlotHelpers::Binning("#eta", 80, -4, 4)},
+        {"Pt", PlotHelpers::Binning("pT [GeV/c]", 1000, 0, 50)},
         {"Pull", PlotHelpers::Binning("pull", 100, -5, 5)},
         {"Residual_d0", PlotHelpers::Binning("r_{d0} [mm]", 100, -0.5, 0.5)},
         {"Residual_z0", PlotHelpers::Binning("r_{z0} [mm]", 100, -0.5, 0.5)},
         {"Residual_phi",
-         PlotHelpers::Binning("r_{#phi} [rad]", 100, -0.01, 0.01)},
+         PlotHelpers::Binning("r_{#phi} [rad]", 200, -0.02, 0.02)},
         {"Residual_theta",
-         PlotHelpers::Binning("r_{#theta} [rad]", 100, -0.01, 0.01)},
+         PlotHelpers::Binning("r_{#theta} [rad]", 200, -0.02, 0.02)},
         {"Residual_qop",
-         PlotHelpers::Binning("r_{q/p} [c/GeV]", 100, -0.1, 0.1)},
+         PlotHelpers::Binning("r_{q/p} [c/GeV]", 200, -0.2, 0.2)},
         {"Residual_t", PlotHelpers::Binning("r_{t} [s]", 100, -1000, 1000)}};
   };
 

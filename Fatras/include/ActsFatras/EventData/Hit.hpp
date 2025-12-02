@@ -48,7 +48,8 @@ class Hit {
         m_index(index_),
         m_pos4(pos4),
         m_before4(before4),
-        m_after4(after4) {}
+        m_after4(after4),
+        m_bc(-1) {}
   Hit(const Hit&) = default;
   Hit(Hit&&) = default;
   Hit& operator=(const Hit&) = default;
@@ -62,6 +63,9 @@ class Hit {
   ///
   /// @retval negative if the hit index is undefined.
   constexpr std::int32_t index() const { return m_index; }
+
+  void setBC(std::int32_t bc) { m_bc = bc; }  // IA
+  std::int32_t BC() const { return m_bc; }    // IA
 
   /// Space-time position four-vector.
   const Acts::Vector4& fourPosition() const { return m_pos4; }
@@ -109,6 +113,8 @@ class Hit {
   Acts::Vector4 m_before4 = Acts::Vector4::Zero();
   /// Global particle energy-momentum four-vector after the hit.
   Acts::Vector4 m_after4 = Acts::Vector4::Zero();
+
+  std::int32_t m_bc;
 };
 
 }  // namespace ActsFatras

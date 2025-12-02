@@ -113,6 +113,8 @@ class RootParticleWriter final : public WriterT<SimParticleContainer> {
   std::vector<std::uint32_t> m_generation;
   std::vector<std::uint32_t> m_subParticle;
 
+  std::vector<std::int32_t> m_bc;
+
   /// Total energy loss in GeV.
   std::vector<float> m_eLoss;
   /// Accumulated material

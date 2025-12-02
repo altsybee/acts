@@ -131,6 +131,8 @@ RootTrackParameterWriter::RootTrackParameterWriter(
   m_outputTree->Branch("t_pt", &m_t_pt);
   m_outputTree->Branch("t_eta", &m_t_eta);
 
+  m_outputTree->Branch("t_vz", &m_t_vz); // IA
+
   // The residuals
   m_outputTree->Branch("res_loc0", &m_res_loc0);
   m_outputTree->Branch("res_loc1", &m_res_loc1);
@@ -271,6 +273,7 @@ ProcessCode RootTrackParameterWriter::writeT(
           m_t_qop = particle.hypothesis().qOverP(p.norm(), particle.charge());
           m_t_p = p.norm();
           m_t_pt = perp(p);
+          m_t_vz = particle.position().z();
         } else {
           ACTS_WARNING("Truth particle with barcode " << particleId << "="
                                                       << particleId.value()
@@ -315,6 +318,7 @@ ProcessCode RootTrackParameterWriter::writeT(
       m_t_p = NaNfloat;
       m_t_pt = NaNfloat;
       m_t_eta = NaNfloat;
+      m_t_vz = NaNfloat;
     }
 
     m_outputTree->Fill();

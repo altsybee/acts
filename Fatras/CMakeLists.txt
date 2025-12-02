@@ -9,6 +9,7 @@ acts_add_library(
     src/EventData/ParticleOutcome.cpp
     src/EventData/ProcessType.cpp
     src/Kernel/SimulationError.cpp
+    src/Kernel/SimulationActor.cpp
     src/Physics/BetheHeitler.cpp
     src/Physics/PhotonConversion.cpp
     src/Physics/StandardInteractions.cpp

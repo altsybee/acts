@@ -21,6 +21,13 @@ template <typename path_aborter_t, typename propagator_state_t,
 void setupLoopProtection(propagator_state_t& state, const stepper_t& stepper,
                          path_aborter_t& pathAborter, bool releaseLimit,
                          const Logger& logger) {
+  // ### IA:
+  //  std::cout <<">>> in setupLoopProtection: state.options.loopFraction="
+  //             << state.options.loopFraction << ", state.options.direction="
+  //             << state.options.direction
+  //             << ", pathAborter.internalLimit=" <<
+  //             pathAborter.internalLimit<<std::endl;
+
   if (!state.options.loopProtection) {
     return;
   }
@@ -53,6 +60,12 @@ void setupLoopProtection(propagator_state_t& state, const stepper_t& stepper,
   // And set it as the loop limit if it overwrites the internal limit
   const double loopLimit = state.options.loopFraction * helixPath;
   const double previousLimit = pathAborter.internalLimit;
+
+  // ### IA:
+  // std::cout<<"---> p="
+  //           << p << ", helixPath=" << helixPath
+  //           << ", previousLimit=" << previousLimit<<std::endl;
+
   if (std::abs(loopLimit) < std::abs(previousLimit)) {
     pathAborter.internalLimit = loopLimit;
 

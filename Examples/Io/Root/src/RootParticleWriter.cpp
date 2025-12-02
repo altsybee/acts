@@ -69,6 +69,8 @@ ActsExamples::RootParticleWriter::RootParticleWriter(
   m_outputTree->Branch("generation", &m_generation);
   m_outputTree->Branch("sub_particle", &m_subParticle);
 
+  m_outputTree->Branch("bc", &m_bc);
+
   m_outputTree->Branch("e_loss", &m_eLoss);
   m_outputTree->Branch("total_x0", &m_pathInX0);
   m_outputTree->Branch("total_l0", &m_pathInL0);
@@ -142,6 +144,8 @@ ActsExamples::ProcessCode ActsExamples::RootParticleWriter::writeT(
     m_generation.push_back(particle.particleId().generation());
     m_subParticle.push_back(particle.particleId().subParticle());
 
+    m_bc.push_back(particle.initial().BC());
+
     m_eLoss.push_back(Acts::clampValue<float>(particle.energyLoss() /
                                               Acts::UnitConstants::GeV));
     m_pathInX0.push_back(
@@ -180,6 +184,8 @@ ActsExamples::ProcessCode ActsExamples::RootParticleWriter::writeT(
   m_outcome.clear();
   m_pathInX0.clear();
   m_pathInL0.clear();
+
+  m_bc.clear();
 
   return ProcessCode::SUCCESS;
 }

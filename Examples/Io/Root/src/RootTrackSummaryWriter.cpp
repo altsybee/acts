@@ -18,6 +18,7 @@
 #include "Acts/Utilities/MultiIndex.hpp"
 #include "Acts/Utilities/Result.hpp"
 #include "Acts/Utilities/detail/periodic.hpp"
+#include "ActsExamples/EventData/AverageSimHits.hpp"
 #include "ActsExamples/EventData/IndexSourceLink.hpp"
 #include "ActsExamples/EventData/TruthMatching.hpp"
 #include "ActsExamples/Framework/AlgorithmContext.hpp"
@@ -63,6 +64,10 @@ RootTrackSummaryWriter::RootTrackSummaryWriter(
   m_inputParticles.maybeInitialize(m_cfg.inputParticles);
   m_inputTrackParticleMatching.maybeInitialize(
       m_cfg.inputTrackParticleMatching);
+  m_inputSimHits.initialize("simhits");  // m_cfg.inputSimHits); // IA
+  m_inputMeasurementSimHitsMap.initialize(
+      "measurement_simhits_map");  // IA, was:
+                                   // m_cfg.inputMeasurementSimHitsMap);
 
   // Setup ROOT I/O
   auto path = m_cfg.filePath;
@@ -91,11 +96,14 @@ RootTrackSummaryWriter::RootTrackSummaryWriter(
   m_outputTree->Branch("outlierChi2", &m_outlierChi2);
   m_outputTree->Branch("measurementVolume", &m_measurementVolume);
   m_outputTree->Branch("measurementLayer", &m_measurementLayer);
+  m_outputTree->Branch("measurementParticleId",
+                       &m_measurementParticleId);  // IA
   m_outputTree->Branch("outlierVolume", &m_outlierVolume);
   m_outputTree->Branch("outlierLayer", &m_outlierLayer);
 
   m_outputTree->Branch("nMajorityHits", &m_nMajorityHits);
   m_outputTree->Branch("majorityParticleId", &m_majorityParticleId);
+  m_outputTree->Branch("majorityParticlePDG", &m_majorityParticlePDG);  // IA
   m_outputTree->Branch("trackClassification", &m_trackClassification);
   m_outputTree->Branch("t_charge", &m_t_charge);
   m_outputTree->Branch("t_time", &m_t_time);
@@ -113,6 +121,8 @@ RootTrackSummaryWriter::RootTrackSummaryWriter(
   m_outputTree->Branch("t_d0", &m_t_d0);
   m_outputTree->Branch("t_z0", &m_t_z0);
   m_outputTree->Branch("t_prodR", &m_t_prodR);
+
+  m_outputTree->Branch("t_BC", &m_t_BC);  // IA
 
   m_outputTree->Branch("hasFittedParams", &m_hasFittedParams);
   m_outputTree->Branch("eLOC0_fit", &m_eLOC0_fit);
@@ -227,6 +237,9 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
           ? m_inputTrackParticleMatching(ctx)
           : emptyTrackParticleMatching;
 
+  const auto& simHits = m_inputSimHits(ctx);                      // IA
+  const auto& hitSimHitsMap = m_inputMeasurementSimHitsMap(ctx);  // IA
+
   // For each particle within a track, how many hits did it contribute
   std::vector<ParticleHitCount> particleHitCounts;
 
@@ -252,9 +265,13 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
       std::vector<double> measurementChi2;
       std::vector<std::uint32_t> measurementVolume;
       std::vector<std::uint32_t> measurementLayer;
+      std::vector<std::uint64_t> measurementParticleId;
       std::vector<double> outlierChi2;
       std::vector<std::uint32_t> outlierVolume;
       std::vector<std::uint32_t> outlierLayer;
+
+      if(0)std::cout << "### begin state loop: " << std::endl;
+
       for (const auto& state : track.trackStatesReversed()) {
         const auto& geoID = state.referenceSurface().geometryId();
         const auto& volume = geoID.volume();
@@ -268,11 +285,85 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
           measurementChi2.push_back(state.chi2());
           measurementVolume.push_back(volume);
           measurementLayer.push_back(layer);
-        }
+
+          // IA, taken from
+          // https://github.com/acts-project/acts/blob/main/Examples/Io/Root/src/RootTrackStatesWriter.cpp
+          if (state.hasUncalibratedSourceLink()) {
+            const auto& surface = state.referenceSurface();
+            // get the truth hits corresponding to this trackState
+            // Use average truth in the case of multiple contributing sim hits
+            auto sl = state.getUncalibratedSourceLink()
+                          .template get<IndexSourceLink>();
+            const auto hitIdx = sl.index();
+
+            auto indices = makeRange(hitSimHitsMap.equal_range(hitIdx));
+            // auto [truthLocal, truthPos4, truthUnitDir] =
+            averageSimHits(ctx.geoContext, surface, simHits, indices, logger());
+            // momentum averaging makes even less sense than averaging position
+            // and direction. use the first momentum or set q/p to zero
+            if (!indices.empty()) {
+              // we assume that the indices are within valid ranges so we do not
+              // need to check their validity again.
+              const auto simHitIdx0 = indices.begin()->second;
+              const auto& simHit0 = *simHits.nth(simHitIdx0);
+              const auto p = simHit0.momentum4Before()
+                                 .template segment<3>(Acts::eMom0)
+                                 .norm();
+              // truthParams[Acts::eBoundQOverP] = truthQ / p;
+
+              if(0)std::cout << simHit0.geometryId()
+                        << " volume = " << simHit0.geometryId().volume()
+                        << " layer = " << simHit0.geometryId().layer()
+                        << ", mom = " << p
+                        << ", pId = " << simHit0.particleId().value()
+                        << std::endl;
+              measurementParticleId.push_back(simHit0.particleId().value()); // IA
+
+              // extract particle ids contributed to this track state
+              // for (auto const& [key, simHitIdx] : indices) {
+              //   const auto& simHit = *simHits.nth(simHitIdx);
+              //   particleIds.push_back(simHit.particleId().value());
+              // }
+            }
+
+            // const auto& simHit0 = *simHits.nth(hitIdx);
+            // std::cout << simHit0.geometryId()
+            //           << " volume = " << simHit0.geometryId().volume()
+            //           << " layer = " << simHit0.geometryId().layer() <<
+            //           std::endl;
+            // auto ip = particles.find(simHit0.particleId());
+            // if (ip != particles.end()) {
+            //   const auto& particle = *ip;
+            //   float p = particle.absoluteMomentum();
+            //   std::cout << "    >> particle id: " << simHit0.particleId()
+            //             << ", mom = " << p << std::endl;
+            // }
+
+            //   const auto p = simHit0.momentum4Before()
+            //                      .template segment<3>(Acts::eMom0)
+            //                      .norm();
+            //   truthParams[Acts::eBoundQOverP] = truthQ / p;
+
+            //   // extract particle ids contributed to this track state
+            //   for (auto const& [key, simHitIdx] : indices) {
+            //     const auto& simHit = *simHits.nth(simHitIdx);
+            //     particleIds.push_back(simHit.particleId().value());
+            //   }
+            // }
+          } else {  // IA
+            std::cout << " !state.hasUncalibratedSourceLink() for vol="
+                      << state.referenceSurface().geometryId().volume()
+                      << ", layer="
+                      << state.referenceSurface().geometryId().layer()
+                      << std::endl;
+          }
+        }  // end of else if
+           // (state.typeFlags().test(Acts::TrackStateFlag::MeasurementFlag))
       }
       m_measurementChi2.push_back(std::move(measurementChi2));
       m_measurementVolume.push_back(std::move(measurementVolume));
       m_measurementLayer.push_back(std::move(measurementLayer));
+      m_measurementParticleId.push_back(std::move(measurementParticleId));
       m_outlierChi2.push_back(std::move(outlierChi2));
       m_outlierVolume.push_back(std::move(outlierVolume));
       m_outlierLayer.push_back(std::move(outlierLayer));
@@ -302,6 +393,9 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
     float t_qop = NaNfloat;
     float t_prodR = NaNfloat;
 
+    int t_BC = -1;
+    Acts::PdgParticle t_PDG = Acts::eInvalid;  // IA
+
     // Get the perigee surface
     const Acts::Surface* pSurface =
         track.hasReferenceSurface() ? &track.referenceSurface() : nullptr;
@@ -316,6 +410,7 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
       majorityParticleId = match->second.particle.value();
       trackClassification = match->second.classification;
       nMajorityHits = match->second.contributingParticles.front().hitCount;
+      // t_PDG = match->second.contributingParticles.front().pdg();
 
       // Find the truth particle via the barcode
       auto ip = particles.find(majorityParticleId);
@@ -342,6 +437,9 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
         t_pT = t_p * perp(particle.direction());
         t_qop = particle.qOverP();
         t_prodR = std::sqrt(t_vx * t_vx + t_vy * t_vy);
+
+        t_BC = particle.initial().BC();
+        t_PDG = particle.pdg();
 
         if (pSurface != nullptr) {
           auto intersection =
@@ -376,6 +474,7 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
     // Push the corresponding truth particle info for the track.
     // Always push back even if majority particle not found
     m_majorityParticleId.push_back(majorityParticleId.value());
+    m_majorityParticlePDG.push_back(t_PDG);
     m_trackClassification.push_back(static_cast<int>(trackClassification));
     m_nMajorityHits.push_back(nMajorityHits);
     m_t_charge.push_back(t_charge);
@@ -394,6 +493,8 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
     m_t_d0.push_back(t_d0);
     m_t_z0.push_back(t_z0);
     m_t_prodR.push_back(t_prodR);
+
+    m_t_BC.push_back(t_BC);
 
     // Initialize the fitted track parameters info
     std::array<float, Acts::eBoundSize> param = {NaNfloat, NaNfloat, NaNfloat,
@@ -560,9 +661,11 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
   m_measurementLayer.clear();
   m_outlierVolume.clear();
   m_outlierLayer.clear();
+  m_measurementParticleId.clear();
 
   m_nMajorityHits.clear();
   m_majorityParticleId.clear();
+  m_majorityParticlePDG.clear();
   m_trackClassification.clear();
   m_t_charge.clear();
   m_t_time.clear();
@@ -580,6 +683,8 @@ ProcessCode RootTrackSummaryWriter::writeT(const AlgorithmContext& ctx,
   m_t_d0.clear();
   m_t_z0.clear();
   m_t_prodR.clear();
+
+  m_t_BC.clear();
 
   m_hasFittedParams.clear();
   m_eLOC0_fit.clear();

@@ -9,6 +9,7 @@
 #pragma once
 
 #include "Acts/Utilities/Logger.hpp"
+#include "ActsExamples/EventData/Measurement.hpp"
 #include "ActsExamples/EventData/SimHit.hpp"
 #include "ActsExamples/EventData/SimParticle.hpp"
 #include "ActsExamples/EventData/Track.hpp"
@@ -94,6 +95,9 @@ class RootTrackSummaryWriter final : public WriterT<ConstTrackContainer> {
   ReadDataHandle<SimParticleContainer> m_inputParticles{this, "InputParticles"};
   ReadDataHandle<TrackParticleMatching> m_inputTrackParticleMatching{
       this, "InputTrackParticleMatching"};
+  ReadDataHandle<SimHitContainer> m_inputSimHits{this, "InputSimHits"};  // IA
+  ReadDataHandle<MeasurementSimHitsMap> m_inputMeasurementSimHitsMap{
+      this, "InputMeasurementSimHitsMap"};  // IA
 
   /// Mutex used to protect multi-threaded writes
   std::mutex m_writeMutex;
@@ -133,11 +137,14 @@ class RootTrackSummaryWriter final : public WriterT<ConstTrackContainer> {
   /// The layer id of the outliers
   std::vector<std::vector<std::uint32_t>> m_outlierLayer;
 
+  std::vector<std::vector<std::uint64_t>> m_measurementParticleId;  // IA
+
   // The majority truth particle info
   /// The number of hits from majority particle
   std::vector<unsigned int> m_nMajorityHits;
   /// The particle Id of the majority particle
   std::vector<std::uint64_t> m_majorityParticleId;
+  std::vector<int> m_majorityParticlePDG;  // IA
   /// The classification of the reconstructed track
   std::vector<int> m_trackClassification;
   /// Charge of majority particle
@@ -172,6 +179,8 @@ class RootTrackSummaryWriter final : public WriterT<ConstTrackContainer> {
   std::vector<float> m_t_z0;
   /// Production radius of majority particle
   std::vector<float> m_t_prodR;
+
+  std::vector<int> m_t_BC;  ///< BC
 
   /// If the track has fitted parameter
   std::vector<bool> m_hasFittedParams;

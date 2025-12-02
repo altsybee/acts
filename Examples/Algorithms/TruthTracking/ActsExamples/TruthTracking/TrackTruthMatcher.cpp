@@ -95,13 +95,34 @@ ActsExamples::ProcessCode TrackTruthMatcher::execute(
 
     // Check if the trajectory is matched with truth.
     // If not, it will be classified as 'fake'
+    int nParticleTruthHits = particleTruthHitCount.at(majorityParticleId);
     const bool recoMatched =
         static_cast<double>(nMajorityHits) / track.nMeasurements() >=
         m_cfg.matchingRatio;
+
+    // ### IA: since ACTS doesn't reconstruct loopers in the barrel,
+    // we need to restrict max number of hits for low-pT particles at
+    // mid-rapidity (in Geant) for the matchingRatio calculation:
+    double eta = 0;
+    bool hasFittedParams = track.hasReferenceSurface();
+    if (hasFittedParams) {
+      float theta = track.parameters()[Acts::eBoundTheta];
+      eta = -log(tan(theta / 2));
+    }
     const bool truthMatched =
         static_cast<double>(nMajorityHits) /
-            particleTruthHitCount.at(majorityParticleId) >=
+            (abs(eta < 1.5 ? (nParticleTruthHits > 11 ? 11 : nParticleTruthHits)
+                           : nParticleTruthHits)) >=
         m_cfg.matchingRatio;
+
+    // ### IA:
+    ACTS_DEBUG("nMajorityHits="
+               << nMajorityHits
+               << ", track.nMeasurements=" << track.nMeasurements()
+               << ", particleTruthHitCount.at(majorityParticleId)="
+               << particleTruthHitCount.at(majorityParticleId)
+               << "   => recoMatched=" << recoMatched
+               << "   => truthMatched=" << truthMatched);
 
     if ((!m_cfg.doubleMatching && recoMatched) ||
         (m_cfg.doubleMatching && recoMatched && truthMatched)) {
