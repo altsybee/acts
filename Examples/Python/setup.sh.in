@@ -44,3 +44,8 @@ fi
 # Thus, we let them know explicitly so they can more easily debug any potential
 # import errors.
 echo "INFO:    Acts Python @Python_VERSION_MAJOR@.@Python_VERSION_MINOR@ bindings setup complete."
+
+
+if [[ "$(uname -s)" == "Darwin" ]]; then
+    export DYLD_LIBRARY_PATH=$ACTS_ROOT/lib:$GEANT4_ROOT/lib:$ACTS_ROOT/../../xercesc/latest/lib:$ACTS_ROOT/../../TBB/latest/lib:$ACTS_ROOT/../../HepMC3/latest/lib:$ACTS_ROOT/../../pythia/latest/lib:$ROOT_DYN_PATH:$DYLD_LIBRARY_PATH
+fi
