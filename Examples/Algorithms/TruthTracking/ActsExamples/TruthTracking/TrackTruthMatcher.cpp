@@ -111,9 +111,8 @@ ActsExamples::ProcessCode TrackTruthMatcher::execute(
     }
     const bool truthMatched =
         static_cast<double>(nMajorityHits) /
-            (abs(eta < 1.5 ? (nParticleTruthHits > 11 ? 11 : nParticleTruthHits)
-                           : nParticleTruthHits)) >=
-        m_cfg.matchingRatio;
+            (abs(eta) < 1.5 ? (nParticleTruthHits > 13 ? 13 : nParticleTruthHits)
+                           : nParticleTruthHits) >=  m_cfg.matchingRatio;
 
     // ### IA:
     ACTS_DEBUG("nMajorityHits="
