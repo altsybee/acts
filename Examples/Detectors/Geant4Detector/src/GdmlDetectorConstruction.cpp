@@ -27,7 +27,7 @@ G4VPhysicalVolume* GdmlDetectorConstruction::Construct() {
   if (m_world == nullptr) {
     G4GDMLParser parser;
     // TODO how to handle errors
-    parser.Read(m_path);
+    parser.Read(m_path, false); // IA: // <- validation OFF
     m_world = parser.GetWorldVolume();
 
     // Create regions
