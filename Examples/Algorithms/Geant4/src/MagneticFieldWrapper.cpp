@@ -37,7 +37,11 @@ void MagneticFieldWrapper::GetFieldValue(const G4double Point[4],
        convertLength * Point[2]},
       bCache);
   if (!fieldRes.ok()) {
-    ACTS_ERROR("Field lookup error: " << fieldRes.error());
+    if (fabs(Point[0]) < 2000 && fabs(Point[1]) < 2000 && fabs(Point[2]) < 5000)
+      ACTS_ERROR("Field lookup error: " << fieldRes.error()
+                                        << convertLength * Point[0] << " "
+                                        << convertLength * Point[1] << " "
+                                        << convertLength * Point[2]);
     return;
   }
   // Get the field now
