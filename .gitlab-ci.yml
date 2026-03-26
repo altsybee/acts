@@ -7,7 +7,8 @@ variables:
 
 default:
   # Use CERN-supported container with LCG/CVMFS access
-  image: gitlab-registry.cern.ch/acts/acts-athena-ci/alma9-atlasos-dev:v2
+  #image: gitlab-registry.cern.ch/acts/acts-athena-ci/alma9-atlasos-dev:v2
+  image: gitlab-registry.cern.ch/linuxsupport/alma9-base:latest
   before_script:
     - echo "Container ready, build tools available"
 
