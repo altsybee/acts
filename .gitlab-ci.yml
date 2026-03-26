@@ -4,13 +4,12 @@ stages:
 
 variables:
   LCG: "LCG_108/x86_64-el9-gcc14-opt"
-  LCG_HOME: "$CI_PROJECT_DIR/lcg_view"
 
 default:
-  image: ubuntu:latest
+  # Use CERN-supported container with LCG/CVMFS access
+  image: gitlab-registry.cern.ch/linuxsupport/alma9-base:latest
   before_script:
-    - apt-get update && apt-get install -y wget tar cmake git build-essential python3 python3-pip ccache
-    - echo "Build tools installed"
+    - echo "Container ready, build tools available"
 
 # -----------------------
 # 🔧 BUILD ACTS
@@ -18,10 +17,8 @@ default:
 build_acts:
   stage: build
   script:
-    - echo "::group::Setup LCG for $LCG"
-    - wget -q https://gitlab.cern.ch/aidasoft/run-lcg-view/-/raw/main/get_lcg_view.sh -O get_lcg_view.sh
-    - bash get_lcg_view.sh ${LCG} ${LCG_HOME}
-    - source ${LCG_HOME}/setup.sh
+    - echo "::group::Setup LCG"
+    - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
 
     - echo "::group::Checkout ACTS"
     - git clone https://github.com/acts-project/acts.git
@@ -47,7 +44,6 @@ build_acts:
   artifacts:
     paths:
       - acts/install
-      - ${LCG_HOME}
     expire_in: 1 day
 
 # -----------------------
@@ -60,7 +56,7 @@ build_acts:
       artifacts: true
   script:
     - echo "::group::Setup LCG"
-    - source ${LCG_HOME}/setup.sh
+    - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
 
     - echo "::group::Setup ACTS"
     - source acts/install/bin/this_acts.sh
