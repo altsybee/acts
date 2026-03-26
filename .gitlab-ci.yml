@@ -2,26 +2,31 @@ stages:
   - build
   - test
 
-default:
-  image: gitlab-registry.cern.ch/linuxsupport/alma9-base:latest
-
 variables:
   LCG: "LCG_108/x86_64-el9-gcc14-opt"
+  LCG_HOME: "$CI_PROJECT_DIR/lcg_view"
+
+default:
+  image: ubuntu:latest
+  before_script:
+    - apt-get update && apt-get install -y wget tar cmake git build-essential python3 python3-pip ccache
+    - echo "Build tools installed"
 
 # -----------------------
-# 🔧 BUILD (once)
+# 🔧 BUILD ACTS
 # -----------------------
 build_acts:
   stage: build
-
   script:
-    - echo "Setup LCG"
-    - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
+    - echo "::group::Setup LCG for $LCG"
+    - wget -q https://gitlab.cern.ch/aidasoft/run-lcg-view/-/raw/main/get_lcg_view.sh -O get_lcg_view.sh
+    - bash get_lcg_view.sh ${LCG} ${LCG_HOME}
+    - source ${LCG_HOME}/setup.sh
 
-    - echo "Clone ACTS"
+    - echo "::group::Checkout ACTS"
     - git clone https://github.com/acts-project/acts.git
 
-    - echo "Configure"
+    - echo "::group::Configure ACTS"
     - cmake -S acts -B acts/build \
         -DACTS_BUILD_PLUGIN_GEANT4=on \
         -DACTS_BUILD_PLUGIN_JSON=on \
@@ -36,54 +41,56 @@ build_acts:
         -DACTS_BUILD_EXAMPLES_PYTHIA8=on \
         -DCMAKE_INSTALL_PREFIX=acts/install
 
-    - echo "Build"
+    - echo "::group::Build ACTS"
     - cmake --build acts/build -- -j$(nproc) install
 
   artifacts:
     paths:
       - acts/install
+      - ${LCG_HOME}
     expire_in: 1 day
 
-
 # -----------------------
-# 🧪 BASE TEST TEMPLATE
+# 🧪 TEST TEMPLATE
 # -----------------------
 .test_template:
   stage: test
   needs:
     - job: build_acts
       artifacts: true
-
   script:
-    - echo "Setup LCG"
-    - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
+    - echo "::group::Setup LCG"
+    - source ${LCG_HOME}/setup.sh
 
-    - echo "Setup ACTS"
+    - echo "::group::Setup ACTS"
     - source acts/install/bin/this_acts.sh
     - export ACTS_SEQUENCER_DISABLE_FPEMON=1
 
-    - echo "Build project"
+    - echo "::group::Build project"
     - source setup.sh
-    - mkdir build && cd build
+    - mkdir -p build && cd build
     - cmake -DCMAKE_PREFIX_PATH=${PWD}/../acts/install ..
     - make -j2
     - cd ..
 
+# -----------------------
+# 🧪 TEST JOBS
+# -----------------------
 test_alice3:
   extends: .test_template
   script:
-    - echo "Running Alice3 test"
-    - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
-    - source acts/install/bin/this_acts.sh
-    - export ACTS_SEQUENCER_DISABLE_FPEMON=1
-    - source setup.sh
-    - mkdir build && cd build
-    - cmake -DCMAKE_PREFIX_PATH=${PWD}/../acts/install ..
-    - make -j2
-    - cd ..
+    - echo "::group::Running Alice3 full chain test"
     - python alice3_full_chain.py
 
+#test_example:
+#  extends: .test_template
+#  script:
+#    - echo "::group::Running another example test"
+#    - python another_test.py
 
+# -----------------------
+# 🎯 PIPELINE RULES
+# -----------------------
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
