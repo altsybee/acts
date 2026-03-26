@@ -7,7 +7,7 @@ variables:
 
 default:
   # Use CERN-supported container with LCG/CVMFS access
-  image: gitlab-registry.cern.ch/linuxsupport/alma9-base:latest
+  image: gitlab-registry.cern.ch/acts/acts-athena-ci/alma9-atlasos-dev:v2
   before_script:
     - echo "Container ready, build tools available"
 
@@ -16,8 +16,6 @@ default:
 # -----------------------
 build_acts:
   stage: build
-  tags:
-    - cern-cvmfs       # Ensures job runs on a CVMFS-enabled runner
   script:
     - echo "::group::Setup LCG"
     - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
@@ -53,8 +51,6 @@ build_acts:
 # -----------------------
 .test_template:
   stage: test
-  tags:
-    - cern-cvmfs       # Ensures job runs on a CVMFS-enabled runner
   needs:
     - job: build_acts
       artifacts: true
