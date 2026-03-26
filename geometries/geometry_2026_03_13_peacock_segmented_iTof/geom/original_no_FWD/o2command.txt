@@ -1,0 +1,4 @@
+# TF3 is the TOF
+# FT3 are the forward trackers (disks)
+
+o2-sim-serial-run5 -n 1 -g pythia8hi -m A3IP TRK TF3 --configKeyValues "TRKBase.layoutML=kCylinder;TRKBase.layoutOT=kCylinder;TRKBase.layoutVD=kIRISFullCyl;"

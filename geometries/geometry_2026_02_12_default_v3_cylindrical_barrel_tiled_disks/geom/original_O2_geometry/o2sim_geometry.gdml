@@ -1,0 +1,1853 @@
+<?xml version="1.0"?>
+<gdml xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://service-spi.web.cern.ch/service-spi/app/releases/GDML/schema/gdml.xsd">
+  <define>
+    <position name="A3IP_1inbarrelpos" x="0" y="30" z="0" unit="cm"/>
+    <position name="TRKSensor0_1inTRKChip0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKMetalStack0_1inTRKChip0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKChip0_1inTRKModule0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKModule0_1inTRKStave0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKStave0_1inTRKLayer0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKLayer0_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKSensor1_1inTRKChip1pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKMetalStack1_1inTRKChip1pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKChip1_1inTRKModule1pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKModule1_1inTRKStave1pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKStave1_1inTRKLayer1pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKLayer1_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKSensor2_1inTRKChip2pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKMetalStack2_1inTRKChip2pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKChip2_1inTRKModule2pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKModule2_1inTRKStave2pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKStave2_1inTRKLayer2pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKLayer2_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKSensor3_1inTRKChip3pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKMetalStack3_1inTRKChip3pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKChip3_1inTRKModule3pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKModule3_1inTRKStave3pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKStave3_1inTRKLayer3pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKLayer3_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKSensor4_1inTRKChip4pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKMetalStack4_1inTRKChip4pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKChip4_1inTRKModule4pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKModule4_1inTRKStave4pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKStave4_1inTRKLayer4pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKLayer4_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKSensor5_1inTRKChip5pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKMetalStack5_1inTRKChip5pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKChip5_1inTRKModule5pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKModule5_1inTRKStave5pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKStave5_1inTRKLayer5pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKLayer5_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKSensor6_1inTRKChip6pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKMetalStack6_1inTRKChip6pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKChip6_1inTRKModule6pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKModule6_1inTRKStave6pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKStave6_1inTRKLayer6pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKLayer6_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKSensor7_1inTRKChip7pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKMetalStack7_1inTRKChip7pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKChip7_1inTRKModule7pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKModule7_1inTRKStave7pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKStave7_1inTRKLayer7pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKLayer7_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRK_MID_CARBONSUPPORT_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRK_MID_FIBER_SIO2_bwd_1inTRKVpos" x="0" y="0" z="102.5" unit="cm"/>
+    <position name="TRK_MID_FIBER_PE_bwd_1inTRKVpos" x="0" y="0" z="102.5" unit="cm"/>
+    <position name="TRK_MID_POWER_CU_bwd_1inTRKVpos" x="0" y="0" z="102.5" unit="cm"/>
+    <position name="TRK_MID_POWER_PE_bwd_1inTRKVpos" x="0" y="0" z="102.5" unit="cm"/>
+    <position name="TRK_MID_COOLING_PU_bwd_1inTRKVpos" x="0" y="0" z="102.5" unit="cm"/>
+    <position name="TRK_MID_COOLING_H2O_bwd_1inTRKVpos" x="0" y="0" z="102.5" unit="cm"/>
+    <position name="TRK_MID_FIBER_SIO2_fwd_1inTRKVpos" x="0" y="0" z="-102.5" unit="cm"/>
+    <position name="TRK_MID_FIBER_PE_fwd_1inTRKVpos" x="0" y="0" z="-102.5" unit="cm"/>
+    <position name="TRK_MID_POWER_CU_fwd_1inTRKVpos" x="0" y="0" z="-102.5" unit="cm"/>
+    <position name="TRK_MID_POWER_PE_fwd_1inTRKVpos" x="0" y="0" z="-102.5" unit="cm"/>
+    <position name="TRK_MID_COOLING_PU_fwd_1inTRKVpos" x="0" y="0" z="-102.5" unit="cm"/>
+    <position name="TRK_MID_COOLING_H2O_fwd_1inTRKVpos" x="0" y="0" z="-102.5" unit="cm"/>
+    <position name="TRK_MIDBARCONN_DISK_SIO2_bwd_1inTRKVpos" x="0" y="0" z="64.276748657226562" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_SIO2_bwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_PE_bwd_1inTRKVpos" x="0" y="0" z="64.430244445800781" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_PE_bwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_CU_bwd_1inTRKVpos" x="0" y="0" z="64.556045532226562" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_CU_bwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_PE_bwd_10x1inTRKVpos" x="0" y="0" z="65.101043701171875" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_PE_bwd_10x1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_PU_bwd_1inTRKVpos" x="0" y="0" z="64.556045532226562" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_PU_bwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_H2O_bwd_1inTRKVpos" x="0" y="0" z="65.101043701171875" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_H2O_bwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_SIO2_fwd_1inTRKVpos" x="0" y="0" z="-64.276748657226562" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_SIO2_fwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_PE_fwd_1inTRKVpos" x="0" y="0" z="-64.430244445800781" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_PE_fwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_CU_fwd_1inTRKVpos" x="0" y="0" z="-64.556045532226562" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_CU_fwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_PE_fwd_10x1inTRKVpos" x="0" y="0" z="-65.101043701171875" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_PE_fwd_10x1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_PU_fwd_1inTRKVpos" x="0" y="0" z="-64.556045532226562" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_PU_fwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARCONN_DISK_H2O_fwd_1inTRKVpos" x="0" y="0" z="-65.101043701171875" unit="cm"/>
+    <rotation name="TRK_MIDBARCONN_DISK_H2O_fwd_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_FIBER_SIO2_1inTRKVpos" x="0" y="0" z="143.07675170898438" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_FIBER_SIO2_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_FIBER_PE_1inTRKVpos" x="0" y="0" z="143.23025512695312" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_FIBER_PE_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_POWER_CU_1inTRKVpos" x="0" y="0" z="143.35604858398438" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_POWER_CU_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_POWER_PE_1inTRKVpos" x="0" y="0" z="143.90104675292969" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_POWER_PE_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_COOLING_PU_1inTRKVpos" x="0" y="0" z="144.52972412109375" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_COOLING_PU_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_COOLING_H2O_1inTRKVpos" x="0" y="0" z="144.7667236328125" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_COOLING_H2O_1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_FIBER_SIO2_10x1inTRKVpos" x="0" y="0" z="-143.07675170898438" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_FIBER_SIO2_10x1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_FIBER_PE_10x1inTRKVpos" x="0" y="0" z="-143.23025512695312" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_FIBER_PE_10x1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_POWER_CU_10x1inTRKVpos" x="0" y="0" z="-143.35604858398438" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_POWER_CU_10x1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_POWER_PE_10x1inTRKVpos" x="0" y="0" z="-143.90104675292969" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_POWER_PE_10x1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_COOLING_PU_10x1inTRKVpos" x="0" y="0" z="-144.52972412109375" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_COOLING_PU_10x1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDBARFWD_COOLING_H2O_10x1inTRKVpos" x="0" y="0" z="-144.7667236328125" unit="cm"/>
+    <rotation name="TRK_MIDBARFWD_COOLING_H2O_10x1inTRKVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="TRK_MIDFWD_FIBER_SIO2_1inTRKVpos" x="0" y="0" z="247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_FIBER_PE_1inTRKVpos" x="0" y="0" z="247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_POWER_CU_1inTRKVpos" x="0" y="0" z="247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_POWER_PE_1inTRKVpos" x="0" y="0" z="247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_COOLING_PU_1inTRKVpos" x="0" y="0" z="247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_COOLING_H2O_1inTRKVpos" x="0" y="0" z="247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_FIBER_SIO2_10x1inTRKVpos" x="0" y="0" z="-247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_FIBER_PE_10x1inTRKVpos" x="0" y="0" z="-247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_POWER_CU_10x1inTRKVpos" x="0" y="0" z="-247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_POWER_PE_10x1inTRKVpos" x="0" y="0" z="-247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_COOLING_PU_10x1inTRKVpos" x="0" y="0" z="-247.43550109863281" unit="cm"/>
+    <position name="TRK_MIDFWD_COOLING_H2O_10x1inTRKVpos" x="0" y="0" z="-247.43550109863281" unit="cm"/>
+    <position name="TRK_OUTERDISKS_FIBER_SIO2_1inTRKVpos" x="0" y="0" z="249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_FIBER_PE_1inTRKVpos" x="0" y="0" z="249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_POWER_CU_1inTRKVpos" x="0" y="0" z="249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_POWER_PE_1inTRKVpos" x="0" y="0" z="249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_COOLING_PU_1inTRKVpos" x="0" y="0" z="249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_COOLING_H2O_1inTRKVpos" x="0" y="0" z="249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_FIBER_SIO2_10x1inTRKVpos" x="0" y="0" z="-249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_FIBER_PE_10x1inTRKVpos" x="0" y="0" z="-249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_POWER_CU_10x1inTRKVpos" x="0" y="0" z="-249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_POWER_PE_10x1inTRKVpos" x="0" y="0" z="-249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_COOLING_PU_10x1inTRKVpos" x="0" y="0" z="-249.5" unit="cm"/>
+    <position name="TRK_OUTERDISKS_COOLING_H2O_10x1inTRKVpos" x="0" y="0" z="-249.5" unit="cm"/>
+    <position name="TRK_OUTERBARREL_FIBER_SIO2_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRK_OUTERBARREL_FIBER_PE_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRK_OUTERBARREL_POWER_CU_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRK_OUTERBARREL_POWER_PE_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRK_OUTERBARREL_COOLING_PU_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRK_OUTERBARREL_COOLING_H2O_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="VD_InnerWallCyl_1inPETAL_0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="VD_OuterWallCyl_1inPETAL_0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="Petal0_ZCap_1inPETAL_0pos" x="0" y="0" z="-24.992500000167638" unit="cm"/>
+    <position name="Petal0_ZCap_2inPETAL_0pos" x="0" y="0" z="24.992500000167638" unit="cm"/>
+    <position name="PETALCASE0_LAYER0_TRKSensor0_1inPETALCASE0_LAYER0_TRKChip0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER0_TRKMetalStack0_1inPETALCASE0_LAYER0_TRKChip0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER0_TRKChip0_1inPETALCASE0_LAYER0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER0_1inPETAL_0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER1_TRKSensor1_1inPETALCASE0_LAYER1_TRKChip1pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER1_TRKMetalStack1_1inPETALCASE0_LAYER1_TRKChip1pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER1_TRKChip1_1inPETALCASE0_LAYER1pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER1_1inPETAL_0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER2_TRKSensor2_1inPETALCASE0_LAYER2_TRKChip2pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER2_TRKMetalStack2_1inPETALCASE0_LAYER2_TRKChip2pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER2_TRKChip2_1inPETALCASE0_LAYER2pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="PETALCASE0_LAYER2_1inPETAL_0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="Petal0_Coldplate_1inPETAL_0pos" x="0" y="0" z="0" unit="cm"/>
+    <position name="IRIS_Service_Neg_1inPETAL_0pos" x="0" y="0" z="-55.5" unit="cm"/>
+    <position name="IRIS_Service_Pos_InVac_1inPETAL_0pos" x="0" y="0" z="37" unit="cm"/>
+    <position name="IRIS_Service_Pos_OutVac_2inPETAL_0pos" x="0" y="0" z="56.539999999999999" unit="cm"/>
+    <position name="PETAL_0_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="A3IP_VACUUM_1inTRKVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="TRKV_2inbarrelpos" x="0" y="30" z="0" unit="cm"/>
+    <position name="ITOFSensor_1inITOFChippos" x="0" y="0" z="0" unit="cm"/>
+    <position name="ITOFChip_1inITOFLayerpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="ITOFLayer_1inIOTOFVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="OTOFSensor_1inOTOFChippos" x="0" y="0" z="0" unit="cm"/>
+    <position name="OTOFChip_1inOTOFLayerpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="OTOFLayer_1inIOTOFVpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="FTOFSensor_1inFTOFChippos" x="0" y="0" z="0" unit="cm"/>
+    <position name="FTOFChip_1inFTOFLayerpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="FTOFLayer_1inIOTOFVpos" x="0" y="0" z="370" unit="cm"/>
+    <rotation name="FTOFLayer_1inIOTOFVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="BTOFSensor_1inBTOFChippos" x="0" y="0" z="0" unit="cm"/>
+    <position name="BTOFChip_1inBTOFLayerpos" x="0" y="0" z="0" unit="cm"/>
+    <position name="BTOFLayer_1inIOTOFVpos" x="0" y="0" z="-370" unit="cm"/>
+    <rotation name="BTOFLayer_1inIOTOFVrot" x="-0" y="-0" z="-180" unit="deg"/>
+    <position name="IOTOFV_2inbarrelpos" x="0" y="30" z="0" unit="cm"/>
+    <position name="barrel_1incavepos" x="0" y="-30" z="0" unit="cm"/>
+  </define>
+  <materials>
+    <element name="CARBON_elm" formula="C" Z="6" N="12">
+      <atom unit="g/mole" value="12.0107"/>
+    </element>
+    <element name="NITROGEN_elm" formula="N" Z="7" N="14">
+      <atom unit="g/mole" value="14.006740000000001"/>
+    </element>
+    <element name="OXYGEN_elm" formula="O" Z="8" N="16">
+      <atom unit="g/mole" value="15.9994"/>
+    </element>
+    <element name="ARGON_elm" formula="AR" Z="18" N="40">
+      <atom unit="g/mole" value="39.948"/>
+    </element>
+    <material name="CAVE_Air">
+      <D unit="g/cm3" value="0.0011406296398490667"/>
+      <fraction n="0.012826999649405479" ref="ARGON_elm"/>
+      <fraction n="0.00012399999832268804" ref="CARBON_elm"/>
+      <fraction n="0.75526702404022217" ref="NITROGEN_elm"/>
+      <fraction n="0.231781005859375" ref="OXYGEN_elm"/>
+    </material>
+    <material name="CAVE_Air_NF">
+      <D unit="g/cm3" value="0.0011406296398490667"/>
+      <fraction n="0.012826999649405479" ref="ARGON_elm"/>
+      <fraction n="0.00012399999832268804" ref="CARBON_elm"/>
+      <fraction n="0.75526702404022217" ref="NITROGEN_elm"/>
+      <fraction n="0.231781005859375" ref="OXYGEN_elm"/>
+    </material>
+    <material name="ALICE3_PIPE_BERYLLIUM" Z="4">
+      <D unit="g/cm3" value="1.8480000495910645"/>
+      <atom unit="g/mole" value="9.0100002288818359"/>
+    </material>
+    <material name="TRK_AIR">
+      <D unit="g/cm3" value="0.0012047899654135108"/>
+      <fraction n="0.012826999649405479" ref="ARGON_elm"/>
+      <fraction n="0.00012399999832268804" ref="CARBON_elm"/>
+      <fraction n="0.75526702404022217" ref="NITROGEN_elm"/>
+      <fraction n="0.231781005859375" ref="OXYGEN_elm"/>
+    </material>
+    <material name="TRK_SILICON" Z="14">
+      <D unit="g/cm3" value="2.3299999237060547"/>
+      <atom unit="g/mole" value="28.086000442504883"/>
+    </material>
+    <element name="ALUMINIUM_elm" formula="AL" Z="13" N="27">
+      <atom unit="g/mole" value="26.981538"/>
+    </element>
+    <material name="ALICE3_TRKSERVICES_CERAMIC">
+      <D unit="g/cm3" value="3.9700000286102295"/>
+      <fraction n="0.52939999103546143" ref="ALUMINIUM_elm"/>
+      <fraction n="0.47060000896453857" ref="OXYGEN_elm"/>
+    </material>
+    <material name="ALICE3_TRKSERVICES_AIR">
+      <D unit="g/cm3" value="0.0012047899654135108"/>
+      <fraction n="0.012826999649405479" ref="ARGON_elm"/>
+      <fraction n="0.00012399999832268804" ref="CARBON_elm"/>
+      <fraction n="0.75526702404022217" ref="NITROGEN_elm"/>
+      <fraction n="0.231781005859375" ref="OXYGEN_elm"/>
+    </material>
+    <element name="HYDROGEN_elm" formula="H" Z="1" N="1">
+      <atom unit="g/mole" value="1.0079400000000001"/>
+    </element>
+    <material name="ALICE3_TRKSERVICES_POLYETHYLENE">
+      <D unit="g/cm3" value="0.94999998807907104"/>
+      <fraction n="0.33000001311302185" ref="CARBON_elm"/>
+      <fraction n="0.67000001668930054" ref="HYDROGEN_elm"/>
+    </material>
+    <material name="ALICE3_TRKSERVICES_POLYURETHANE">
+      <D unit="g/cm3" value="1.25"/>
+      <fraction n="0.20332762598991394" ref="CARBON_elm"/>
+      <fraction n="0.01707758754491806" ref="HYDROGEN_elm"/>
+      <fraction n="0.23731438815593719" ref="NITROGEN_elm"/>
+      <fraction n="0.54228037595748901" ref="OXYGEN_elm"/>
+    </material>
+    <element name="SILICON_elm" formula="SI" Z="14" N="28">
+      <atom unit="g/mole" value="28.0855"/>
+    </element>
+    <material name="ALICE3_TRKSERVICES_SILICONDIOXIDE">
+      <D unit="g/cm3" value="2.2000000476837158"/>
+      <fraction n="0.53299999237060547" ref="OXYGEN_elm"/>
+      <fraction n="0.46700000762939453" ref="SILICON_elm"/>
+    </material>
+    <material name="ALICE3_TRKSERVICES_WATER">
+      <D unit="g/cm3" value="1"/>
+      <fraction n="0.11189399659633636" ref="HYDROGEN_elm"/>
+      <fraction n="0.88810598850250244" ref="OXYGEN_elm"/>
+    </material>
+    <material name="ALICE3_TRKSERVICES_COPPER" Z="29">
+      <D unit="g/cm3" value="8.9600000381469727"/>
+      <atom unit="g/mole" value="63.546001434326172"/>
+    </material>
+    <material name="ALICE3_TRKSERVICES_BERYLLIUM" Z="4">
+      <D unit="g/cm3" value="1.8480000495910645"/>
+      <atom unit="g/mole" value="9.0100002288818359"/>
+    </material>
+    <element name="MANGANESE_elm" formula="MN" Z="25" N="55">
+      <atom unit="g/mole" value="54.938048999999999"/>
+    </element>
+    <element name="IRON_elm" formula="FE" Z="26" N="56">
+      <atom unit="g/mole" value="55.844999999999999"/>
+    </element>
+    <element name="COPPER_elm" formula="CU" Z="29" N="64">
+      <atom unit="g/mole" value="63.545999999999999"/>
+    </element>
+    <element name="MAGNESIUM_elm" formula="MG" Z="12" N="24">
+      <atom unit="g/mole" value="24.305"/>
+    </element>
+    <element name="ZINC_elm" formula="ZN" Z="30" N="65">
+      <atom unit="g/mole" value="65.390000000000001"/>
+    </element>
+    <element name="CHROMIUM_elm" formula="CR" Z="24" N="52">
+      <atom unit="g/mole" value="51.996099999999998"/>
+    </element>
+    <element name="TITANIUM_elm" formula="TI" Z="22" N="48">
+      <atom unit="g/mole" value="47.866999999999997"/>
+    </element>
+    <material name="ALICE3_TRKSERVICES_ALUMINIUM5083">
+      <D unit="g/cm3" value="2.6500000953674316"/>
+      <fraction n="0.93400001525878906" ref="ALUMINIUM_elm"/>
+      <fraction n="0.001500000013038516" ref="CHROMIUM_elm"/>
+      <fraction n="0.0010000000474974513" ref="COPPER_elm"/>
+      <fraction n="0.0040000001899898052" ref="IRON_elm"/>
+      <fraction n="0.044500000774860382" ref="MAGNESIUM_elm"/>
+      <fraction n="0.0070000002160668373" ref="MANGANESE_elm"/>
+      <fraction n="0.0040000001899898052" ref="SILICON_elm"/>
+      <fraction n="0.001500000013038516" ref="TITANIUM_elm"/>
+      <fraction n="0.0024999999441206455" ref="ZINC_elm"/>
+    </material>
+    <element name="BERYLLIUM_elm" formula="BE" Z="4" N="9">
+      <atom unit="g/mole" value="9.0121800000000007"/>
+    </element>
+    <material name="ALICE3_TRKSERVICES_ALUMINIUMBERYLLIUMMETAL">
+      <D unit="g/cm3" value="2.0710000991821289"/>
+      <fraction n="0.37999999523162842" ref="ALUMINIUM_elm"/>
+      <fraction n="0.62000000476837158" ref="BERYLLIUM_elm"/>
+    </material>
+    <material name="ALICE3_TRKSERVICES_CARBONFIBERM55J6K" Z="6">
+      <D unit="g/cm3" value="1.9199999570846558"/>
+      <atom unit="g/mole" value="12.010700225830078"/>
+    </material>
+    <material name="ALICE3_PIPE_VACUUM">
+      <D unit="g/cm3" value="1.2047900004030776e-11"/>
+      <fraction n="0.012826999649405479" ref="ARGON_elm"/>
+      <fraction n="0.00012399999832268804" ref="CARBON_elm"/>
+      <fraction n="0.75526702404022217" ref="NITROGEN_elm"/>
+      <fraction n="0.231781005859375" ref="OXYGEN_elm"/>
+    </material>
+    <material name="ALUMINUM" Z="13">
+      <D unit="g/cm3" value="2.7000000000000002"/>
+      <atom unit="g/mole" value="26.9815"/>
+    </material>
+    <material name="TF3_AIR">
+      <D unit="g/cm3" value="0.0012047899654135108"/>
+      <fraction n="0.012826999649405479" ref="ARGON_elm"/>
+      <fraction n="0.00012399999832268804" ref="CARBON_elm"/>
+      <fraction n="0.75526702404022217" ref="NITROGEN_elm"/>
+      <fraction n="0.231781005859375" ref="OXYGEN_elm"/>
+    </material>
+    <material name="TF3_SILICON" Z="14">
+      <D unit="g/cm3" value="2.3299999237060547"/>
+      <atom unit="g/mole" value="28.086000442504883"/>
+    </material>
+  </materials>
+  <solids>
+    <box name="cave" x="4000" y="4000" z="6000" lunit="cm"/>
+    <polyhedra name="shCaveTR1" startphi="22.5" deltaphi="360" numsides="8" aunit="deg" lunit="cm">
+      <zplane z="-714.60000000000002" rmin="0" rmax="790.5"/>
+      <zplane z="714.60000000000002" rmin="0" rmax="790.5"/>
+    </polyhedra>
+    <tube name="shCaveTR2" rmin="0" rmax="150" z="220" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <subtraction name="TGeoCompositeShape">
+      <first ref="shCaveTR1"/>
+      <second ref="shCaveTR2"/>
+      <position name="TGeoCompositeShapeshCaveTR2pos" x="0" y="30" z="-615" unit="cm"/>
+    </subtraction>
+    <tube name="shCaveTR3" rmin="0" rmax="80" z="150" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="shCaveTR">
+      <first ref="TGeoCompositeShape"/>
+      <second ref="shCaveTR3"/>
+      <position name="shCaveTRshCaveTR3pos" x="0" y="30" z="789.60000000000002" unit="cm"/>
+    </union>
+    <tube name="PIPE_Ash" rmin="1.7999999523162842" rmax="1.8799999952316284" z="461.92000000178814" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PIPE_Csh" rmin="5.5999999046325684" rmax="5.679999828338623" z="538" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x1">
+      <first ref="PIPE_Ash"/>
+      <second ref="PIPE_Csh"/>
+      <firstposition name="TGeoCompositeShape0x1PIPE_Ashpos" x="0" y="0" z="269.03999999910593" unit="cm"/>
+      <position name="TGeoCompositeShape0x1PIPE_Cshpos" x="0" y="0" z="-231" unit="cm"/>
+    </union>
+    <tube name="VACUUM_VESSEL_WALLsh" rmin="1.7999999523162842" rmax="5.679999828338623" z="0.079999998211860657" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="A3IPsh">
+      <first ref="TGeoCompositeShape0x1"/>
+      <second ref="VACUUM_VESSEL_WALLsh"/>
+      <position name="A3IPshVACUUM_VESSEL_WALLshpos" x="0" y="0" z="38.03999999910593" unit="cm"/>
+    </union>
+    <tube name="TGeoTube" rmin="7" rmax="7.0999999046325684" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x1" rmin="7" rmax="7.0999999046325684" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x2" rmin="7" rmax="7.0999999046325684" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x3" rmin="7" rmax="7.0999999046325684" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x4" rmin="7" rmax="7.0100002288818359" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x5" rmin="7.0100002288818359" rmax="7.0999999046325684" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x6" rmin="9" rmax="9.1000003814697266" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x7" rmin="9" rmax="9.1000003814697266" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x8" rmin="9" rmax="9.1000003814697266" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x9" rmin="9" rmax="9.1000003814697266" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x10" rmin="9" rmax="9.0100002288818359" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x11" rmin="9.0100002288818359" rmax="9.1000003814697266" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x12" rmin="12" rmax="12.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x13" rmin="12" rmax="12.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x14" rmin="12" rmax="12.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x15" rmin="12" rmax="12.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x16" rmin="12" rmax="12.010000228881836" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x17" rmin="12.010000228881836" rmax="12.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x18" rmin="20" rmax="20.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x19" rmin="20" rmax="20.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x20" rmin="20" rmax="20.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x21" rmin="20" rmax="20.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x22" rmin="20" rmax="20.010000228881836" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x23" rmin="20.010000228881836" rmax="20.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x24" rmin="30" rmax="30.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x25" rmin="30" rmax="30.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x26" rmin="30" rmax="30.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x27" rmin="30" rmax="30.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x28" rmin="30" rmax="30.010000228881836" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x29" rmin="30.010000228881836" rmax="30.100000381469727" z="128.35000000000002" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x30" rmin="45" rmax="45.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x31" rmin="45" rmax="45.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x32" rmin="45" rmax="45.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x33" rmin="45" rmax="45.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x34" rmin="45" rmax="45.009998321533203" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x35" rmin="45.009998321533203" rmax="45.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x36" rmin="60" rmax="60.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x37" rmin="60" rmax="60.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x38" rmin="60" rmax="60.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x39" rmin="60" rmax="60.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x40" rmin="60" rmax="60.009998321533203" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x41" rmin="60.009998321533203" rmax="60.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x42" rmin="80" rmax="80.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x43" rmin="80" rmax="80.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x44" rmin="80" rmax="80.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x45" rmin="80" rmax="80.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x46" rmin="80" rmax="80.010002136230469" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x47" rmin="80.010002136230469" rmax="80.099998474121094" z="256.70000000000005" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_CARBONSUPPORTsh" rmin="34.799999237060547" rmax="35" z="128.39999389648438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_FIBER_SIO2sh_bwd" rmin="35" rmax="35.153499603271484" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_FIBER_PEsh_bwd" rmin="35.153499603271484" rmax="35.306999206542969" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_POWER_CUsh_bwd" rmin="35.306999206542969" rmax="35.405097961425781" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_POWER_PEsh_bwd" rmin="35.405097961425781" rmax="36.396999359130859" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_COOLING_PUsh_bwd" rmin="36.396999359130859" rmax="36.662437438964844" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_COOLING_H2Osh_bwd" rmin="36.662437438964844" rmax="36.870998382568359" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_FIBER_SIO2sh_fwd" rmin="35" rmax="35.153499603271484" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_FIBER_PEsh_fwd" rmin="35.153499603271484" rmax="35.306999206542969" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_POWER_CUsh_fwd" rmin="35.306999206542969" rmax="35.405097961425781" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_POWER_PEsh_fwd" rmin="35.405097961425781" rmax="36.396999359130859" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_COOLING_PUsh_fwd" rmin="36.396999359130859" rmax="36.662437438964844" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MID_COOLING_H2Osh_fwd" rmin="36.662437438964844" rmax="36.870998382568359" z="81" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_SIO2sh_bwd" rmin="5.679999828338623" rmax="35" z="0.30700001120567322" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_PEsh_bwd" rmin="5.679999828338623" rmax="35" z="0.30700001120567322" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_CUsh_bwd" rmin="5.679999828338623" rmax="35" z="0.19619999825954437" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_PEsh_bwd0x1" rmin="5.679999828338623" rmax="35" z="1.9838000535964966" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_PUsh_bwd" rmin="5.679999828338623" rmax="35" z="0.53087997436523438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_H2Osh_bwd" rmin="5.679999828338623" rmax="35" z="0.41712000966072083" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_SIO2sh_fwd" rmin="5.679999828338623" rmax="35" z="0.30700001120567322" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_PEsh_fwd" rmin="5.679999828338623" rmax="35" z="0.30700001120567322" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_CUsh_fwd" rmin="5.679999828338623" rmax="35" z="0.19619999825954437" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_PEsh_fwd0x1" rmin="5.679999828338623" rmax="35" z="1.9838000535964966" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_PUsh_fwd" rmin="5.679999828338623" rmax="35" z="0.53087997436523438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARCONN_DISK_H2Osh_fwd" rmin="5.679999828338623" rmax="35" z="0.41712000966072083" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_FIBER_SIO2sh" rmin="35" rmax="76.371002197265625" z="0.30700001120567322" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_FIBER_PEsh" rmin="35" rmax="76.371002197265625" z="0.30700001120567322" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_POWER_CUsh" rmin="35" rmax="76.371002197265625" z="0.19619999825954437" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_POWER_PEsh" rmin="35" rmax="76.371002197265625" z="1.9838000535964966" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_COOLING_PUsh" rmin="35" rmax="76.371002197265625" z="0.53087997436523438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_COOLING_H2Osh" rmin="35" rmax="76.371002197265625" z="0.41712000966072083" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_FIBER_SIO2sh0x1" rmin="35" rmax="76.371002197265625" z="0.30700001120567322" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_FIBER_PEsh0x1" rmin="35" rmax="76.371002197265625" z="0.30700001120567322" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_POWER_CUsh0x1" rmin="35" rmax="76.371002197265625" z="0.19619999825954437" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_POWER_PEsh0x1" rmin="35" rmax="76.371002197265625" z="1.9838000535964966" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_COOLING_PUsh0x1" rmin="35" rmax="76.371002197265625" z="0.53087997436523438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDBARFWD_COOLING_H2Osh0x1" rmin="35" rmax="76.371002197265625" z="0.41712000966072083" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_FIBER_SIO2sh" rmin="74.5" rmax="74.65350341796875" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_FIBER_PEsh" rmin="74.65350341796875" rmax="74.8070068359375" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_POWER_CUsh" rmin="74.806999206542969" rmax="74.905097961425781" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_POWER_PEsh" rmin="74.905097961425781" rmax="75.896995544433594" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_COOLING_PUsh" rmin="75.896995544433594" rmax="76.162437438964844" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_COOLING_H2Osh" rmin="76.162437438964844" rmax="76.370994567871094" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_FIBER_SIO2sh0x1" rmin="74.5" rmax="74.65350341796875" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_FIBER_PEsh0x1" rmin="74.65350341796875" rmax="74.8070068359375" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_POWER_CUsh0x1" rmin="74.806999206542969" rmax="74.905097961425781" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_POWER_PEsh0x1" rmin="74.905097961425781" rmax="75.896995544433594" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_COOLING_PUsh0x1" rmin="75.896995544433594" rmax="76.162437438964844" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_MIDFWD_COOLING_H2Osh0x1" rmin="76.162437438964844" rmax="76.370994567871094" z="205.12899780273438" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_FIBER_SIO2sh" rmin="68.5" rmax="68.606002807617188" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_FIBER_PEsh" rmin="68.606002807617188" rmax="68.712005615234375" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_POWER_CUsh" rmin="68.711997985839844" rmax="68.818740844726562" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_POWER_PEsh" rmin="68.818740844726562" rmax="69.898002624511719" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_COOLING_PUsh" rmin="69.897994995117188" rmax="70.26031494140625" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_COOLING_H2Osh" rmin="70.26031494140625" rmax="70.544998168945312" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_FIBER_SIO2sh0x1" rmin="68.5" rmax="68.606002807617188" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_FIBER_PEsh0x1" rmin="68.606002807617188" rmax="68.712005615234375" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_POWER_CUsh0x1" rmin="68.711997985839844" rmax="68.818740844726562" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_POWER_PEsh0x1" rmin="68.818740844726562" rmax="69.898002624511719" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_COOLING_PUsh0x1" rmin="69.897994995117188" rmax="70.26031494140625" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERDISKS_COOLING_H2Osh0x1" rmin="70.26031494140625" rmax="70.544998168945312" z="201" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERBARREL_FIBER_SIO2sh" rmin="80.099998474121094" rmax="80.2344970703125" z="700" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERBARREL_FIBER_PEsh" rmin="80.2344970703125" rmax="80.368995666503906" z="700" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERBARREL_POWER_CUsh" rmin="80.368995666503906" rmax="80.407691955566406" z="700" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERBARREL_POWER_PEsh" rmin="80.407691955566406" rmax="80.798988342285156" z="700" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERBARREL_COOLING_PUsh" rmin="80.798995971679688" rmax="81.600914001464844" z="700" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TRK_OUTERBARREL_COOLING_H2Osh" rmin="81.600914001464844" rmax="82.230995178222656" z="700" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="VD_InnerWallCyl_sh" rmin="0.47999998927116394" rmax="0.49499998893588781" z="70" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="VD_OuterWallCyl_sh" rmin="3" rmax="3.0149999996647239" z="70" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x48" rmin="0.47999998927116394" rmax="3.0149999996647239" z="0.014999999664723873" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTubeSeg" rmin="0.5" rmax="0.50950000045122579" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER0_TRKChip0_sh" rmin="0.5" rmax="0.50950000045122579" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER0_TRKSensor0_sh" rmin="0.5" rmax="0.502" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER0_TRKMetalStack0_sh" rmin="0.502" rmax="0.50950000045122579" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTubeSeg0x1" rmin="1.2000000476837158" rmax="1.2095000481349416" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER1_TRKChip1_sh" rmin="1.2000000476837158" rmax="1.2095000481349416" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER1_TRKSensor1_sh" rmin="1.2000000476837158" rmax="1.2020000476837158" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER1_TRKMetalStack1_sh" rmin="1.2020000476837158" rmax="1.2095000481349416" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTubeSeg0x2" rmin="2.5" rmax="2.5095000004512258" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER2_TRKChip2_sh" rmin="2.5" rmax="2.5095000004512258" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER2_TRKSensor2_sh" rmin="2.5" rmax="2.5019999999999998" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="PETALCASE0_LAYER2_TRKMetalStack2_sh" rmin="2.5019999999999998" rmax="2.5095000004512258" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="Petal0_Coldplate_sh" rmin="2.5999999046325684" rmax="2.7499999105930328" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="IRIS_Service_Neg_sh" rmin="3.2000000000000002" rmax="3.3330000000000002" z="39" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="IRIS_SERVICE_POS_INVACsh" rmin="3.2000000000000002" rmax="3.3330000000000002" z="2" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="IRIS_SERVICE_POS_OUTVACsh" rmin="3.2000000000000002" rmax="3.3330000000000002" z="36.920000000000002" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="VACUUM_Ash" rmin="0" rmax="1.7999999523162842" z="461.92000000178814" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="VACUUM_Csh" rmin="0" rmax="5.5999999046325684" z="538" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="VD_InnerWallCyl_sh0x1" rmin="0.47999998927116394" rmax="0.49499998893588781" z="70" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="VD_OuterWallCyl_sh0x1" rmin="3" rmax="3.0149999996647239" z="70" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x14">
+      <first ref="VD_InnerWallCyl_sh0x1"/>
+      <second ref="VD_OuterWallCyl_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER0_TRKChip0_sh0x1" rmin="0.5" rmax="0.50950000045122579" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x13">
+      <first ref="TGeoCompositeShape0x14"/>
+      <second ref="PETALCASE0_LAYER0_TRKChip0_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER0_TRKSensor0_sh0x1" rmin="0.5" rmax="0.502" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x12">
+      <first ref="TGeoCompositeShape0x13"/>
+      <second ref="PETALCASE0_LAYER0_TRKSensor0_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER0_TRKMetalStack0_sh0x1" rmin="0.502" rmax="0.50950000045122579" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x11">
+      <first ref="TGeoCompositeShape0x12"/>
+      <second ref="PETALCASE0_LAYER0_TRKMetalStack0_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER1_TRKChip1_sh0x1" rmin="1.2000000476837158" rmax="1.2095000481349416" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x10">
+      <first ref="TGeoCompositeShape0x11"/>
+      <second ref="PETALCASE0_LAYER1_TRKChip1_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER1_TRKSensor1_sh0x1" rmin="1.2000000476837158" rmax="1.2020000476837158" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x9">
+      <first ref="TGeoCompositeShape0x10"/>
+      <second ref="PETALCASE0_LAYER1_TRKSensor1_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER1_TRKMetalStack1_sh0x1" rmin="1.2020000476837158" rmax="1.2095000481349416" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x8">
+      <first ref="TGeoCompositeShape0x9"/>
+      <second ref="PETALCASE0_LAYER1_TRKMetalStack1_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER2_TRKChip2_sh0x1" rmin="2.5" rmax="2.5095000004512258" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x7">
+      <first ref="TGeoCompositeShape0x8"/>
+      <second ref="PETALCASE0_LAYER2_TRKChip2_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER2_TRKSensor2_sh0x1" rmin="2.5" rmax="2.5019999999999998" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x6">
+      <first ref="TGeoCompositeShape0x7"/>
+      <second ref="PETALCASE0_LAYER2_TRKSensor2_sh0x1"/>
+    </union>
+    <tube name="PETALCASE0_LAYER2_TRKMetalStack2_sh0x1" rmin="2.5019999999999998" rmax="2.5095000004512258" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x5">
+      <first ref="TGeoCompositeShape0x6"/>
+      <second ref="PETALCASE0_LAYER2_TRKMetalStack2_sh0x1"/>
+    </union>
+    <tube name="Petal0_Coldplate_sh0x1" rmin="2.5999999046325684" rmax="2.7499999105930328" z="50" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x4">
+      <first ref="TGeoCompositeShape0x5"/>
+      <second ref="Petal0_Coldplate_sh0x1"/>
+    </union>
+    <tube name="IRIS_Service_Neg_sh0x1" rmin="3.2000000000000002" rmax="3.3330000000000002" z="39" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x3">
+      <first ref="TGeoCompositeShape0x4"/>
+      <second ref="IRIS_Service_Neg_sh0x1"/>
+      <position name="TGeoCompositeShape0x3IRIS_Service_Neg_sh0x1pos" x="0" y="0" z="-55.5" unit="cm"/>
+    </union>
+    <tube name="IRIS_SERVICE_POS_INVACsh0x1" rmin="3.2000000000000002" rmax="3.3330000000000002" z="2" startphi="180" deltaphi="360" aunit="deg" lunit="cm"/>
+    <union name="TGeoCompositeShape0x2">
+      <first ref="VACUUM_Ash"/>
+      <second ref="VACUUM_Csh"/>
+      <firstposition name="TGeoCompositeShape0x2VACUUM_Ashpos" x="0" y="0" z="269.03999999910593" unit="cm"/>
+      <position name="TGeoCompositeShape0x2VACUUM_Cshpos" x="0" y="0" z="-231" unit="cm"/>
+    </union>
+    <union name="IRIS_CUTOUTsh">
+      <first ref="TGeoCompositeShape0x3"/>
+      <second ref="IRIS_SERVICE_POS_INVACsh0x1"/>
+      <position name="IRIS_CUTOUTshIRIS_SERVICE_POS_INVACsh0x1pos" x="0" y="0" z="37" unit="cm"/>
+    </union>
+    <subtraction name="A3IP_VACUUMsh">
+      <first ref="TGeoCompositeShape0x2"/>
+      <second ref="IRIS_CUTOUTsh"/>
+    </subtraction>
+    <tube name="TGeoTube0x49" rmin="19" rmax="19.190000534057617" z="124" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x50" rmin="19" rmax="19.190000534057617" z="124" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x51" rmin="19" rmax="19.190000534057617" z="124" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x52" rmin="85" rmax="85.19000244140625" z="680" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x53" rmin="85" rmax="85.19000244140625" z="680" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x54" rmin="85" rmax="85.19000244140625" z="680" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x55" rmin="15" rmax="100" z="0.18999999761581421" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x56" rmin="15" rmax="100" z="0.18999999761581421" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x57" rmin="15" rmax="100" z="0.18999999761581421" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x58" rmin="15" rmax="100" z="0.18999999761581421" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x59" rmin="15" rmax="100" z="0.18999999761581421" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+    <tube name="TGeoTube0x60" rmin="15" rmax="100" z="0.18999999761581421" startphi="0" deltaphi="360" aunit="deg" lunit="cm"/>
+  </solids>
+  <structure>
+    <volume name="A3IP">
+      <materialref ref="ALICE3_PIPE_BERYLLIUM"/>
+      <solidref ref="A3IPsh"/>
+    </volume>
+    <volume name="TRKSensor0">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x4"/>
+    </volume>
+    <volume name="TRKMetalStack0">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x5"/>
+    </volume>
+    <volume name="TRKChip0">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x3"/>
+      <physvol name="TRKSensor0_1" copynumber="1">
+        <volumeref ref="TRKSensor0"/>
+        <positionref ref="TRKSensor0_1inTRKChip0pos"/>
+      </physvol>
+      <physvol name="TRKMetalStack0_1" copynumber="1">
+        <volumeref ref="TRKMetalStack0"/>
+        <positionref ref="TRKMetalStack0_1inTRKChip0pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKModule0">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x2"/>
+      <physvol name="TRKChip0_1" copynumber="1">
+        <volumeref ref="TRKChip0"/>
+        <positionref ref="TRKChip0_1inTRKModule0pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKStave0">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x1"/>
+      <physvol name="TRKModule0_1" copynumber="1">
+        <volumeref ref="TRKModule0"/>
+        <positionref ref="TRKModule0_1inTRKStave0pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKLayer0">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube"/>
+      <physvol name="TRKStave0_1" copynumber="1">
+        <volumeref ref="TRKStave0"/>
+        <positionref ref="TRKStave0_1inTRKLayer0pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKSensor1">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x10"/>
+    </volume>
+    <volume name="TRKMetalStack1">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x11"/>
+    </volume>
+    <volume name="TRKChip1">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x9"/>
+      <physvol name="TRKSensor1_1" copynumber="1">
+        <volumeref ref="TRKSensor1"/>
+        <positionref ref="TRKSensor1_1inTRKChip1pos"/>
+      </physvol>
+      <physvol name="TRKMetalStack1_1" copynumber="1">
+        <volumeref ref="TRKMetalStack1"/>
+        <positionref ref="TRKMetalStack1_1inTRKChip1pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKModule1">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x8"/>
+      <physvol name="TRKChip1_1" copynumber="1">
+        <volumeref ref="TRKChip1"/>
+        <positionref ref="TRKChip1_1inTRKModule1pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKStave1">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x7"/>
+      <physvol name="TRKModule1_1" copynumber="1">
+        <volumeref ref="TRKModule1"/>
+        <positionref ref="TRKModule1_1inTRKStave1pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKLayer1">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x6"/>
+      <physvol name="TRKStave1_1" copynumber="1">
+        <volumeref ref="TRKStave1"/>
+        <positionref ref="TRKStave1_1inTRKLayer1pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKSensor2">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x16"/>
+    </volume>
+    <volume name="TRKMetalStack2">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x17"/>
+    </volume>
+    <volume name="TRKChip2">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x15"/>
+      <physvol name="TRKSensor2_1" copynumber="1">
+        <volumeref ref="TRKSensor2"/>
+        <positionref ref="TRKSensor2_1inTRKChip2pos"/>
+      </physvol>
+      <physvol name="TRKMetalStack2_1" copynumber="1">
+        <volumeref ref="TRKMetalStack2"/>
+        <positionref ref="TRKMetalStack2_1inTRKChip2pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKModule2">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x14"/>
+      <physvol name="TRKChip2_1" copynumber="1">
+        <volumeref ref="TRKChip2"/>
+        <positionref ref="TRKChip2_1inTRKModule2pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKStave2">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x13"/>
+      <physvol name="TRKModule2_1" copynumber="1">
+        <volumeref ref="TRKModule2"/>
+        <positionref ref="TRKModule2_1inTRKStave2pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKLayer2">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x12"/>
+      <physvol name="TRKStave2_1" copynumber="1">
+        <volumeref ref="TRKStave2"/>
+        <positionref ref="TRKStave2_1inTRKLayer2pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKSensor3">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x22"/>
+    </volume>
+    <volume name="TRKMetalStack3">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x23"/>
+    </volume>
+    <volume name="TRKChip3">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x21"/>
+      <physvol name="TRKSensor3_1" copynumber="1">
+        <volumeref ref="TRKSensor3"/>
+        <positionref ref="TRKSensor3_1inTRKChip3pos"/>
+      </physvol>
+      <physvol name="TRKMetalStack3_1" copynumber="1">
+        <volumeref ref="TRKMetalStack3"/>
+        <positionref ref="TRKMetalStack3_1inTRKChip3pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKModule3">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x20"/>
+      <physvol name="TRKChip3_1" copynumber="1">
+        <volumeref ref="TRKChip3"/>
+        <positionref ref="TRKChip3_1inTRKModule3pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKStave3">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x19"/>
+      <physvol name="TRKModule3_1" copynumber="1">
+        <volumeref ref="TRKModule3"/>
+        <positionref ref="TRKModule3_1inTRKStave3pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKLayer3">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x18"/>
+      <physvol name="TRKStave3_1" copynumber="1">
+        <volumeref ref="TRKStave3"/>
+        <positionref ref="TRKStave3_1inTRKLayer3pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKSensor4">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x28"/>
+    </volume>
+    <volume name="TRKMetalStack4">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x29"/>
+    </volume>
+    <volume name="TRKChip4">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x27"/>
+      <physvol name="TRKSensor4_1" copynumber="1">
+        <volumeref ref="TRKSensor4"/>
+        <positionref ref="TRKSensor4_1inTRKChip4pos"/>
+      </physvol>
+      <physvol name="TRKMetalStack4_1" copynumber="1">
+        <volumeref ref="TRKMetalStack4"/>
+        <positionref ref="TRKMetalStack4_1inTRKChip4pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKModule4">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x26"/>
+      <physvol name="TRKChip4_1" copynumber="1">
+        <volumeref ref="TRKChip4"/>
+        <positionref ref="TRKChip4_1inTRKModule4pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKStave4">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x25"/>
+      <physvol name="TRKModule4_1" copynumber="1">
+        <volumeref ref="TRKModule4"/>
+        <positionref ref="TRKModule4_1inTRKStave4pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKLayer4">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x24"/>
+      <physvol name="TRKStave4_1" copynumber="1">
+        <volumeref ref="TRKStave4"/>
+        <positionref ref="TRKStave4_1inTRKLayer4pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKSensor5">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x34"/>
+    </volume>
+    <volume name="TRKMetalStack5">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x35"/>
+    </volume>
+    <volume name="TRKChip5">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x33"/>
+      <physvol name="TRKSensor5_1" copynumber="1">
+        <volumeref ref="TRKSensor5"/>
+        <positionref ref="TRKSensor5_1inTRKChip5pos"/>
+      </physvol>
+      <physvol name="TRKMetalStack5_1" copynumber="1">
+        <volumeref ref="TRKMetalStack5"/>
+        <positionref ref="TRKMetalStack5_1inTRKChip5pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKModule5">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x32"/>
+      <physvol name="TRKChip5_1" copynumber="1">
+        <volumeref ref="TRKChip5"/>
+        <positionref ref="TRKChip5_1inTRKModule5pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKStave5">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x31"/>
+      <physvol name="TRKModule5_1" copynumber="1">
+        <volumeref ref="TRKModule5"/>
+        <positionref ref="TRKModule5_1inTRKStave5pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKLayer5">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x30"/>
+      <physvol name="TRKStave5_1" copynumber="1">
+        <volumeref ref="TRKStave5"/>
+        <positionref ref="TRKStave5_1inTRKLayer5pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKSensor6">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x40"/>
+    </volume>
+    <volume name="TRKMetalStack6">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x41"/>
+    </volume>
+    <volume name="TRKChip6">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x39"/>
+      <physvol name="TRKSensor6_1" copynumber="1">
+        <volumeref ref="TRKSensor6"/>
+        <positionref ref="TRKSensor6_1inTRKChip6pos"/>
+      </physvol>
+      <physvol name="TRKMetalStack6_1" copynumber="1">
+        <volumeref ref="TRKMetalStack6"/>
+        <positionref ref="TRKMetalStack6_1inTRKChip6pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKModule6">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x38"/>
+      <physvol name="TRKChip6_1" copynumber="1">
+        <volumeref ref="TRKChip6"/>
+        <positionref ref="TRKChip6_1inTRKModule6pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKStave6">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x37"/>
+      <physvol name="TRKModule6_1" copynumber="1">
+        <volumeref ref="TRKModule6"/>
+        <positionref ref="TRKModule6_1inTRKStave6pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKLayer6">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x36"/>
+      <physvol name="TRKStave6_1" copynumber="1">
+        <volumeref ref="TRKStave6"/>
+        <positionref ref="TRKStave6_1inTRKLayer6pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKSensor7">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x46"/>
+    </volume>
+    <volume name="TRKMetalStack7">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x47"/>
+    </volume>
+    <volume name="TRKChip7">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x45"/>
+      <physvol name="TRKSensor7_1" copynumber="1">
+        <volumeref ref="TRKSensor7"/>
+        <positionref ref="TRKSensor7_1inTRKChip7pos"/>
+      </physvol>
+      <physvol name="TRKMetalStack7_1" copynumber="1">
+        <volumeref ref="TRKMetalStack7"/>
+        <positionref ref="TRKMetalStack7_1inTRKChip7pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKModule7">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="TGeoTube0x44"/>
+      <physvol name="TRKChip7_1" copynumber="1">
+        <volumeref ref="TRKChip7"/>
+        <positionref ref="TRKChip7_1inTRKModule7pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKStave7">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x43"/>
+      <physvol name="TRKModule7_1" copynumber="1">
+        <volumeref ref="TRKModule7"/>
+        <positionref ref="TRKModule7_1inTRKStave7pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRKLayer7">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTube0x42"/>
+      <physvol name="TRKStave7_1" copynumber="1">
+        <volumeref ref="TRKStave7"/>
+        <positionref ref="TRKStave7_1inTRKLayer7pos"/>
+      </physvol>
+    </volume>
+    <volume name="TRK_MID_CARBONSUPPORT">
+      <materialref ref="ALICE3_TRKSERVICES_CARBONFIBERM55J6K"/>
+      <solidref ref="TRK_MID_CARBONSUPPORTsh"/>
+    </volume>
+    <volume name="TRK_MID_FIBER_SIO2_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_MID_FIBER_SIO2sh_bwd"/>
+    </volume>
+    <volume name="TRK_MID_FIBER_PE_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MID_FIBER_PEsh_bwd"/>
+    </volume>
+    <volume name="TRK_MID_POWER_CU_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_MID_POWER_CUsh_bwd"/>
+    </volume>
+    <volume name="TRK_MID_POWER_PE_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MID_POWER_PEsh_bwd"/>
+    </volume>
+    <volume name="TRK_MID_COOLING_PU_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_MID_COOLING_PUsh_bwd"/>
+    </volume>
+    <volume name="TRK_MID_COOLING_H2O_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_MID_COOLING_H2Osh_bwd"/>
+    </volume>
+    <volume name="TRK_MID_FIBER_SIO2_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_MID_FIBER_SIO2sh_fwd"/>
+    </volume>
+    <volume name="TRK_MID_FIBER_PE_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MID_FIBER_PEsh_fwd"/>
+    </volume>
+    <volume name="TRK_MID_POWER_CU_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_MID_POWER_CUsh_fwd"/>
+    </volume>
+    <volume name="TRK_MID_POWER_PE_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MID_POWER_PEsh_fwd"/>
+    </volume>
+    <volume name="TRK_MID_COOLING_PU_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_MID_COOLING_PUsh_fwd"/>
+    </volume>
+    <volume name="TRK_MID_COOLING_H2O_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_MID_COOLING_H2Osh_fwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_SIO2_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_SIO2sh_bwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_PE_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_PEsh_bwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_CU_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_CUsh_bwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_PE_bwd0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_PEsh_bwd0x1"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_PU_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_PUsh_bwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_H2O_bwd">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_H2Osh_bwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_SIO2_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_SIO2sh_fwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_PE_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_PEsh_fwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_CU_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_CUsh_fwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_PE_fwd0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_PEsh_fwd0x1"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_PU_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_PUsh_fwd"/>
+    </volume>
+    <volume name="TRK_MIDBARCONN_DISK_H2O_fwd">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_MIDBARCONN_DISK_H2Osh_fwd"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_FIBER_SIO2">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_MIDBARFWD_FIBER_SIO2sh"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_FIBER_PE">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDBARFWD_FIBER_PEsh"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_POWER_CU">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_MIDBARFWD_POWER_CUsh"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_POWER_PE">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDBARFWD_POWER_PEsh"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_COOLING_PU">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_MIDBARFWD_COOLING_PUsh"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_COOLING_H2O">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_MIDBARFWD_COOLING_H2Osh"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_FIBER_SIO20x1">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_MIDBARFWD_FIBER_SIO2sh0x1"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_FIBER_PE0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDBARFWD_FIBER_PEsh0x1"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_POWER_CU0x1">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_MIDBARFWD_POWER_CUsh0x1"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_POWER_PE0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDBARFWD_POWER_PEsh0x1"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_COOLING_PU0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_MIDBARFWD_COOLING_PUsh0x1"/>
+    </volume>
+    <volume name="TRK_MIDBARFWD_COOLING_H2O0x1">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_MIDBARFWD_COOLING_H2Osh0x1"/>
+    </volume>
+    <volume name="TRK_MIDFWD_FIBER_SIO2">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_MIDFWD_FIBER_SIO2sh"/>
+    </volume>
+    <volume name="TRK_MIDFWD_FIBER_PE">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDFWD_FIBER_PEsh"/>
+    </volume>
+    <volume name="TRK_MIDFWD_POWER_CU">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_MIDFWD_POWER_CUsh"/>
+    </volume>
+    <volume name="TRK_MIDFWD_POWER_PE">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDFWD_POWER_PEsh"/>
+    </volume>
+    <volume name="TRK_MIDFWD_COOLING_PU">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_MIDFWD_COOLING_PUsh"/>
+    </volume>
+    <volume name="TRK_MIDFWD_COOLING_H2O">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_MIDFWD_COOLING_H2Osh"/>
+    </volume>
+    <volume name="TRK_MIDFWD_FIBER_SIO20x1">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_MIDFWD_FIBER_SIO2sh0x1"/>
+    </volume>
+    <volume name="TRK_MIDFWD_FIBER_PE0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDFWD_FIBER_PEsh0x1"/>
+    </volume>
+    <volume name="TRK_MIDFWD_POWER_CU0x1">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_MIDFWD_POWER_CUsh0x1"/>
+    </volume>
+    <volume name="TRK_MIDFWD_POWER_PE0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_MIDFWD_POWER_PEsh0x1"/>
+    </volume>
+    <volume name="TRK_MIDFWD_COOLING_PU0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_MIDFWD_COOLING_PUsh0x1"/>
+    </volume>
+    <volume name="TRK_MIDFWD_COOLING_H2O0x1">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_MIDFWD_COOLING_H2Osh0x1"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_FIBER_SIO2">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_OUTERDISKS_FIBER_SIO2sh"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_FIBER_PE">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_OUTERDISKS_FIBER_PEsh"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_POWER_CU">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_OUTERDISKS_POWER_CUsh"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_POWER_PE">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_OUTERDISKS_POWER_PEsh"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_COOLING_PU">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_OUTERDISKS_COOLING_PUsh"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_COOLING_H2O">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_OUTERDISKS_COOLING_H2Osh"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_FIBER_SIO20x1">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_OUTERDISKS_FIBER_SIO2sh0x1"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_FIBER_PE0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_OUTERDISKS_FIBER_PEsh0x1"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_POWER_CU0x1">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_OUTERDISKS_POWER_CUsh0x1"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_POWER_PE0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_OUTERDISKS_POWER_PEsh0x1"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_COOLING_PU0x1">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_OUTERDISKS_COOLING_PUsh0x1"/>
+    </volume>
+    <volume name="TRK_OUTERDISKS_COOLING_H2O0x1">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_OUTERDISKS_COOLING_H2Osh0x1"/>
+    </volume>
+    <volume name="TRK_OUTERBARREL_FIBER_SIO2">
+      <materialref ref="ALICE3_TRKSERVICES_SILICONDIOXIDE"/>
+      <solidref ref="TRK_OUTERBARREL_FIBER_SIO2sh"/>
+    </volume>
+    <volume name="TRK_OUTERBARREL_FIBER_PE">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_OUTERBARREL_FIBER_PEsh"/>
+    </volume>
+    <volume name="TRK_OUTERBARREL_POWER_CU">
+      <materialref ref="ALICE3_TRKSERVICES_COPPER"/>
+      <solidref ref="TRK_OUTERBARREL_POWER_CUsh"/>
+    </volume>
+    <volume name="TRK_OUTERBARREL_POWER_PE">
+      <materialref ref="ALICE3_TRKSERVICES_POLYETHYLENE"/>
+      <solidref ref="TRK_OUTERBARREL_POWER_PEsh"/>
+    </volume>
+    <volume name="TRK_OUTERBARREL_COOLING_PU">
+      <materialref ref="ALICE3_TRKSERVICES_POLYURETHANE"/>
+      <solidref ref="TRK_OUTERBARREL_COOLING_PUsh"/>
+    </volume>
+    <volume name="TRK_OUTERBARREL_COOLING_H2O">
+      <materialref ref="ALICE3_TRKSERVICES_WATER"/>
+      <solidref ref="TRK_OUTERBARREL_COOLING_H2Osh"/>
+    </volume>
+    <volume name="VD_InnerWallCyl">
+      <materialref ref="ALICE3_TRKSERVICES_ALUMINIUM5083"/>
+      <solidref ref="VD_InnerWallCyl_sh"/>
+    </volume>
+    <volume name="VD_OuterWallCyl">
+      <materialref ref="ALICE3_TRKSERVICES_ALUMINIUM5083"/>
+      <solidref ref="VD_OuterWallCyl_sh"/>
+    </volume>
+    <volume name="Petal0_ZCap">
+      <materialref ref="ALICE3_TRKSERVICES_ALUMINIUM5083"/>
+      <solidref ref="TGeoTube0x48"/>
+    </volume>
+    <volume name="PETALCASE0_LAYER0_TRKSensor0">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER0_TRKSensor0_sh"/>
+    </volume>
+    <volume name="PETALCASE0_LAYER0_TRKMetalStack0">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER0_TRKMetalStack0_sh"/>
+    </volume>
+    <volume name="PETALCASE0_LAYER0_TRKChip0">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER0_TRKChip0_sh"/>
+      <physvol name="PETALCASE0_LAYER0_TRKSensor0_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER0_TRKSensor0"/>
+        <positionref ref="PETALCASE0_LAYER0_TRKSensor0_1inPETALCASE0_LAYER0_TRKChip0pos"/>
+      </physvol>
+      <physvol name="PETALCASE0_LAYER0_TRKMetalStack0_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER0_TRKMetalStack0"/>
+        <positionref ref="PETALCASE0_LAYER0_TRKMetalStack0_1inPETALCASE0_LAYER0_TRKChip0pos"/>
+      </physvol>
+    </volume>
+    <volume name="PETALCASE0_LAYER0">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTubeSeg"/>
+      <physvol name="PETALCASE0_LAYER0_TRKChip0_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER0_TRKChip0"/>
+        <positionref ref="PETALCASE0_LAYER0_TRKChip0_1inPETALCASE0_LAYER0pos"/>
+      </physvol>
+    </volume>
+    <volume name="PETALCASE0_LAYER1_TRKSensor1">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER1_TRKSensor1_sh"/>
+    </volume>
+    <volume name="PETALCASE0_LAYER1_TRKMetalStack1">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER1_TRKMetalStack1_sh"/>
+    </volume>
+    <volume name="PETALCASE0_LAYER1_TRKChip1">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER1_TRKChip1_sh"/>
+      <physvol name="PETALCASE0_LAYER1_TRKSensor1_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER1_TRKSensor1"/>
+        <positionref ref="PETALCASE0_LAYER1_TRKSensor1_1inPETALCASE0_LAYER1_TRKChip1pos"/>
+      </physvol>
+      <physvol name="PETALCASE0_LAYER1_TRKMetalStack1_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER1_TRKMetalStack1"/>
+        <positionref ref="PETALCASE0_LAYER1_TRKMetalStack1_1inPETALCASE0_LAYER1_TRKChip1pos"/>
+      </physvol>
+    </volume>
+    <volume name="PETALCASE0_LAYER1">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTubeSeg0x1"/>
+      <physvol name="PETALCASE0_LAYER1_TRKChip1_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER1_TRKChip1"/>
+        <positionref ref="PETALCASE0_LAYER1_TRKChip1_1inPETALCASE0_LAYER1pos"/>
+      </physvol>
+    </volume>
+    <volume name="PETALCASE0_LAYER2_TRKSensor2">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER2_TRKSensor2_sh"/>
+    </volume>
+    <volume name="PETALCASE0_LAYER2_TRKMetalStack2">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER2_TRKMetalStack2_sh"/>
+    </volume>
+    <volume name="PETALCASE0_LAYER2_TRKChip2">
+      <materialref ref="TRK_SILICON"/>
+      <solidref ref="PETALCASE0_LAYER2_TRKChip2_sh"/>
+      <physvol name="PETALCASE0_LAYER2_TRKSensor2_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER2_TRKSensor2"/>
+        <positionref ref="PETALCASE0_LAYER2_TRKSensor2_1inPETALCASE0_LAYER2_TRKChip2pos"/>
+      </physvol>
+      <physvol name="PETALCASE0_LAYER2_TRKMetalStack2_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER2_TRKMetalStack2"/>
+        <positionref ref="PETALCASE0_LAYER2_TRKMetalStack2_1inPETALCASE0_LAYER2_TRKChip2pos"/>
+      </physvol>
+    </volume>
+    <volume name="PETALCASE0_LAYER2">
+      <materialref ref="TRK_AIR"/>
+      <solidref ref="TGeoTubeSeg0x2"/>
+      <physvol name="PETALCASE0_LAYER2_TRKChip2_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER2_TRKChip2"/>
+        <positionref ref="PETALCASE0_LAYER2_TRKChip2_1inPETALCASE0_LAYER2pos"/>
+      </physvol>
+    </volume>
+    <volume name="Petal0_Coldplate">
+      <materialref ref="ALICE3_TRKSERVICES_CERAMIC"/>
+      <solidref ref="Petal0_Coldplate_sh"/>
+    </volume>
+    <volume name="IRIS_Service_Neg">
+      <materialref ref="ALUMINUM"/>
+      <solidref ref="IRIS_Service_Neg_sh"/>
+    </volume>
+    <volume name="IRIS_Service_Pos_InVac">
+      <materialref ref="ALUMINUM"/>
+      <solidref ref="IRIS_SERVICE_POS_INVACsh"/>
+    </volume>
+    <volume name="IRIS_Service_Pos_OutVac">
+      <materialref ref="ALUMINUM"/>
+      <solidref ref="IRIS_SERVICE_POS_OUTVACsh"/>
+    </volume>
+    <assembly name="PETAL_0">
+      <physvol name="VD_InnerWallCyl_1" copynumber="1">
+        <volumeref ref="VD_InnerWallCyl"/>
+        <positionref ref="VD_InnerWallCyl_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="VD_OuterWallCyl_1" copynumber="1">
+        <volumeref ref="VD_OuterWallCyl"/>
+        <positionref ref="VD_OuterWallCyl_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="Petal0_ZCap_1" copynumber="1">
+        <volumeref ref="Petal0_ZCap"/>
+        <positionref ref="Petal0_ZCap_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="Petal0_ZCap_2" copynumber="2">
+        <volumeref ref="Petal0_ZCap"/>
+        <positionref ref="Petal0_ZCap_2inPETAL_0pos"/>
+      </physvol>
+      <physvol name="PETALCASE0_LAYER0_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER0"/>
+        <positionref ref="PETALCASE0_LAYER0_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="PETALCASE0_LAYER1_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER1"/>
+        <positionref ref="PETALCASE0_LAYER1_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="PETALCASE0_LAYER2_1" copynumber="1">
+        <volumeref ref="PETALCASE0_LAYER2"/>
+        <positionref ref="PETALCASE0_LAYER2_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="Petal0_Coldplate_1" copynumber="1">
+        <volumeref ref="Petal0_Coldplate"/>
+        <positionref ref="Petal0_Coldplate_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="IRIS_Service_Neg_1" copynumber="1">
+        <volumeref ref="IRIS_Service_Neg"/>
+        <positionref ref="IRIS_Service_Neg_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="IRIS_Service_Pos_InVac_1" copynumber="1">
+        <volumeref ref="IRIS_Service_Pos_InVac"/>
+        <positionref ref="IRIS_Service_Pos_InVac_1inPETAL_0pos"/>
+      </physvol>
+      <physvol name="IRIS_Service_Pos_OutVac_2" copynumber="2">
+        <volumeref ref="IRIS_Service_Pos_OutVac"/>
+        <positionref ref="IRIS_Service_Pos_OutVac_2inPETAL_0pos"/>
+      </physvol>
+    </assembly>
+    <volume name="A3IP_VACUUM">
+      <materialref ref="ALICE3_PIPE_VACUUM"/>
+      <solidref ref="A3IP_VACUUMsh"/>
+    </volume>
+    <assembly name="TRKV">
+      <physvol name="TRKLayer0_1" copynumber="1">
+        <volumeref ref="TRKLayer0"/>
+        <positionref ref="TRKLayer0_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRKLayer1_1" copynumber="1">
+        <volumeref ref="TRKLayer1"/>
+        <positionref ref="TRKLayer1_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRKLayer2_1" copynumber="1">
+        <volumeref ref="TRKLayer2"/>
+        <positionref ref="TRKLayer2_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRKLayer3_1" copynumber="1">
+        <volumeref ref="TRKLayer3"/>
+        <positionref ref="TRKLayer3_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRKLayer4_1" copynumber="1">
+        <volumeref ref="TRKLayer4"/>
+        <positionref ref="TRKLayer4_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRKLayer5_1" copynumber="1">
+        <volumeref ref="TRKLayer5"/>
+        <positionref ref="TRKLayer5_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRKLayer6_1" copynumber="1">
+        <volumeref ref="TRKLayer6"/>
+        <positionref ref="TRKLayer6_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRKLayer7_1" copynumber="1">
+        <volumeref ref="TRKLayer7"/>
+        <positionref ref="TRKLayer7_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_CARBONSUPPORT_1" copynumber="1">
+        <volumeref ref="TRK_MID_CARBONSUPPORT"/>
+        <positionref ref="TRK_MID_CARBONSUPPORT_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_FIBER_SIO2_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_FIBER_SIO2_bwd"/>
+        <positionref ref="TRK_MID_FIBER_SIO2_bwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_FIBER_PE_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_FIBER_PE_bwd"/>
+        <positionref ref="TRK_MID_FIBER_PE_bwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_POWER_CU_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_POWER_CU_bwd"/>
+        <positionref ref="TRK_MID_POWER_CU_bwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_POWER_PE_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_POWER_PE_bwd"/>
+        <positionref ref="TRK_MID_POWER_PE_bwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_COOLING_PU_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_COOLING_PU_bwd"/>
+        <positionref ref="TRK_MID_COOLING_PU_bwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_COOLING_H2O_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_COOLING_H2O_bwd"/>
+        <positionref ref="TRK_MID_COOLING_H2O_bwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_FIBER_SIO2_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_FIBER_SIO2_fwd"/>
+        <positionref ref="TRK_MID_FIBER_SIO2_fwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_FIBER_PE_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_FIBER_PE_fwd"/>
+        <positionref ref="TRK_MID_FIBER_PE_fwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_POWER_CU_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_POWER_CU_fwd"/>
+        <positionref ref="TRK_MID_POWER_CU_fwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_POWER_PE_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_POWER_PE_fwd"/>
+        <positionref ref="TRK_MID_POWER_PE_fwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_COOLING_PU_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_COOLING_PU_fwd"/>
+        <positionref ref="TRK_MID_COOLING_PU_fwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MID_COOLING_H2O_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MID_COOLING_H2O_fwd"/>
+        <positionref ref="TRK_MID_COOLING_H2O_fwd_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_SIO2_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_SIO2_bwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_SIO2_bwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_SIO2_bwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_PE_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_PE_bwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_PE_bwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_PE_bwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_CU_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_CU_bwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_CU_bwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_CU_bwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_PE_bwd_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_PE_bwd0x1"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_PE_bwd_10x1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_PE_bwd_10x1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_PU_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_PU_bwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_PU_bwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_PU_bwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_H2O_bwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_H2O_bwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_H2O_bwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_H2O_bwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_SIO2_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_SIO2_fwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_SIO2_fwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_SIO2_fwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_PE_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_PE_fwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_PE_fwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_PE_fwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_CU_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_CU_fwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_CU_fwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_CU_fwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_PE_fwd_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_PE_fwd0x1"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_PE_fwd_10x1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_PE_fwd_10x1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_PU_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_PU_fwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_PU_fwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_PU_fwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARCONN_DISK_H2O_fwd_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARCONN_DISK_H2O_fwd"/>
+        <positionref ref="TRK_MIDBARCONN_DISK_H2O_fwd_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARCONN_DISK_H2O_fwd_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_FIBER_SIO2_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_FIBER_SIO2"/>
+        <positionref ref="TRK_MIDBARFWD_FIBER_SIO2_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_FIBER_SIO2_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_FIBER_PE_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_FIBER_PE"/>
+        <positionref ref="TRK_MIDBARFWD_FIBER_PE_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_FIBER_PE_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_POWER_CU_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_POWER_CU"/>
+        <positionref ref="TRK_MIDBARFWD_POWER_CU_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_POWER_CU_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_POWER_PE_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_POWER_PE"/>
+        <positionref ref="TRK_MIDBARFWD_POWER_PE_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_POWER_PE_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_COOLING_PU_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_COOLING_PU"/>
+        <positionref ref="TRK_MIDBARFWD_COOLING_PU_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_COOLING_PU_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_COOLING_H2O_1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_COOLING_H2O"/>
+        <positionref ref="TRK_MIDBARFWD_COOLING_H2O_1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_COOLING_H2O_1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_FIBER_SIO2_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_FIBER_SIO20x1"/>
+        <positionref ref="TRK_MIDBARFWD_FIBER_SIO2_10x1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_FIBER_SIO2_10x1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_FIBER_PE_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_FIBER_PE0x1"/>
+        <positionref ref="TRK_MIDBARFWD_FIBER_PE_10x1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_FIBER_PE_10x1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_POWER_CU_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_POWER_CU0x1"/>
+        <positionref ref="TRK_MIDBARFWD_POWER_CU_10x1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_POWER_CU_10x1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_POWER_PE_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_POWER_PE0x1"/>
+        <positionref ref="TRK_MIDBARFWD_POWER_PE_10x1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_POWER_PE_10x1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_COOLING_PU_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_COOLING_PU0x1"/>
+        <positionref ref="TRK_MIDBARFWD_COOLING_PU_10x1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_COOLING_PU_10x1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDBARFWD_COOLING_H2O_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDBARFWD_COOLING_H2O0x1"/>
+        <positionref ref="TRK_MIDBARFWD_COOLING_H2O_10x1inTRKVpos"/>
+        <rotationref ref="TRK_MIDBARFWD_COOLING_H2O_10x1inTRKVrot"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_FIBER_SIO2_1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_FIBER_SIO2"/>
+        <positionref ref="TRK_MIDFWD_FIBER_SIO2_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_FIBER_PE_1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_FIBER_PE"/>
+        <positionref ref="TRK_MIDFWD_FIBER_PE_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_POWER_CU_1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_POWER_CU"/>
+        <positionref ref="TRK_MIDFWD_POWER_CU_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_POWER_PE_1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_POWER_PE"/>
+        <positionref ref="TRK_MIDFWD_POWER_PE_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_COOLING_PU_1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_COOLING_PU"/>
+        <positionref ref="TRK_MIDFWD_COOLING_PU_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_COOLING_H2O_1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_COOLING_H2O"/>
+        <positionref ref="TRK_MIDFWD_COOLING_H2O_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_FIBER_SIO2_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_FIBER_SIO20x1"/>
+        <positionref ref="TRK_MIDFWD_FIBER_SIO2_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_FIBER_PE_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_FIBER_PE0x1"/>
+        <positionref ref="TRK_MIDFWD_FIBER_PE_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_POWER_CU_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_POWER_CU0x1"/>
+        <positionref ref="TRK_MIDFWD_POWER_CU_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_POWER_PE_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_POWER_PE0x1"/>
+        <positionref ref="TRK_MIDFWD_POWER_PE_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_COOLING_PU_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_COOLING_PU0x1"/>
+        <positionref ref="TRK_MIDFWD_COOLING_PU_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_MIDFWD_COOLING_H2O_10x1" copynumber="1">
+        <volumeref ref="TRK_MIDFWD_COOLING_H2O0x1"/>
+        <positionref ref="TRK_MIDFWD_COOLING_H2O_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_FIBER_SIO2_1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_FIBER_SIO2"/>
+        <positionref ref="TRK_OUTERDISKS_FIBER_SIO2_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_FIBER_PE_1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_FIBER_PE"/>
+        <positionref ref="TRK_OUTERDISKS_FIBER_PE_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_POWER_CU_1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_POWER_CU"/>
+        <positionref ref="TRK_OUTERDISKS_POWER_CU_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_POWER_PE_1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_POWER_PE"/>
+        <positionref ref="TRK_OUTERDISKS_POWER_PE_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_COOLING_PU_1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_COOLING_PU"/>
+        <positionref ref="TRK_OUTERDISKS_COOLING_PU_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_COOLING_H2O_1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_COOLING_H2O"/>
+        <positionref ref="TRK_OUTERDISKS_COOLING_H2O_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_FIBER_SIO2_10x1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_FIBER_SIO20x1"/>
+        <positionref ref="TRK_OUTERDISKS_FIBER_SIO2_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_FIBER_PE_10x1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_FIBER_PE0x1"/>
+        <positionref ref="TRK_OUTERDISKS_FIBER_PE_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_POWER_CU_10x1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_POWER_CU0x1"/>
+        <positionref ref="TRK_OUTERDISKS_POWER_CU_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_POWER_PE_10x1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_POWER_PE0x1"/>
+        <positionref ref="TRK_OUTERDISKS_POWER_PE_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_COOLING_PU_10x1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_COOLING_PU0x1"/>
+        <positionref ref="TRK_OUTERDISKS_COOLING_PU_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERDISKS_COOLING_H2O_10x1" copynumber="1">
+        <volumeref ref="TRK_OUTERDISKS_COOLING_H2O0x1"/>
+        <positionref ref="TRK_OUTERDISKS_COOLING_H2O_10x1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERBARREL_FIBER_SIO2_1" copynumber="1">
+        <volumeref ref="TRK_OUTERBARREL_FIBER_SIO2"/>
+        <positionref ref="TRK_OUTERBARREL_FIBER_SIO2_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERBARREL_FIBER_PE_1" copynumber="1">
+        <volumeref ref="TRK_OUTERBARREL_FIBER_PE"/>
+        <positionref ref="TRK_OUTERBARREL_FIBER_PE_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERBARREL_POWER_CU_1" copynumber="1">
+        <volumeref ref="TRK_OUTERBARREL_POWER_CU"/>
+        <positionref ref="TRK_OUTERBARREL_POWER_CU_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERBARREL_POWER_PE_1" copynumber="1">
+        <volumeref ref="TRK_OUTERBARREL_POWER_PE"/>
+        <positionref ref="TRK_OUTERBARREL_POWER_PE_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERBARREL_COOLING_PU_1" copynumber="1">
+        <volumeref ref="TRK_OUTERBARREL_COOLING_PU"/>
+        <positionref ref="TRK_OUTERBARREL_COOLING_PU_1inTRKVpos"/>
+      </physvol>
+      <physvol name="TRK_OUTERBARREL_COOLING_H2O_1" copynumber="1">
+        <volumeref ref="TRK_OUTERBARREL_COOLING_H2O"/>
+        <positionref ref="TRK_OUTERBARREL_COOLING_H2O_1inTRKVpos"/>
+      </physvol>
+      <physvol name="PETAL_0_1" copynumber="1">
+        <volumeref ref="PETAL_0"/>
+        <positionref ref="PETAL_0_1inTRKVpos"/>
+      </physvol>
+      <physvol name="A3IP_VACUUM_1" copynumber="1">
+        <volumeref ref="A3IP_VACUUM"/>
+        <positionref ref="A3IP_VACUUM_1inTRKVpos"/>
+      </physvol>
+    </assembly>
+    <volume name="ITOFSensor">
+      <materialref ref="TF3_SILICON"/>
+      <solidref ref="TGeoTube0x51"/>
+    </volume>
+    <volume name="ITOFChip">
+      <materialref ref="TF3_SILICON"/>
+      <solidref ref="TGeoTube0x50"/>
+      <physvol name="ITOFSensor_1" copynumber="1">
+        <volumeref ref="ITOFSensor"/>
+        <positionref ref="ITOFSensor_1inITOFChippos"/>
+      </physvol>
+    </volume>
+    <volume name="ITOFLayer">
+      <materialref ref="TF3_AIR"/>
+      <solidref ref="TGeoTube0x49"/>
+      <physvol name="ITOFChip_1" copynumber="1">
+        <volumeref ref="ITOFChip"/>
+        <positionref ref="ITOFChip_1inITOFLayerpos"/>
+      </physvol>
+    </volume>
+    <volume name="OTOFSensor">
+      <materialref ref="TF3_SILICON"/>
+      <solidref ref="TGeoTube0x54"/>
+    </volume>
+    <volume name="OTOFChip">
+      <materialref ref="TF3_SILICON"/>
+      <solidref ref="TGeoTube0x53"/>
+      <physvol name="OTOFSensor_1" copynumber="1">
+        <volumeref ref="OTOFSensor"/>
+        <positionref ref="OTOFSensor_1inOTOFChippos"/>
+      </physvol>
+    </volume>
+    <volume name="OTOFLayer">
+      <materialref ref="TF3_AIR"/>
+      <solidref ref="TGeoTube0x52"/>
+      <physvol name="OTOFChip_1" copynumber="1">
+        <volumeref ref="OTOFChip"/>
+        <positionref ref="OTOFChip_1inOTOFLayerpos"/>
+      </physvol>
+    </volume>
+    <volume name="FTOFSensor">
+      <materialref ref="TF3_SILICON"/>
+      <solidref ref="TGeoTube0x57"/>
+    </volume>
+    <volume name="FTOFChip">
+      <materialref ref="TF3_SILICON"/>
+      <solidref ref="TGeoTube0x56"/>
+      <physvol name="FTOFSensor_1" copynumber="1">
+        <volumeref ref="FTOFSensor"/>
+        <positionref ref="FTOFSensor_1inFTOFChippos"/>
+      </physvol>
+    </volume>
+    <volume name="FTOFLayer">
+      <materialref ref="TF3_AIR"/>
+      <solidref ref="TGeoTube0x55"/>
+      <physvol name="FTOFChip_1" copynumber="1">
+        <volumeref ref="FTOFChip"/>
+        <positionref ref="FTOFChip_1inFTOFLayerpos"/>
+      </physvol>
+    </volume>
+    <volume name="BTOFSensor">
+      <materialref ref="TF3_SILICON"/>
+      <solidref ref="TGeoTube0x60"/>
+    </volume>
+    <volume name="BTOFChip">
+      <materialref ref="TF3_SILICON"/>
+      <solidref ref="TGeoTube0x59"/>
+      <physvol name="BTOFSensor_1" copynumber="1">
+        <volumeref ref="BTOFSensor"/>
+        <positionref ref="BTOFSensor_1inBTOFChippos"/>
+      </physvol>
+    </volume>
+    <volume name="BTOFLayer">
+      <materialref ref="TF3_AIR"/>
+      <solidref ref="TGeoTube0x58"/>
+      <physvol name="BTOFChip_1" copynumber="1">
+        <volumeref ref="BTOFChip"/>
+        <positionref ref="BTOFChip_1inBTOFLayerpos"/>
+      </physvol>
+    </volume>
+    <assembly name="IOTOFV">
+      <physvol name="ITOFLayer_1" copynumber="1">
+        <volumeref ref="ITOFLayer"/>
+        <positionref ref="ITOFLayer_1inIOTOFVpos"/>
+      </physvol>
+      <physvol name="OTOFLayer_1" copynumber="1">
+        <volumeref ref="OTOFLayer"/>
+        <positionref ref="OTOFLayer_1inIOTOFVpos"/>
+      </physvol>
+      <physvol name="FTOFLayer_1" copynumber="1">
+        <volumeref ref="FTOFLayer"/>
+        <positionref ref="FTOFLayer_1inIOTOFVpos"/>
+        <rotationref ref="FTOFLayer_1inIOTOFVrot"/>
+      </physvol>
+      <physvol name="BTOFLayer_1" copynumber="1">
+        <volumeref ref="BTOFLayer"/>
+        <positionref ref="BTOFLayer_1inIOTOFVpos"/>
+        <rotationref ref="BTOFLayer_1inIOTOFVrot"/>
+      </physvol>
+    </assembly>
+    <volume name="barrel">
+      <materialref ref="CAVE_Air"/>
+      <solidref ref="shCaveTR"/>
+      <physvol name="A3IP_1" copynumber="1">
+        <volumeref ref="A3IP"/>
+        <positionref ref="A3IP_1inbarrelpos"/>
+      </physvol>
+      <physvol name="TRKV_2" copynumber="2">
+        <volumeref ref="TRKV"/>
+        <positionref ref="TRKV_2inbarrelpos"/>
+      </physvol>
+      <physvol name="IOTOFV_2" copynumber="2">
+        <volumeref ref="IOTOFV"/>
+        <positionref ref="IOTOFV_2inbarrelpos"/>
+      </physvol>
+    </volume>
+    <volume name="cave">
+      <materialref ref="CAVE_Air"/>
+      <solidref ref="cave"/>
+      <physvol name="barrel_1" copynumber="1">
+        <volumeref ref="barrel"/>
+        <positionref ref="barrel_1incavepos"/>
+      </physvol>
+    </volume>
+  </structure>
+  <setup name="default" version="1.0">
+    <world ref="cave"/>
+  </setup>
+</gdml>
