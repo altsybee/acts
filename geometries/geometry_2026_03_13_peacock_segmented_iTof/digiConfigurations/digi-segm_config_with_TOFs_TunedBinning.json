@@ -1,0 +1,351 @@
+{
+  "acts-geometry-hierarchy-map": {
+    "format-version": 0,
+    "value-identifier": "digitization-configuration"
+  },
+  "entries": [
+    {
+      "NAME": "OuterMostEndCap::NegativeEndcap",
+      "volume": 8,
+      "value": {
+        "geometric": {
+          "digital": true,
+          "indices": [
+            0,
+            1
+          ],
+          "segmentation": {
+            "binningdata": [
+              {
+                "bins": 640,
+                "max": 16,
+                "min": -16,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binX"
+              },
+              {
+                "bins": 500,
+                "max": 12.5,
+                "min": -12.5,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binY"
+              }
+            ]
+          },
+          "thickness": 0.05,
+          "threshold": 0.0,
+          "charge-smearing": {
+                "mean": 0.0,
+                "stddev": 0.01,
+                "type": "Gauss"
+          }
+        }
+      }
+    },
+    {
+      "NAME": "InnerPixels::Barrel",
+      "volume": 17,
+      "value": {
+        "smearing": [
+          {
+            "index": 0,
+            "mean": 0.0,
+            "stddev": 0.0025,
+            "type": "Gauss"
+          },
+          {
+            "index": 1,
+            "mean": 0.0,
+            "stddev": 0.0025,
+            "type": "Gauss"
+          }
+        ]
+      }
+    },
+    {
+      "NAME": "OuterPixels::NegativeEndcap",
+      "volume": 20,
+      "value": {
+        "geometric": {
+          "digital": true,
+          "indices": [
+            0,
+            1
+          ],
+          "segmentation": {
+            "binningdata": [
+              {
+                "bins": 640,
+                "max": 16,
+                "min": -16,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binX"
+              },
+              {
+                "bins": 500,
+                "max": 12.5,
+                "min": -12.5,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binY"
+              }
+            ]
+          },
+          "thickness": 0.05,
+          "threshold": 0.0,
+          "charge-smearing": {
+                "mean": 0.0,
+                "stddev": 0.01,
+                "type": "Gauss"
+          }
+        }
+      }
+    },
+    {
+      "NAME": "OuterPixels::Barrel",
+      "volume": 21,
+      "value": {
+        "geometric": {
+          "digital": true,
+          "indices": [
+            0,
+            1
+          ],
+          "segmentation": {
+            "binningdata": [
+              {
+                "bins": 640,
+                "max": 16,
+                "min": -16,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binX"
+              },
+              {
+                "bins": 500,
+                "max": 12.5,
+                "min": -12.5,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binY"
+              }
+            ]
+          },
+          "thickness": 0.05,
+          "threshold": 0.0,
+          "charge-smearing": {
+                "mean": 0.0,
+                "stddev": 0.01,
+                "type": "Gauss"
+          }
+        }
+      }
+    },
+    {
+      "NAME": "OuterPixels::Barrel",
+      "volume": 21,
+      "layer": 10,
+      "value": {
+        "geometric": {
+          "digital": true,
+          "indices": [
+            0,
+            1
+          ],
+          "segmentation": {
+            "binningdata": [
+              {
+                "bins": 32,
+                "max": 16.125,
+                "min": -16.125,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binX"
+              },
+              {
+                "bins": 12,
+                "max": 6.775,
+                "min": -6.775,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binY"
+              }
+            ]
+          },
+          "thickness": 0.05,
+          "threshold": 0.0,
+          "charge-smearing": {
+                "mean": 0.0,
+                "stddev": 0.01,
+                "type": "Gauss"
+          }
+        }
+      }
+    },
+    {
+      "NAME": "OuterPixels::PositiveEndcap",
+      "volume": 22,
+      "value": {
+        "geometric": {
+          "digital": true,
+          "indices": [
+            0,
+            1
+          ],
+          "segmentation": {
+            "binningdata": [
+              {
+                "bins": 640,
+                "max": 16,
+                "min": -16,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binX"
+              },
+              {
+                "bins": 500,
+                "max": 12.5,
+                "min": -12.5,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binY"
+              }
+            ]
+          },
+          "thickness": 0.05,
+          "threshold": 0.0,
+          "charge-smearing": {
+                "mean": 0.0,
+                "stddev": 0.01,
+                "type": "Gauss"
+          }
+        }
+      }
+    },
+    {
+      "NAME": "OuterMostBarrel::Barrel",
+      "volume": 24,
+      "value": {
+        "geometric": {
+          "digital": true,
+          "indices": [
+            0,
+            1
+          ],
+          "segmentation": {
+            "binningdata": [
+              {
+                "bins": 640,
+                "max": 16,
+                "min": -16,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binX"
+              },
+              {
+                "bins": 500,
+                "max": 12.5,
+                "min": -12.5,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binY"
+              }
+            ]
+          },
+          "thickness": 0.05,
+          "threshold": 0.0,
+          "charge-smearing": {
+                "mean": 0.0,
+                "stddev": 0.01,
+                "type": "Gauss"
+          }
+        }
+      }
+    },
+    {
+      "NAME": "OuterMostEndCap::PositiveEndcap",
+      "volume": 25,
+      "value": {
+        "geometric": {
+          "digital": true,
+          "indices": [
+            0,
+            1
+          ],
+          "segmentation": {
+            "binningdata": [
+              {
+                "bins": 640,
+                "max": 16,
+                "min": -16,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binX"
+              },
+              {
+                "bins": 500,
+                "max": 12.5,
+                "min": -12.5,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binY"
+              }
+            ]
+          },
+          "thickness": 0.05,
+          "threshold": 0.0,
+          "charge-smearing": {
+                "mean": 0.0,
+                "stddev": 0.01,
+                "type": "Gauss"
+          }
+        }
+      }
+    },
+    {
+      "NAME": "oTOF::Barrel",
+      "volume": 27,
+      "value": {
+        "geometric": {
+          "digital": true,
+          "indices": [
+            0,
+            1
+          ],
+          "segmentation": {
+            "binningdata": [
+              {
+                "bins": 6,
+                "max": 15.74,
+                "min": -15.74,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binX"
+              },
+              {
+                "bins": 5,
+                "max": 12.175,
+                "min": -12.175,
+                "option": "open",
+                "type": "equidistant",
+                "value": "binY"
+              }
+            ]
+          },
+          "thickness": 0.05,
+          "threshold": 0.0,
+          "charge-smearing": {
+                "mean": 0.0,
+                "stddev": 0.01,
+                "type": "Gauss"
+          }
+        }
+      }
+    }
+
+
+  ]
+}
