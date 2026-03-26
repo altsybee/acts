@@ -1,0 +1,90 @@
+stages:
+  - build
+  - test
+
+default:
+  image: gitlab-registry.cern.ch/linuxsupport/alma9-base:latest
+
+variables:
+  LCG: "LCG_108/x86_64-el9-gcc14-opt"
+
+# -----------------------
+# 🔧 BUILD (once)
+# -----------------------
+build_acts:
+  stage: build
+
+  script:
+    - echo "Setup LCG"
+    - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
+
+    - echo "Clone ACTS"
+    - git clone https://github.com/acts-project/acts.git
+
+    - echo "Configure"
+    - cmake -S acts -B acts/build \
+        -DACTS_BUILD_PLUGIN_GEANT4=on \
+        -DACTS_BUILD_PLUGIN_JSON=on \
+        -DACTS_BUILD_PLUGIN_ROOT=on \
+        -DACTS_BUILD_EXAMPLES_ROOT=on \
+        -DACTS_BUILD_FATRAS=on \
+        -DACTS_BUILD_FATRAS_GEANT4=on \
+        -DACTS_BUILD_EXAMPLES_GEANT4=on \
+        -DACTS_BUILD_PYTHON_BINDINGS=on \
+        -DACTS_BUILD_ANALYSIS_APPS=on \
+        -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
+        -DACTS_BUILD_EXAMPLES_PYTHIA8=on \
+        -DCMAKE_INSTALL_PREFIX=acts/install
+
+    - echo "Build"
+    - cmake --build acts/build -- -j$(nproc) install
+
+  artifacts:
+    paths:
+      - acts/install
+    expire_in: 1 day
+
+
+# -----------------------
+# 🧪 BASE TEST TEMPLATE
+# -----------------------
+.test_template:
+  stage: test
+  needs:
+    - job: build_acts
+      artifacts: true
+
+  script:
+    - echo "Setup LCG"
+    - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
+
+    - echo "Setup ACTS"
+    - source acts/install/bin/this_acts.sh
+    - export ACTS_SEQUENCER_DISABLE_FPEMON=1
+
+    - echo "Build project"
+    - source setup.sh
+    - mkdir build && cd build
+    - cmake -DCMAKE_PREFIX_PATH=${PWD}/../acts/install ..
+    - make -j2
+    - cd ..
+
+test_alice3:
+  extends: .test_template
+  script:
+    - echo "Running Alice3 test"
+    - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
+    - source acts/install/bin/this_acts.sh
+    - export ACTS_SEQUENCER_DISABLE_FPEMON=1
+    - source setup.sh
+    - mkdir build && cd build
+    - cmake -DCMAKE_PREFIX_PATH=${PWD}/../acts/install ..
+    - make -j2
+    - cd ..
+    - python alice3_full_chain.py
+
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_PIPELINE_SOURCE == "web"
