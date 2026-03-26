@@ -16,6 +16,8 @@ default:
 # -----------------------
 build_acts:
   stage: build
+  tags:
+    - cvmfs
   script:
     - echo "::group::Setup LCG"
     - ls /cvmfs/
@@ -52,6 +54,8 @@ build_acts:
 # -----------------------
 .test_template:
   stage: test
+  tags:
+    - cvmfs
   needs:
     - job: build_acts
       artifacts: true
