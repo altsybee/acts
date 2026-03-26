@@ -16,6 +16,8 @@ default:
 # -----------------------
 build_acts:
   stage: build
+  tags:
+    - cern-cvmfs       # Ensures job runs on a CVMFS-enabled runner
   script:
     - echo "::group::Setup LCG"
     - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
@@ -51,6 +53,8 @@ build_acts:
 # -----------------------
 .test_template:
   stage: test
+  tags:
+    - cern-cvmfs       # Ensures job runs on a CVMFS-enabled runner
   needs:
     - job: build_acts
       artifacts: true
