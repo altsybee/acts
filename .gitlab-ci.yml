@@ -18,6 +18,7 @@ build_acts:
   stage: build
   script:
     - echo "::group::Setup LCG"
+    - ls /
     - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
 
     - echo "::group::Checkout ACTS"
