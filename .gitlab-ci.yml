@@ -11,6 +11,7 @@ default:
   #image: gitlab-registry.cern.ch/linuxsupport/alma9-base:latest
   before_script:
     - echo "Container ready, build tools available"
+    - dnf install -y motif motif-devel
 
 # -----------------------
 # 🔧 BUILD ACTS
