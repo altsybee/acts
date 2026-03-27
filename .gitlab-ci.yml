@@ -28,6 +28,7 @@ build_acts:
     - git clone https://github.com/acts-project/acts.git
 
     - echo "::group::Configure ACTS"
+    - rm -rf acts/build
     - cmake -S acts -B acts/build \
         -DACTS_BUILD_PLUGIN_GEANT4=on \
         -DACTS_BUILD_PLUGIN_JSON=on \
@@ -40,10 +41,10 @@ build_acts:
         -DACTS_BUILD_ANALYSIS_APPS=on \
         -DCMAKE_CXX_COMPILER_LAUNCHER=ccache \
         -DACTS_BUILD_EXAMPLES_PYTHIA8=on \
-        -DCMAKE_INSTALL_PREFIX=acts/install
+        -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/acts/install
 
     - echo "::group::Build ACTS"
-    - cmake --build acts/build -- -j$(nproc) install
+    - cmake --build acts/build --target install -j$(nproc)
 
   artifacts:
     paths:
