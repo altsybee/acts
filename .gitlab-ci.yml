@@ -73,6 +73,7 @@ test_alice3:
   extends: .test_template
   script:
     - echo "::group::Running Alice3 full chain test"
+    - ldd acts/install/python/acts/examples/ActsExamplesPythonBindings*.so | grep Xm
     - python alice3_full_chain.py
 
 #test_example:
