@@ -12,6 +12,7 @@ default:
   before_script:
     - echo "Container ready, build tools available"
     - dnf install -y motif motif-devel
+    - export LD_LIBRARY_PATH=/usr/lib64:$LD_LIBRARY_PATH
 
 # -----------------------
 # 🔧 BUILD ACTS
@@ -30,7 +31,7 @@ build_acts:
 
     - echo "::group::Configure ACTS"
     - rm -rf acts/build
-    - cmake -S acts -B acts/build -DACTS_BUILD_PLUGIN_GEANT4=on -DACTS_BUILD_PLUGIN_JSON=on -DACTS_BUILD_PLUGIN_ROOT=on -DGEANT4_USE_XM=OFF -DGEANT4_USE_QT=OFF -DACTS_BUILD_EXAMPLES_ROOT=on -DACTS_BUILD_FATRAS=on -DACTS_BUILD_FATRAS_GEANT4=on -DACTS_BUILD_EXAMPLES_GEANT4=on -DACTS_BUILD_PYTHON_BINDINGS=on -DACTS_BUILD_ANALYSIS_APPS=on -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DACTS_BUILD_EXAMPLES_PYTHIA8=on -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/acts/install
+    - cmake -S acts -B acts/build -DACTS_BUILD_PLUGIN_GEANT4=on -DACTS_BUILD_PLUGIN_JSON=on -DACTS_BUILD_PLUGIN_ROOT=on -DACTS_BUILD_EXAMPLES_ROOT=on -DACTS_BUILD_FATRAS=on -DACTS_BUILD_FATRAS_GEANT4=on -DACTS_BUILD_EXAMPLES_GEANT4=on -DACTS_BUILD_PYTHON_BINDINGS=on -DACTS_BUILD_ANALYSIS_APPS=on -DCMAKE_CXX_COMPILER_LAUNCHER=ccache -DACTS_BUILD_EXAMPLES_PYTHIA8=on -DCMAKE_INSTALL_PREFIX=$CI_PROJECT_DIR/acts/install
 
     - echo "::group::Build ACTS"
     - cmake --build acts/build --target install -j$(nproc)
