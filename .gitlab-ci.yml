@@ -50,7 +50,7 @@ build_acts:
   needs:
     - job: build_acts
       artifacts: true
-  script:
+  before_script:
     - echo "::group::Setup LCG"
     - source /cvmfs/sft.cern.ch/lcg/views/${LCG}/setup.sh
 
