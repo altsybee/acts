@@ -261,9 +261,9 @@ def buildALICE3Geometry(
                     positive=False, central=True, negative=False),
                 subVolumeName=LayerTriplet("OTOFLayer*"),
                 sensitiveNames=LayerTriplet(["OTOFSensor*"]),
-                sensitiveAxes=LayerTriplet("XYZ"),
+                sensitiveAxes=LayerTriplet("ZXY"),
                 rRange=LayerTriplet(
-                    central=(845 * u.mm, 1205 * u.mm),
+                    central=(900 * u.mm, 1400 * u.mm),
                 ),
                 zRange=LayerTriplet(
                     central=(-3410 * u.mm, 3410 * u.mm),
