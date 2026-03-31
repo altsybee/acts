@@ -39,3 +39,11 @@ target_link_libraries(ExampleAlgorithms
     Acts::Core
     ${ACTS_EXAMPLES_FRAMEWORK}
   )
+
+# Install the ExampleAlgorithms library
+include(GNUInstallDirs)
+install(TARGETS ExampleAlgorithms
+                LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
+                RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
+                )
