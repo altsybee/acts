@@ -18,5 +18,10 @@ else
     export PYTHONPATH="${ACTSO2_ROOT}/python:${PYTHONPATH}"
 fi
 
+# Set DYLD_LIBRARY_PATH on macOS
+if [[ "$(uname)" == "Darwin" ]]; then
+    export DYLD_LIBRARY_PATH="$ACTS_ROOT/lib:$ACTSO2_ROOT/lib:$DYLD_LIBRARY_PATH"
+fi
+
 # Disable FPE errors
 export ACTS_SEQUENCER_DISABLE_FPEMON=1
