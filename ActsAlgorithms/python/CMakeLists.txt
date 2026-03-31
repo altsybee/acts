@@ -37,3 +37,12 @@ target_link_libraries(AliceActsPythonBindings
   ${ACTS_EXAMPLES_IO_ROOT}
   Acts::Core
 )
+
+# Install the Python module to the appropriate location
+include(GNUInstallDirs)
+# Install the Python module to $INSTALLROOT/python/
+install(TARGETS AliceActsPythonBindings
+  LIBRARY DESTINATION ${CMAKE_INSTALL_PREFIX}/python/
+  ARCHIVE DESTINATION ${CMAKE_INSTALL_PREFIX}/python/
+  RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/python/
+  )
