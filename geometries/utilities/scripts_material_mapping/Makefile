@@ -1,4 +1,4 @@
-OOTCFLAGS    = $(shell $(ROOTSYS)/bin/root-config --cflags)
+ROOTCFLAGS    = $(shell $(ROOTSYS)/bin/root-config --cflags)
 ROOTLIBS      = $(shell $(ROOTSYS)/bin/root-config --libs)
 ROOTGLIBS     = $(shell $(ROOTSYS)/bin/root-config --glibs)
                                                                                            
