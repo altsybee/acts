@@ -21,6 +21,8 @@ fi
 # Set DYLD_LIBRARY_PATH on macOS
 if [[ "$(uname)" == "Darwin" ]]; then
     export DYLD_LIBRARY_PATH="$ACTS_ROOT/lib:$ACTSO2_ROOT/lib:$DYLD_LIBRARY_PATH"
+    export SDKROOT=$(xcrun --show-sdk-path)
+    export CPATH="$SDKROOT/usr/include/c++/v1"
 fi
 
 # Disable FPE errors
