@@ -69,7 +69,7 @@ LutMaker::LutMaker(const Config& config,
     header.field = 0.5f; // example magnetic field value in Tesla
     header.nchmap = {1, 0.f, 1000.f, false};
     header.radmap = {1, 0.f, 100.0f, false};
-    header.etamap = {1, -4.0f, 4.0f, false};
+    header.etamap = {10, -4.0f, 4.0f, false};
     // Log10 pT binning from 1e-2 to 1e2 GeV/c.
     header.ptmap = {200, -2.0f, 2.0f, true};
     mLutMap[pdg].header = header;

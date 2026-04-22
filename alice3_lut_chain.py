@@ -129,13 +129,8 @@ def runFullChain(cfg=None, args=None):
         + "_ckfChi2Meas"
         + str(cfg.tracking.ckfChi2Measurement)
         + "_ckfMeasPerSurf"
-        + str(cfg.tracking.ckfMeasPerSurf)
+        + str(cfg.tracking.ckfMeasPerSurf) + "_pion"
     )
-
-    outputDir = pathlib.Path.cwd() / IA_outputDirName
-
-    if not outputDir.exists():
-        outputDir.mkdir(mode=0o777, parents=True, exist_ok=True)
 
     s = acts.examples.Sequencer(events=args.nEvents,
                                 skip=args.skip,
