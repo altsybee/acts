@@ -101,8 +101,8 @@ LutMaker::LutMaker(const Config& config,
     mQopTRes2Sums[pdg] = std::vector<double>(nEntries, 0.0);
 
     qopt_vs_pT[pdg] = new TH2F(Form("qopT_res_vs_pT_pdg%d", pdg),
-                   Form("q/pT resolution vs pT for PDG %d; pT [GeV/c]; q/pT residual", pdg),
-                   40, 0.f, 100.f, 1000, -0.1f, 0.1f);
+                               Form("q/pT resolution vs pT for PDG %d; pT [GeV/c]; q/pT residual", pdg),
+                               40, 0.f, 100.f, 1000, -0.1f, 0.1f);
   }
 
   m_inputTracks.initialize(m_cfg.inputTracks);
@@ -197,7 +197,9 @@ LutMaker::~LutMaker()
         }
       }
     }
-    const std::string filename = std::string("lut_pdg") + std::to_string(pdg) + ".dat";
+
+    const std::string lutFileTag = Form("%s%s_%.2fT", m_cfg.lutTag.empty() ? "" : "_", lut.header.pdg, m_cfg.magneticField);
+    const std::string filename = std::string("lut_pdg") + std::to_string(pdg) + lutFileTag + ".dat";
     printf("Saving LUT for PDG %d to file %s\n", pdg, filename.c_str());
     // output file
     std::ofstream lutFile(filename, std::ofstream::binary);

@@ -316,7 +316,6 @@ using namespace ActsExamples;
 namespace AliceActsTrk
 {
 
-
 struct LutContainer {
   o2::delphes::lutHeader_t header;
   std::vector<o2::delphes::lutEntry_t> entries;
@@ -327,28 +326,12 @@ class LutMaker final : public IAlgorithm
 {
  public:
   struct Config {
-    /// Input (fitted) tracks collection
-    std::string inputTracks;
-    /// Input particles collection.
-    std::string inputParticles;
-    // /// Input hit-particles map collection.
-    // std::string inputMeasurementParticlesMap;
-    /// Input track-particle matching.
-    std::string inputTrackParticleMatching;
-    /// Input particle-track matching.
-    std::string inputParticleTrackMatching;
-
-    // /// Matching ratio for track to particle matching
-    // double matchingRatio = 0.5;
-    // /// Whether to use double matching (track to particle and particle to track)
-    // bool doubleMatching = true;
-    // /// Special treatment for looper particles that might leave multiple hits due to curled trajectories
-    // bool looperProtection = false;
-    // /// Eta range and max pT to consider for a looper treatment
-    // double loop_absEta = 0.;
-    // double loop_maxPt = 0.;
-    // /// Number of hits to cap the looper particle for truth matching consideration
-    // size_t loop_maxParticleHits = 0;
+    std::string inputTracks;                /// Input (fitted) tracks collection
+    std::string inputParticles;             /// Input particles collection.
+    std::string inputTrackParticleMatching; /// Input track-particle matching.
+    std::string inputParticleTrackMatching; /// Input particle-track matching.
+    std::string lutTag;                     /// Tag to identify the LUT (e.g. "lut_v1")
+    float magneticField;                    /// Magnetic field value to store in LUT header (in Tesla)
   };
 
   LutMaker(const Config& config, std::unique_ptr<const Acts::Logger> logger = nullptr);
