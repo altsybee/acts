@@ -21,6 +21,8 @@ PYBIND11_MODULE(AliceActsPythonBindings, mex)
 
   AliceActsPython::addTrackMergerAlgorithm(mex);
 
+  AliceActsPython::addLutMakerAlgorithm(mex);
+
   // Validation
   //AliceActsPython::addResPlotTool(mex);
   //AliceActsPython::addRootTrackFitterPerformanceWriter(mex);

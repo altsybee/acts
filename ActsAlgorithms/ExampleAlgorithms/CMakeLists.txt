@@ -9,6 +9,7 @@ target_sources(ExampleAlgorithms
     src/TrackTruthMatcher.cpp
     src/HitRemoverAlgorithm.cpp
     src/TrackMergerAlgorithm.cpp
+    src/LutMaker.cpp
         # add more .cpp files here
 )
 
@@ -20,6 +21,7 @@ target_include_directories(ExampleAlgorithms
         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
 )
 
+find_package(ROOT REQUIRED COMPONENTS Core Hist RIO)
 
 find_library(ACTS_EXAMPLES_FRAMEWORK
     NAMES ActsExamplesFramework
@@ -38,6 +40,9 @@ target_link_libraries(ExampleAlgorithms
     PUBLIC
     Acts::Core
     ${ACTS_EXAMPLES_FRAMEWORK}
+    ROOT::Core
+    ROOT::Hist
+    ROOT::RIO
   )
 
 # Install the ExampleAlgorithms library
