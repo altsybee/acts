@@ -4,6 +4,7 @@
 #include "TrackTruthMatcher.hpp"
 #include "HitRemoverAlgorithm.hpp"
 #include "TrackMergerAlgorithm.hpp"
+#include "LutMaker.hpp"
 
 #include "ResPlotTool.hpp"
 #include "RootTrackFitterPerformanceWriter.hpp"
@@ -55,31 +56,18 @@ inline void addTrackMergerAlgorithm(pybind11::module& mex)
     outputTrackCollection);
 }
 
-  //inline void addResPlotTool(pybind11::module& mex)
-  //{
-  //py::class_<AliceActsTrk::ResPlotTool::Config>(mex, "ResPlotToolConfig")
-  //  .def(py::init<>())
-  //  .def_readwrite("varBinning", &AliceActsTrk::ResPlotTool::Config::varBinning);
-  //}
-
-  //inline void addRootTrackFitterPerformanceWriter(pybind11::module& mex)
-  //{
-  //ACTS_PYTHON_DECLARE_WRITER(AliceActsTrk::RootTrackFitterPerformanceWriter, mex,
-  //                           "RootTrackFitterPerformanceWriter", inputTracks,
-  //                           inputParticles, inputTrackParticleMatching,
-  //                           filePath, resPlotToolConfig, effPlotToolConfig,
-  //                           trackSummaryPlotToolConfig);
-  //}
-
-// inline void addRootTrackFinderPerformanceWriter(pybind11::module& mex) {
-//   ACTS_PYTHON_DECLARE_WRITER(AliceActsTrk::RootTrackFinderPerformanceWriter, mex,
-//                              "RootTrackFinderPerformanceWriter", inputTracks,
-//                              inputParticles, inputTrackParticleMatching,
-//                              inputParticleTrackMatching, inputParticleMeasurementsMap,
-//                              filePath, fileMode, effPlotToolConfig, fakePlotToolConfig,
-//                              duplicationPlotToolConfig, trackSummaryPlotToolConfig,
-//                              trackQualityPlotToolConfig, subDetectorTrackSummaryVolumes,
-//                              writeMatchingDetails);
-// }
+inline void addLutMakerAlgorithm(pybind11::module& mex)
+{
+  ACTS_PYTHON_DECLARE_ALGORITHM(
+    AliceActsTrk::LutMaker, mex, "LutMakerAlgorithm",
+    inputTracks,
+    inputParticles,
+    // inputMeasurementParticlesMap, 
+    inputTrackParticleMatching,
+    inputParticleTrackMatching
+    // , matchingRatio, doubleMatching,
+    // looperProtection, loop_absEta, loop_maxPt, loop_maxParticleHits
+  );
+}
 
 } // namespace AliceActsPython
