@@ -393,7 +393,7 @@ bool MakeComparisonPlots(std::string geant_filename, std::string trk_filename, s
   TTree* geant_tree = nullptr;
 
   if (config == "ACTS") {
-    geant_tree = (TTree*)geant_file->Get("material-tracks");
+    geant_tree = (TTree*)geant_file->Get("material_tracks");
     geant_tree->SetBranchAddress("v_eta", &eta);
     geant_tree->SetBranchAddress("v_phi", &phi);
     geant_tree->SetBranchAddress("t_X0", &t_x0);
@@ -467,7 +467,7 @@ bool MakeComparisonPlots(std::string geant_filename, std::string trk_filename, s
   TTree* trk_tree = nullptr;
 
   if (config == "ACTS") {
-    trk_tree = (TTree*)trk_file->Get("material-tracks");
+    trk_tree = (TTree*)trk_file->Get("material_tracks");
     trk_tree->SetBranchAddress("v_eta", &eta);
     trk_tree->SetBranchAddress("v_phi", &phi);
     trk_tree->SetBranchAddress("t_X0", &t_x0);

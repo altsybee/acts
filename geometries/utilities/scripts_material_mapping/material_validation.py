@@ -1,167 +1,212 @@
 #!/usr/bin/env python3
 
-import os
 import argparse
+import pathlib
+import sys
 
 import acts
-from acts.examples import Sequencer
-from acts.examples.root import RootMaterialTrackWriter
-# from acts.examples.odd import getOpenDataDetector
-from acts.examples.simulation import addParticleGun, EtaConfig, ParticleConfig
+from acts import (
+    MaterialValidator,
+    IntersectionMaterialAssigner,
+)
 
-#import alice3
-import pathlib
-import argparse
-import sys
+from acts.examples.simulation import (
+    addParticleGun,
+    EtaConfig,
+    PhiConfig,
+    ParticleConfig,
+)
+
+from acts.examples import (
+    MaterialValidation,
+    ParticleTrackParamExtractor,
+)
+
+from acts.examples.root import RootMaterialTrackWriter
+
+u = acts.UnitConstants
 
 
 def runMaterialValidation(
-    nevents,
-    ntracks,
-    trackingGeometry,
-    decorators,
-    field,
-    outputDir,
-    outputName="propagation-material",
-    s=None,
+    surfaces,
+    s,
+    tracksPerEvent=100,
+    etaRange=(-4.2, 4.2),
+    phiRange=(0.0, 360.0 * u.degree),
+    materialTrackCollectionName="material_tracks",
+    outputFileBase="material_validation",
+    trackingGeometry=None,
 ):
-    # Create a sequencer
-    s = s or Sequencer(events=nevents, numThreads=-1)
-
-    for decorator in decorators:
-        s.addContextDecorator(decorator)
-
-    nav = acts.Navigator(trackingGeometry=trackingGeometry)
-    stepper = acts.StraightLineStepper()
-    # stepper = acts.EigenStepper(field)
-
-    prop = acts.examples.ConcretePropagator(acts.Propagator(stepper, nav))
-
     rnd = acts.examples.RandomNumbers(seed=42)
 
     addParticleGun(
         s,
-        ParticleConfig(num=ntracks, pdg=acts.PdgParticle.eMuon, randomizeCharge=True),
-        EtaConfig(-4.1, 4.1),
+        ParticleConfig(
+            num=tracksPerEvent, pdg=acts.PdgParticle.eMuon, randomizeCharge=True
+        ),
+        EtaConfig(*etaRange),
+        PhiConfig(*phiRange),
         rnd=rnd,
     )
 
-    # # Run particle smearing
-    # trackParametersGenerator = acts.examples.ParticleSmearing(
-    #     level=acts.logging.INFO,
-    #     inputParticles="particles_input",
-    #     outputTrackParameters="start_parameters",
-    #     randomNumbers=rnd,
-    #     sigmaD0=0.0,
-    #     sigmaZ0=0.0,
-    #     sigmaPhi=0.0,
-    #     sigmaTheta=0.0,
-    #     sigmaPtRel=0.0,
-    # )
-    # s.addAlgorithm(trackParametersGenerator)
-
-    # alg = acts.examples.PropagationAlgorithm(
-    #     propagatorImpl=prop,
-    #     level=acts.logging.INFO,
-    #     sterileLogger=True,
-    #     recordMaterialInteractions=True,
-    #     inputTrackParameters="start_parameters",
-    #     outputSummaryCollection="propagation_summary",
-    #     outputMaterialCollection="material_tracks",
-    # )
-    trkParamExtractor = acts.examples.ParticleTrackParamExtractor(
+    trkParamExtractor = ParticleTrackParamExtractor(
         level=acts.logging.INFO,
         inputParticles="particles_generated",
         outputTrackParameters="params_particles_generated",
     )
     s.addAlgorithm(trkParamExtractor)
 
-    alg = acts.examples.PropagationAlgorithm(
-        propagatorImpl=prop,
-        level=acts.logging.INFO,
-        sterileLogger=True,
-        recordMaterialInteractions=True,
-        inputTrackParameters="params_particles_generated",
-        outputSummaryCollection="propagation_summary",
-        outputMaterialCollection="material_tracks",
+    # Assignment setup : Intersection assigner
+    materialAssingerConfig = IntersectionMaterialAssigner.Config()
+    materialAssingerConfig.surfaces = surfaces
+    materialAssinger = IntersectionMaterialAssigner(
+        materialAssingerConfig, acts.logging.INFO
     )
-    s.addAlgorithm(alg)
 
+    # Validator setup
+    materialValidatorConfig = MaterialValidator.Config()
+    materialValidatorConfig.materialAssigner = materialAssinger
+
+    # Validation Algorithm
+    materialValidationConfig = MaterialValidation.Config()
+    materialValidationConfig.inputTrackParameters = "params_particles_generated"
+    materialValidationConfig.materialValidator = MaterialValidator(
+        materialValidatorConfig, acts.logging.INFO
+    )
+    materialValidationConfig.outputMaterialTracks = materialTrackCollectionName
+    materialValidation = MaterialValidation(materialValidationConfig, acts.logging.INFO)
+    s.addAlgorithm(materialValidation)
+
+    # Add the material tracks writer
     s.addWriter(
         RootMaterialTrackWriter(
             level=acts.logging.INFO,
-            inputMaterialTracks=alg.config.outputMaterialCollection,
-            filePath=os.path.join(outputDir, (outputName + ".root")),
+            inputMaterialTracks=materialValidationConfig.outputMaterialTracks,
+            treeName=materialTrackCollectionName,
+            filePath=str(outputFileBase) + ".root",
             storeSurface=True,
             storeVolume=True,
         )
     )
 
+    if trackingGeometry is not None:
+        nav = acts.Navigator(trackingGeometry=trackingGeometry)
+        stepper = acts.StraightLineStepper()
+        propagator = acts.examples.ConcretePropagator(acts.Propagator(stepper, nav))
+
+        propagationAlgorithm = acts.examples.PropagationAlgorithm(
+            propagatorImpl=propagator,
+            level=acts.logging.INFO,
+            sterileLogger=False,
+            inputTrackParameters="params_particles_generated",
+            outputSummaryCollection="propagation_summary",
+            outputMaterialCollection=materialTrackCollectionName + "_propagated",
+        )
+        s.addAlgorithm(propagationAlgorithm)
+
+        s.addWriter(
+            RootMaterialTrackWriter(
+                level=acts.logging.INFO,
+                inputMaterialTracks=materialTrackCollectionName + "_propagated",
+                treeName=materialTrackCollectionName,
+                filePath=str(outputFileBase) + "_propagated.root",
+                storeSurface=True,
+                storeVolume=True,
+            )
+        )
+
     return s
 
 
-parser = argparse.ArgumentParser(
-    description="Material mapping validation")
+def main():
+    p = argparse.ArgumentParser()
 
-parser.add_argument(
-    "--geo-dir",
-    help="Location of the geometry",
-    type=pathlib.Path,
-    default=pathlib.Path.cwd()
+    p.add_argument(
+        "--geo-dir",
+        type=pathlib.Path,
+        default=pathlib.Path.cwd(),
+        help="Location of the geometry",
+    )
+    p.add_argument(
+        "-n", "--events", type=int, default=4000, help="Number of events to process"
+    )
+    p.add_argument(
+        "-t", "--tracks", type=int, default=1000, help="Number of tracks per event"
+    )
+    p.add_argument("-j", "--threads", type=int, default=-1, help="Number of threads")
+    p.add_argument(
+        "-m",
+        "--map",
+        type=str,
+        default="geometry-map.json",
+        help="Input file for the material map"
+    )
+    p.add_argument(
+        "--eta-range",
+        nargs=2,
+        type=float,
+        metavar=("MIN", "MAX"),
+        default=(-4.2, 4.2),
+        help="Eta range for generated particles",
+    )
+    p.add_argument(
+        "--phi-range",
+        nargs=2,
+        type=float,
+        metavar=("MIN_DEG", "MAX_DEG"),
+        default=(0.0, 360.0),
+        help="Phi range in degree for generated particles",
+    )
+    p.add_argument(
+        "--material-track-collection",
+        type=str,
+        default="material_tracks",
+        help="Output material track collection name",
+    )
+    p.add_argument(
+        "-o",
+        "--output",
+        type=str,
+        default="propagation-material",
+        help="Output file stem (without extension)",
+    )
+    p.add_argument(
+        "-p",
+        "--propagate",
+        action="store_true",
+        help="Enable propagation validation",
     )
 
-args = parser.parse_args()
+    args = p.parse_args()
 
-            
-geo_dir = args.geo_dir
-print("Loading geometry from ... ",str(geo_dir))
-sys.path.insert(0,str(pathlib.Path(geo_dir).resolve()))
+    materialDecorator = None
+    if args.map != "":
+        materialDecorator = acts.IMaterialDecorator.fromFile(args.map)
 
-import buildALICE3Geometry
+    print("Loading geometry from ... ", str(args.geo_dir))
+    sys.path.insert(0, str(pathlib.Path(args.geo_dir).resolve()))
+    import buildALICE3Geometry
+
+    detector = buildALICE3Geometry.buildALICE3Geometry(
+        args.geo_dir, False, False, acts.logging.INFO, materialDecorator
+    )
+    trackingGeometry = detector.trackingGeometry()
+
+    materialSurfaces = trackingGeometry.extractMaterialSurfaces()
+
+    s = acts.examples.Sequencer(events=args.events, numThreads=args.threads)
+
+    runMaterialValidation(
+        surfaces=materialSurfaces,
+        s=s,
+        tracksPerEvent=args.tracks,
+        etaRange=tuple(args.eta_range),
+        phiRange=(args.phi_range[0] * u.degree, args.phi_range[1] * u.degree),
+        materialTrackCollectionName=args.material_track_collection,
+        outputFileBase=args.output,
+        trackingGeometry=trackingGeometry if args.propagate else None,
+    ).run()
 
 
 if "__main__" == __name__:
-    # p = argparse.ArgumentParser()
-
-    # p.add_argument(
-    #     "-n", "--events", type=int, default=1000, help="Number of events to process"
-    # )
-    # p.add_argument(
-    #     "-t", "--tracks", type=int, default=1000, help="Number of tracks per event"
-    # )
-    # p.add_argument(
-    #     "-m", "--map", type=str, help="Input file (optional) for the material map"
-    # )
-    # p.add_argument(
-    #     "-o",
-    #     "--output",
-    #     type=str,
-    #     default="propagation-material",
-    #     help="Output file name",
-    # )
-
-    # args = p.parse_args()
-
-    # materialDecorator = (
-    #     acts.IMaterialDecorator.fromFile(args.map) if args.map != None else None
-    # )
-    matDeco = acts.IMaterialDecorator.fromFile("material-map.json")
-
-    detector = buildALICE3Geometry.buildALICE3Geometry(
-       geo_dir, False, False, acts.logging.INFO, matDeco)
-        # geo_dir, True, False, acts.logging.INFO)
-    trackingGeometry = detector.trackingGeometry()
-    decorators = detector.contextDecorators()
-    
-
-    field = acts.ConstantBField(acts.Vector3(0, 0, 0 * acts.UnitConstants.T))
-
-    runMaterialValidation(
-        2000, #args.events,
-        800, #args.tracks,
-        trackingGeometry,
-        decorators,
-        field,
-        outputDir=os.getcwd(),
-        #outputName=args.output,
-    ).run()
+    main()
