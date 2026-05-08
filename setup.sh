@@ -4,7 +4,6 @@
 if [ -z "$ACTS_ROOT" ]; then
     echo "ACTS_ROOT is not set. Please set ACTS_ROOT to the root directory of your ACTS installation."
 else
-    . $ACTS_ROOT/python/setup.sh
     . $ACTS_ROOT/bin/this_acts.sh
 fi
 

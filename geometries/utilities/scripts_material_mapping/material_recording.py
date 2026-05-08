@@ -1,7 +1,5 @@
 #!/usr/bin/env python3
 
-import os
-import warnings
 import argparse
 
 import acts
@@ -13,37 +11,22 @@ from acts.examples import (
     RandomNumbers,
 )
 
-# import acts.examples.dd4hep
 import acts.examples.geant4
 import acts.examples.hepmc3
 from acts.examples.root import RootMaterialTrackWriter
-# import acts.examples.geant4.dd4hep
-# from acts.examples.odd import getOpenDataDetector
-
-try:
-    import acts.examples.geant4.geomodel
-except ImportError:
-    # geomodel is optional for this script
-    pass
 
 u = acts.UnitConstants
 
-_material_recording_executed = False
-
 
 def runMaterialRecording(
-    # detectorConstructionFactory,
     detector,
-    outputDir,
+    s,
     tracksPerEvent=1000,
-    s=None,
     etaRange=(-4.2, 4.2),
+    phiRange=(0.0, 360.0 * u.degree),
+    materialTrackCollectionName="material_tracks",
+    outputFile="geant4_material_tracks.root",
 ):
-    global _material_recording_executed
-    if _material_recording_executed:
-        warnings.warn("Material recording already ran in this process. Expect crashes")
-    _material_recording_executed = True
-
     rnd = RandomNumbers(seed=228)
 
     evGen = EventGenerator(
@@ -58,10 +41,11 @@ def runMaterialRecording(
                 particles=ParametricParticleGenerator(
                     pdg=acts.PdgParticle.eInvalid,
                     charge=0,
-                    randomizeCharge=True,
+                    randomizeCharge=False,
                     mass=0,
-                    p=(0.5 * u.GeV, 10 * u.GeV),
+                    p=(1 * u.GeV, 10 * u.GeV),
                     eta=etaRange,
+                    phi=phiRange,
                     numParticles=tracksPerEvent,
                     etaUniform=True,
                 ),
@@ -86,7 +70,8 @@ def runMaterialRecording(
         detector=detector,
         randomNumbers=rnd,
         inputParticles=hepmc3Converter.config.outputParticles,
-        outputMaterialTracks="material-tracks",
+        outputMaterialTracks=materialTrackCollectionName,
+        recordElementFractions=False,
     )
 
     s.addAlgorithm(g4Alg)
@@ -95,8 +80,9 @@ def runMaterialRecording(
         RootMaterialTrackWriter(
             prePostStep=True,
             recalculateTotals=True,
-            inputMaterialTracks="material-tracks",
-            filePath=os.path.join(outputDir, "geant4_material_tracks.root"),
+            inputMaterialTracks=materialTrackCollectionName,
+            treeName=materialTrackCollectionName,
+            filePath=outputFile,
             level=acts.logging.INFO,
         )
     )
@@ -113,21 +99,50 @@ def main():
         "-t", "--tracks", type=int, default=1000, help="Particle tracks per event"
     )
     p.add_argument(
-        "--gdml", type=str, default="o2sim_geometry.gdml", help="input (GDML) file"
+        "-i", "--input", type=str, default="o2sim_geometry.gdml", help="Input GDML file"
+    )
+    p.add_argument(
+        "--eta-range",
+        nargs=2,
+        type=float,
+        metavar=("MIN", "MAX"),
+        default=(-4.2, 4.2),
+        help="Eta range for generated particles",
+    )
+    p.add_argument(
+        "--phi-range",
+        nargs=2,
+        type=float,
+        metavar=("MIN_DEG", "MAX_DEG"),
+        default=(0.0, 360.0),
+        help="Phi range in degrees for generated particles",
+    )
+    p.add_argument(
+        "--material-track-collection",
+        type=str,
+        default="material_tracks",
+        help="Output material track collection name",
+    )
+    p.add_argument(
+        "-o",
+        "--output",
+        type=str,
+        default="geant4_material_tracks.root",
+        help="Output file (with extension)",
     )
 
     args = p.parse_args()
-    
-    
-    detector = acts.examples.geant4.GdmlDetector(path=args.gdml)
+
+    detector = acts.examples.geant4.GdmlDetector(path=args.input)
 
     runMaterialRecording(
-        # detectorConstructionFactory=detectorConstructionFactory,
-        detector=detector, 
-        tracksPerEvent=args.tracks,
-        outputDir=os.getcwd(),
-        # s=acts.examples.Sequencer(events=3100, numThreads=1),
+        detector=detector,
         s=acts.examples.Sequencer(events=args.events, numThreads=1),
+        tracksPerEvent=args.tracks,
+        etaRange=tuple(args.eta_range),
+        phiRange=(args.phi_range[0] * u.degree, args.phi_range[1] * u.degree),
+        materialTrackCollectionName=args.material_track_collection,
+        outputFile=args.output,
     ).run()
 
 
