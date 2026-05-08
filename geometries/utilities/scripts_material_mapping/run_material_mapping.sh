@@ -40,9 +40,15 @@ python material_recording.py --input ${GEOMETRY}/o2sim_geometry.gdml -n $NEVENTS
 python $ACTS_SOURCE_DIR/Examples/Scripts/MaterialMapping/writeMapConfig.py geometry-map.json config-map.json
 python modifyConfigMap.py config-map.json 80 80
 python $ACTS_SOURCE_DIR/Examples/Scripts/MaterialMapping/configureMap.py geometry-map.json config-map-binned.json
-python material_mapping.py --geo-dir ${GEOMETRY} -n $NEVENTS --input ${OUTPUT_GEANTINO_HITS}
+MATERIAL_MAP_OUTPUT_BASE="material"
+python material_mapping.py --geo-dir ${GEOMETRY} -n $NEVENTS \
+    --input ${OUTPUT_GEANTINO_HITS} --output ${MATERIAL_MAP_OUTPUT_BASE}
 
 # validation
-python material_validation.py --geo-dir ${GEOMETRY} -n $NEVENTS
+python material_validation.py --geo-dir ${GEOMETRY} -n $NEVENTS \
+    --map "${MATERIAL_MAP_OUTPUT_BASE}_map.json"
 mkdir -p Validation
-root -l -b -q $ACTS_SOURCE_DIR/Examples/Scripts/MaterialMapping/Mat_map.C'("propagation-material.root","material-map_tracks.root","Validation")'
+root -l -b -q "$ACTS_SOURCE_DIR/Examples/Scripts/MaterialMapping/Mat_map.C(\
+    \"propagation-material.root\",\
+    \"${MATERIAL_MAP_OUTPUT_BASE}_mapped.root\",\
+    \"Validation\")"

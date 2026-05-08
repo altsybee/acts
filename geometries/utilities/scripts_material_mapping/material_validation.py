@@ -138,7 +138,7 @@ def main():
         "-m",
         "--map",
         type=str,
-        default="geometry-map.json",
+        default="material_map.json",
         help="Input file for the material map"
     )
     p.add_argument(
