@@ -94,7 +94,7 @@ def addCKFTracks(
     writeTrackStates: bool = False,
     writePerformance: bool = True,
     writeCovMat: bool = False,
-    inputMeasurements: str = "measurements",
+    inputMeasurements: str = "measurement_subset",
     inputInitialTrackParameters: str="estimatedparameters",
     inputSeeds : str = "estimatedseeds",
     outputTracks : str = "ckf_tracks",

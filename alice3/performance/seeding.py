@@ -340,7 +340,7 @@ def addSeeding(
         outputDirCsv: Optional[Union[Path, str]] = None,
         logLevel: Optional[acts.logging.Level] = None,
         rnd: Optional[acts.examples.RandomNumbers] = None,
-        inputMeasurements = "measurements",
+        inputMeasurements = "measurement_subset",
         outputSpacePoints = "spacepoints",
         outputSeeds       = "seeds",
         iterationIndex    = 0,
@@ -559,7 +559,7 @@ def addSeeding(
                 level=logLevel,
                 inputProtoTracks=prototracks,
                 inputTrackParameters="estimatedparameters"+collection_suffix,
-                inputMeasurements="measurements"+collection_suffix,
+                inputMeasurements="measurement_subset"+collection_suffix,
                 outputTracks=tracks,
             )
         )
