@@ -10,10 +10,12 @@
 #include <vector>
 #include <string>
 
+using namespace ActsExamples;
+
 namespace AliceActsTrk
 {
 
-class TrackMergerAlgorithm final : public ActsExamples::IAlgorithm
+class TrackMergerAlgorithm final : public IAlgorithm
 {
 
  public:
@@ -29,8 +31,8 @@ class TrackMergerAlgorithm final : public ActsExamples::IAlgorithm
 
  private:
   Config m_cfg;
-  std::vector<ActsExamples::ReadDataHandle<ActsExamples::ConstTrackContainer>>m_inputTrackCollections;
-  ActsExamples::WriteDataHandle<ActsExamples::ConstTrackContainer>m_outputTrackCollection{this, "outputTracks"};
+  std::vector<ReadDataHandle<ConstTrackContainer>>m_inputTrackCollections;
+  WriteDataHandle<ConstTrackContainer>m_outputTrackCollection{this, "outputTracks"};
 
 }; // TrackMergerAlgorithm
 } // namespace AliceActsTrk
