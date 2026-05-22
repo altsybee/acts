@@ -15,7 +15,7 @@ default:
     - export LD_LIBRARY_PATH=/usr/lib64:$LD_LIBRARY_PATH
 
 # -----------------------
-# 🔧 BUILD ACTS
+# BUILD ACTS
 # -----------------------
 build_acts:
   stage: build
@@ -42,7 +42,7 @@ build_acts:
     expire_in: 1 day
 
 # -----------------------
-# 🧪 TEST TEMPLATE
+# TEST TEMPLATE
 # -----------------------
 .test_template:
   stage: test
@@ -69,7 +69,7 @@ build_acts:
     - cd ..
 
 # -----------------------
-# 🧪 TEST JOBS
+# TEST JOBS
 # -----------------------
 test_alice3:
   extends: .test_template
@@ -85,10 +85,11 @@ test_alice3:
 #    - python another_test.py
 
 # -----------------------
-# 🎯 PIPELINE RULES
+# PIPELINE RULES
 # -----------------------
 workflow:
   rules:
     - if: $CI_PIPELINE_SOURCE == "schedule"
     - if: $CI_PIPELINE_SOURCE == "erge_request_event"
     - if: $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
