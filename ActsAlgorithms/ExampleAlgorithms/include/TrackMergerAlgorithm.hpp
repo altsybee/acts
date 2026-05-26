@@ -21,12 +21,6 @@ class TrackMergerAlgorithm final : public IAlgorithm
  public:
   struct Config {
     std::vector<std::string> inputTrackCollections{};
-
-    /// This will have size = inputTrackCollections.size()-1,
-    /// because we assume that the first track collection
-    /// used the original measurement vector
-
-    std::vector<std::string> inputIndexingMaps{};
     std::string outputTrackCollection = "";
   };
 
@@ -37,9 +31,8 @@ class TrackMergerAlgorithm final : public IAlgorithm
 
  private:
   Config m_cfg;
-  std::vector<ReadDataHandle<ConstTrackContainer>> m_inputTrackCollections;
-  std::vector<ReadDataHandle<std::vector<size_t>>> m_inputIndexingMaps;
-  WriteDataHandle<ConstTrackContainer> m_outputTrackCollection{this, "outputTracks"};
+  std::vector<ReadDataHandle<ConstTrackContainer>>m_inputTrackCollections;
+  WriteDataHandle<ConstTrackContainer>m_outputTrackCollection{this, "outputTracks"};
 
 }; // TrackMergerAlgorithm
 } // namespace AliceActsTrk

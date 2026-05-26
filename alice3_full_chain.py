@@ -310,6 +310,15 @@ def runFullChain(cfg=None, args=None):
         # doMerge=True,   ##!! 
     )
 
+    # ACTS v46.4.0 multi-pass tracking:
+    #
+    # Digitization writes:
+    #   "measurements"       -> MeasurementContainer
+    #   "measurement_subset" -> MeasurementSubset containing all measurements
+    #
+    # SpacePointMaker, ProtoTracksToTracks and TrackFinding should use
+    # MeasurementSubset keys, not the raw "measurements" container.
+    initialMeasurementSubset = "measurement_subset"
 
     alice3_simulation.addDigiParticleSelection(
         s,
@@ -347,7 +356,7 @@ def runFullChain(cfg=None, args=None):
     #     logLevel = acts.logging.VERBOSE
     # )
 
-    
+    # First tracking pass on the full MeasurementSubset.
     alice3_seeding.addSeeding(
         s,
         trackingGeometry,
@@ -360,6 +369,8 @@ def runFullChain(cfg=None, args=None):
         seedingAlgorithmConfigArg = alice3_seeding.DefaultSeedingAlgorithmConfigArg,
         seedingAlgorithm = SeedingAlgorithm.GridTriplet if cfg.seeding.seedingAlgo == "GridTriplet" else "TruthSmeared",
         outputDirRoot=outputDir,
+        inputMeasurements=initialMeasurementSubset,
+        iterationIndex=0,
     )
 
 
@@ -382,7 +393,8 @@ def runFullChain(cfg=None, args=None):
         outputDirRoot=outputDir,
         writeTrackSummary=cfg.tracking.writeTrackSummary,
         writeTrackStates=False,
-        logLevel=acts.logging.INFO
+        logLevel=acts.logging.INFO,
+        inputMeasurements=initialMeasurementSubset,
     )
 
     s = addAmbiguityResolution(
@@ -394,13 +406,14 @@ def runFullChain(cfg=None, args=None):
         outputDirRoot=outputDir,
         logLevel=acts.logging.INFO,
     )
-        
+
     alice3_writers.addIterativeTracking(s,
                                         trackingGeometry=trackingGeometry,
                                         geo_dir=geo_dir,
                                         field=field,
                                         iterations=cfg.general.iterations,
-                                        inputTracks="ckf_tracks",
+                                        inputTracks="tracks",
+                                        inputMeasurementSubset=initialMeasurementSubset,
                                         outputDir=outputDir)
 
 

@@ -52,8 +52,7 @@ inline void addTrackMergerAlgorithm(pybind11::module& mex)
 {
   ACTS_PYTHON_DECLARE_ALGORITHM(
     AliceActsTrk::TrackMergerAlgorithm, mex, "TrackMergerAlgorithm",
-    inputTrackCollections, inputIndexingMaps,
-    outputTrackCollection);
+    inputTrackCollections, outputTrackCollection);
 }
 
 inline void addLutMakerAlgorithm(pybind11::module& mex)
@@ -62,7 +61,7 @@ inline void addLutMakerAlgorithm(pybind11::module& mex)
     AliceActsTrk::LutMaker, mex, "LutMakerAlgorithm",
     inputTracks,
     inputParticles,
-    // inputMeasurementParticlesMap, 
+    // inputMeasurementParticlesMap,
     inputTrackParticleMatching,
     inputParticleTrackMatching
     // , matchingRatio, doubleMatching,

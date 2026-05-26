@@ -298,7 +298,28 @@ def addSpacePointsMaking(
     sequence.addAlgorithm(spAlg)
     return spAlg.config.outputSpacePoints
 
+def _make_prefix(prefix: str = "", iterationIndex: int = 0) -> str:
+    """
+    ACTS v46.4.0 multi-pass convention.
 
+    For prefix="iter_1_", addSeeding/addCKFTracks should use:
+      iter_1_measurement_subset
+      iter_1_spacepoints
+      iter_1_seeds
+      iter_1_estimatedparameters
+      iter_1_estimatedseeds
+      iter_1_seed-prototracks
+      iter_1_seed-tracks
+
+    iterationIndex is kept only for backward compatibility.
+    """
+    if prefix:
+        return prefix
+
+    if iterationIndex > 0:
+        return f"iter_{iterationIndex}_"
+
+    return ""
 
 def addSeeding(
         s: acts.examples.Sequencer,
@@ -340,10 +361,11 @@ def addSeeding(
         outputDirCsv: Optional[Union[Path, str]] = None,
         logLevel: Optional[acts.logging.Level] = None,
         rnd: Optional[acts.examples.RandomNumbers] = None,
-        inputMeasurements = "measurement_subset",
-        outputSpacePoints = "spacepoints",
-        outputSeeds       = "seeds",
-        iterationIndex    = 0,
+        inputMeasurements: str = "measurement_subset",
+        outputSpacePoints: str = "spacepoints",
+        outputSeeds: str = "seeds",
+        iterationIndex: int = 0,
+        prefix: str = "",
         
         
 ) -> None:
@@ -401,9 +423,21 @@ def addSeeding(
         random number generator. Only used by SeedingAlgorithm.TruthSmeared.
     """
 
-    collection_suffix=""
-    if (iterationIndex > 0):
-        collection_suffix="_iter_"+str(iterationIndex)
+    collection_prefix = _make_prefix(prefix=prefix, iterationIndex=iterationIndex)
+
+    outputSpacePointsWithPrefix = collection_prefix + outputSpacePoints
+    outputSeedsWithPrefix = collection_prefix + outputSeeds
+
+    outputEstimatedParameters = collection_prefix + "estimatedparameters"
+    outputEstimatedSeeds = collection_prefix + "estimatedseeds"
+    outputProtoTracks = collection_prefix + "seed-prototracks"
+    outputSeedTracks = collection_prefix + "seed-tracks"
+
+    outputSeedParticleMatching = collection_prefix + "seed_particle_matching"
+    outputParticleSeedMatching = collection_prefix + "particle_seed_matching"
+
+    trackFinderWriterOutName = collection_prefix + "performance_seeding.root"
+    trackParamsWriterOutName = collection_prefix + "estimatedparameters.root"
     
     
     logLevel = acts.examples.defaultLogging(s, logLevel)()
@@ -412,7 +446,7 @@ def addSeeding(
     # Create starting parameters from either particle smearing or combined seed
     # finding and track parameters estimation
     if seedingAlgorithm == SeedingAlgorithm.TruthSmeared:
-        addTruthSmearedSeeding(
+        acts_reco.addTruthSmearedSeeding(
             s=s,
             rnd=rnd,
             selectedParticles=selectedParticles,
@@ -432,7 +466,7 @@ def addSeeding(
             geoSelectionConfigFile = geoSelectionConfigFile,
             stripGeoSelectionConfigFile = stripGeoSelectionConfigFile,
             inputMeasurements = inputMeasurements,
-            outputSpacePoints = outputSpacePoints,
+            outputSpacePoints=outputSpacePointsWithPrefix,
             logLevel=logLevel,
             
         )
@@ -440,7 +474,7 @@ def addSeeding(
         perSeedParticleHypothesis = None
         # Run either: truth track finding or seeding
         if seedingAlgorithm == SeedingAlgorithm.TruthEstimated:
-            seeds, perSeedParticleHypothesis = addTruthEstimatedSeeding(
+            seeds, perSeedParticleHypothesis = acts_reco.addTruthEstimatedSeeding(
                 s,
                 spacePoints,
                 selectedParticles,
@@ -450,15 +484,23 @@ def addSeeding(
             )
         elif seedingAlgorithm == SeedingAlgorithm.HoughTransform:
             houghTransformConfig.inputSpacePoints = [spacePoints]
-            houghTransformConfig.inputMeasurements = "measurements"
-            houghTransformConfig.outputProtoTracks = "prototracks"
-            houghTransformConfig.outputSeeds = "seeds"
+            houghTransformConfig.inputMeasurements = inputMeasurements
+            houghTransformConfig.outputProtoTracks = collection_prefix + "prototracks"
+            houghTransformConfig.outputSeeds = outputSeedsWithPrefix
             houghTransformConfig.trackingGeometry = trackingGeometry
-            seeds = addHoughTransformSeeding(s, houghTransformConfig, logLevel)
+            seeds = acts_reco.addHoughTransformSeeding(s, houghTransformConfig, logLevel)
+
         elif seedingAlgorithm == SeedingAlgorithm.AdaptiveHoughTransform:
+            if adaptiveHoughTransformConfig is None:
+                adaptiveHoughTransformConfig = (
+                    acts.examples.AdaptiveHoughTransformSeeder.Config()
+                )
+
             adaptiveHoughTransformConfig.inputSpacePoints = [spacePoints]
-            adaptiveHoughTransformConfig.outputProtoTracks = "prototracks"
-            adaptiveHoughTransformConfig.outputSeeds = "seeds"
+            adaptiveHoughTransformConfig.outputProtoTracks = (
+                collection_prefix + "prototracks"
+            )
+            adaptiveHoughTransformConfig.outputSeeds = outputSeedsWithPrefix
             adaptiveHoughTransformConfig.trackingGeometry = trackingGeometry
             adaptiveHoughTransformConfig.threshold = 4
             adaptiveHoughTransformConfig.noiseThreshold = 12
@@ -469,12 +511,12 @@ def addSeeding(
             adaptiveHoughTransformConfig.zMinBinSize = 1 * u.mm
             adaptiveHoughTransformConfig.cotThetaMinBinSize = 0.1
             adaptiveHoughTransformConfig.deduplicate = True
-            seeds = addAdaptiveHoughTransformSeeding(
+            seeds = acts_reco.addAdaptiveHoughTransformSeeding(
                 s, adaptiveHoughTransformConfig, logLevel=logLevel
             )
         elif seedingAlgorithm == SeedingAlgorithm.Gbts:
             # output of algs changed, only one output now
-            seeds = addGbtsSeeding(
+            seeds = acts_reco.addGbtsSeeding(
                 s,
                 spacePoints,
                 seedFinderConfigArg,
@@ -487,7 +529,7 @@ def addSeeding(
                 lutInputConfigFile,
             )
         elif seedingAlgorithm == SeedingAlgorithm.Hashing:
-            seeds, buckets = addHashingSeeding(
+            seeds, buckets = acts_reco.addHashingSeeding(
                 s,
                 spacePoints,
                 seedingAlgorithmConfigArg,
@@ -509,11 +551,11 @@ def addSeeding(
                 seedFilterConfigArg,
                 spacePointGridConfigArg,
                 logLevel,
-                outputSeeds=outputSeeds+collection_suffix,
+                outputSeeds=outputSeedsWithPrefix,
             )
             
         elif seedingAlgorithm == SeedingAlgorithm.OrthogonalTriplet:
-            seeds = addOrthogonalTripletSeeding(
+            seeds = acts_reco.addOrthogonalTripletSeeding(
                 s,
                 spacePoints,
                 seedingAlgorithmConfigArg,
@@ -530,8 +572,8 @@ def addSeeding(
             level=logLevel,
             inputSeeds=seeds,
             inputParticleHypotheses=perSeedParticleHypothesis,
-            outputTrackParameters="estimatedparameters"+collection_suffix,
-            outputSeeds="estimatedseeds"+collection_suffix,
+            outputTrackParameters=outputEstimatedParameters,
+            outputSeeds=outputEstimatedSeeds,
             trackingGeometry=trackingGeometry,
             magneticField=field,
             **acts.examples.defaultKWArgs(
@@ -544,62 +586,57 @@ def addSeeding(
         )
         s.addAlgorithm(parEstimateAlg)
 
-        prototracks = "seed-prototracks"+collection_suffix
         s.addAlgorithm(
             acts.examples.SeedsToProtoTracks(
                 level=logLevel,
-                inputSeeds="estimatedseeds"+collection_suffix,
-                outputProtoTracks=prototracks,
+                inputSeeds=outputEstimatedSeeds,
+                outputProtoTracks=outputProtoTracks,
             )
         )
 
-        tracks = "seed-tracks"+collection_suffix
         s.addAlgorithm(
             acts.examples.ProtoTracksToTracks(
                 level=logLevel,
-                inputProtoTracks=prototracks,
-                inputTrackParameters="estimatedparameters"+collection_suffix,
-                inputMeasurements="measurement_subset"+collection_suffix,
-                outputTracks=tracks,
+                inputProtoTracks=outputProtoTracks,
+                inputTrackParameters=outputEstimatedParameters,
+                inputMeasurements=inputMeasurements,
+                outputTracks=outputSeedTracks,
             )
         )
 
-        print ("PF::DEBUG", "measurement_particles_map"+collection_suffix)
-        print ("PF::DEBUG", "seed_particle_matching"+collection_suffix)
-        print ("PF::DEBUG", "particle_seed_matching"+collection_suffix)
+        print("PF::DEBUG collection_prefix", collection_prefix)
+        print("PF::DEBUG inputMeasurements", inputMeasurements)
+        print("PF::DEBUG measurement_particles_map")
+        print("PF::DEBUG", outputSeedParticleMatching)
+        print("PF::DEBUG", outputParticleSeedMatching)
 
-        inputMeasurementParticlesMap = "measurement_particles_map"+collection_suffix
-        inputParticleMeasurementMap  = "particle_measurements_map"+collection_suffix
-        outputTrackParticleMatching  = "seed_particle_matching"+collection_suffix
-        outputParticleTrackMatching  = "particle_seed_matching"+collection_suffix
+        inputMeasurementParticlesMap = "measurement_particles_map"
+        inputParticleMeasurementMap = "particle_measurements_map"
         
         s.addAlgorithm(
             acts.examples.TrackTruthMatcher(
                 level=logLevel,
-                inputTracks=tracks,
+                inputTracks=outputSeedTracks,
                 inputParticles=selectedParticles,
                 inputMeasurementParticlesMap=inputMeasurementParticlesMap,
-                outputTrackParticleMatching=outputTrackParticleMatching,
-                outputParticleTrackMatching=outputParticleTrackMatching,
+                outputTrackParticleMatching=outputSeedParticleMatching,
+                outputParticleTrackMatching=outputParticleSeedMatching,
                 matchingRatio=1.0,
                 doubleMatching=False,
             )
         )
 
-        trackFinderWriterOutName = "performance_seeding"+collection_suffix+".root"
-        trackParamsWriterOutName = "estimatedparameterds"+collection_suffix+".root"
-
         if outputDirRoot is not None:
             addSeedPerformanceWriters(
                 s,
                 outputDirRoot,
-                tracks,
-                prototracks,
+                outputSeedTracks,
+                outputProtoTracks,
                 selectedParticles,
                 inputParticles,
                 inputParticleMeasurementMap,
-                outputTrackParticleMatching,
-                outputParticleTrackMatching,
+                outputSeedParticleMatching,
+                outputParticleSeedMatching,
                 parEstimateAlg.config.outputTrackParameters,
                 trackFinderWriterOutName,
                 trackParamsWriterOutName,
@@ -628,9 +665,9 @@ def addSeedPerformanceAlgorithms(
     
     sequence.addAlgorithm(
         acts.examples.TrackTruthMatcher(
-            level=customLogLevel,
+            level=customLogLevel(),
             inputTracks=tracks,
-            inputParticles=selectedParticles,
+            inputParticles=inputParticles,
             inputMeasurementParticlesMap=inputMeasurementParticlesMap,
             outputTrackParticleMatching=outputTrackParticleMatching,
             outputParticleTrackMatching=outputParticleTrackMatching,
@@ -659,7 +696,7 @@ def addSeedPerformanceWriters(
     customLogLevel = acts.examples.defaultLogging(sequence, logLevel)
     outputDirRoot = Path(outputDirRoot)
     if not outputDirRoot.exists():
-        outputDirRoot.mkdir()
+        outputDirRoot.mkdir(parents=True, exist_ok=True)
 
     
     print("PF:: Adding RootTrackFinderPerformanceWriter on tracks: ", tracks)

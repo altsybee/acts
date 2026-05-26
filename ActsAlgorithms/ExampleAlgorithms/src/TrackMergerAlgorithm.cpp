@@ -1,8 +1,5 @@
 #include "TrackMergerAlgorithm.hpp"
 #include "Acts/Utilities/Logger.hpp"
-#include "Acts/EventData/TrackStateProxy.hpp"
-
-#include "ActsExamples/EventData/IndexSourceLink.hpp"
 
 using namespace ActsExamples;
 
@@ -26,16 +23,6 @@ TrackMergerAlgorithm::TrackMergerAlgorithm(TrackMergerAlgorithm::Config cfg,
     m_inputTrackCollections[itc].initialize(tc);
   }
 
-  m_inputIndexingMaps.reserve(m_cfg.inputIndexingMaps.size());
-
-  for (size_t imap = 0; imap < m_cfg.inputIndexingMaps.size(); imap++) {
-
-    auto map = m_cfg.inputIndexingMaps[imap];
-    ACTS_DEBUG("Loading measurement mapping " << map);
-    m_inputIndexingMaps.emplace_back(this, map);
-    m_inputIndexingMaps[imap].initialize(map);
-  }
-
   m_outputTrackCollection.initialize(m_cfg.outputTrackCollection);
 }
 
@@ -44,6 +31,7 @@ ProcessCode TrackMergerAlgorithm::execute(const AlgorithmContext& ctx) const
 
   // Read input data
   std::vector<ConstTrackContainer> trackCollections;
+  trackCollections.reserve(m_cfg.inputTrackCollections.size());
 
   for (size_t itc = 0; itc < m_cfg.inputTrackCollections.size(); itc++) {
     trackCollections.push_back(m_inputTrackCollections[itc](ctx));
@@ -51,100 +39,62 @@ ProcessCode TrackMergerAlgorithm::execute(const AlgorithmContext& ctx) const
 
   ACTS_DEBUG("Retrieved and merging " << trackCollections.size() << " track collections");
 
-  // Read input index mapping
-  std::vector<std::vector<size_t>> indexingMaps;
-
-  for (size_t imap = 0; imap < m_cfg.inputIndexingMaps.size(); imap++) {
-    indexingMaps.push_back(m_inputIndexingMaps[imap](ctx));
+  if (trackCollections.empty()) {
+    ACTS_WARNING("No input track collections were provided.");
+    return ProcessCode::SUCCESS;
   }
-
-  ACTS_DEBUG("Retrieved " << indexingMaps.size() << " indexing maps");
 
   // Mutable Output Collection
   auto trackContainer = std::make_shared<Acts::VectorTrackContainer>();
   auto trackStateContainer = std::make_shared<Acts::VectorMultiTrajectory>();
+
   TrackContainer actsTracksContainer(trackContainer, trackStateContainer);
 
   // Make sure the containers have the same dynamic content. I assume the track Collection size is not empty.
   // And all tracks have the same dynamic columns
 
-  actsTracksContainer.ensureDynamicColumns(trackCollections[0]);
+  for (const auto& tracks : trackCollections) {
+    actsTracksContainer.ensureDynamicColumns(tracks);
+  }
 
-  for (size_t itc = 0; itc < trackCollections.size(); itc++) {
+  for (size_t itc = 0; itc < trackCollections.size(); ++itc) {
+    ACTS_DEBUG("Track collection " << itc
+                                  << " has size "
+                                  << trackCollections[itc].size());
 
-    ACTS_DEBUG("Checking track collection index " << itc);
-
-    // Find out what type of TrackStates this collection has.
-    // Only use the first track.
-    size_t track_counter = 0;
-    bool filledTrackStates = true;
     for (const auto& track : trackCollections[itc]) {
-
-      // Check if the track states are filled or not
-      if (track_counter == 0) {
-        for (const auto& ts : track.trackStatesReversed()) {
-          if (ts.getMask() == Acts::TrackStatePropMask::None) {
-            filledTrackStates = false;
-            break;
-          }
-        }
-        track_counter++;
-      }
 
       auto actsDestProxy = actsTracksContainer.makeTrack();
 
-      if (filledTrackStates) {
-        ACTS_DEBUG("Track has filled Track States from collection " << itc);
-        actsDestProxy.copyFrom(track);
+      // ACTS v46.4.0 multi-pass tracking:
+      //
+      // With MeasurementSubset, SourceLink indices already remain in
+      // the original MeasurementContainer index space.
+      // The track-level properties are copied first, then the track states
+      // are copied explicitly without remapping the SourceLinks.
+      actsDestProxy.copyFromWithoutStates(track);
 
-        // tracks.addColumn<BranchStopper::BranchState>("MyBranchState");
-        // tracksTemp.addColumn<BranchStopper::BranchState>("MyBranchState");
+      for (const auto& srcTrackState : track.trackStatesReversed()) {
+        auto destTrackState =
+            actsDestProxy.appendTrackState(srcTrackState.getMask());
 
-        // tracks.addColumn<unsigned int>("trackGroup");
-        // tracksTemp.addColumn<unsigned int>("trackGroup");
-
-      } else {
-        ACTS_DEBUG("Copying track");
-        // actsDestProxy.copyFromShallow(track);
-        actsDestProxy.copyFromWithoutStates(track);
-        // append track states (cheap), but they're in the wrong order
-        for (const auto& srcTrackState : track.trackStatesReversed()) {
-
-          auto destTrackState = actsDestProxy.appendTrackState(srcTrackState.getMask());
-          destTrackState.copyFrom(srcTrackState, Acts::TrackStatePropMask::None,
-                                  true);
-
-          // Check the track State uncalibrated source link index
-          IndexSourceLink sl = destTrackState.getUncalibratedSourceLink().template get<IndexSourceLink>();
-          auto hitIndex = sl.index();
-
-          // For collections after the first get the proper indexing
-          if (itc > 0) {
-            auto og_index = indexingMaps[itc - 1][hitIndex];
-            IndexSourceLink remapped_sl(sl.geometryId(), og_index);
-            destTrackState.setUncalibratedSourceLink(Acts::SourceLink{remapped_sl});
-          }
-
-          // Check!
-          IndexSourceLink sl2 = destTrackState.getUncalibratedSourceLink().template get<IndexSourceLink>();
-          auto hitIndex2 = sl2.index();
-
-          actsDestProxy.reverseTrackStates();
-        }
+        destTrackState.copyFrom(srcTrackState,
+                                srcTrackState.getMask(),
+                                true);
       }
 
-      // detail::ExpectedLayerPatternHelper::set(actsDestProxy, expectedLayerPattern);
+      actsDestProxy.reverseTrackStates();
     }
   }
 
   ACTS_DEBUG("Merged outputTrackContainer size " << actsTracksContainer.size());
 
   auto constTrackStateContainer =
-    std::make_shared<Acts::ConstVectorMultiTrajectory>(
-      std::move(*trackStateContainer));
+      std::make_shared<Acts::ConstVectorMultiTrajectory>(
+          std::move(*trackStateContainer));
 
   auto constTrackContainer = std::make_shared<Acts::ConstVectorTrackContainer>(
-    std::move(*trackContainer));
+      std::move(*trackContainer));
 
   ConstTrackContainer constTracks{constTrackContainer,
                                   constTrackStateContainer};
