@@ -120,6 +120,15 @@ def getArgumentParser():
     )
 
     parser.add_argument(
+        "--full_output_path",
+        "-f",
+        dest="full_output_path",
+        help="Full path for output",
+        type=str,
+        default="",
+    )
+
+    parser.add_argument(
         "--seed",
         "--randomSeed",
         dest="seed",
@@ -202,20 +211,23 @@ def runFullChain(cfg=None, args=None):
     )  # mm; large values - for V0 daughter reconstruction
 
     ### output directory
-    IA_outputDirName = (
-        "output/"
-        + args.out_dir_prefix
-        + "_nEv"
-        + str(args.nEvents)
-        + "_PID"
-        + str(cfg.particleGun.gunPID)
-        + "_nMeasMin"
-        + str(cfg.tracking.nMeasurementsMin)
-        + "_ckfChi2Meas"
-        + str(cfg.tracking.ckfChi2Measurement)
-        + "_ckfMeasPerSurf"
-        + str(cfg.tracking.ckfMeasPerSurf)
-    )
+    if args.full_output_path != "":
+        IA_outputDirName = pathlib.Path("output") / args.full_output_path
+    else:
+        IA_outputDirName = (
+            "output/"
+            + args.out_dir_prefix
+            + "_nEv"
+            + str(args.nEvents)
+            + "_PID"
+            + str(cfg.particleGun.gunPID)
+            + "_nMeasMin"
+            + str(cfg.tracking.nMeasurementsMin)
+            + "_ckfChi2Meas"
+            + str(cfg.tracking.ckfChi2Measurement)
+            + "_ckfMeasPerSurf"
+            + str(cfg.tracking.ckfMeasPerSurf)
+        )
 
     outputDir = pathlib.Path.cwd() / IA_outputDirName
 
