@@ -544,8 +544,8 @@ def addIterativeTracking(
             CkfConfig(
                 seedDeduplication=True,
                 stayOnSeed=True,
-                chi2CutOffMeasurement=15.0,
-                chi2CutOffOutlier=25.0,
+                chi2CutOffMeasurement=cfg.tracking.ckfChi2Measurement,
+                chi2CutOffOutlier=cfg.tracking.ckfChi2Outlier,
                 numMeasurementsCutOff=cfg.tracking.ckfMeasPerSurf,
             ),
             twoWay=cfg.tracking.twoWayCKF,

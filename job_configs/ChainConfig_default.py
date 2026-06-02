@@ -66,8 +66,8 @@ class trackingConfig:
     nOutliers: int = 2
     maxSharedHits: int = 2
     ckfMeasPerSurf: int = 1
-    ckfChi2Measurement: float = 45
-    ckfChi2Outlier: float = 100
+    ckfChi2Measurement: float = 15
+    ckfChi2Outlier: float = 25
     seedDeduplication: bool = True
     stayOnSeed: bool = False
     twoWayCKF: bool = True
