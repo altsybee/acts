@@ -12,7 +12,7 @@ cp o2sim_geometry.gdml ${DIR_ORIGINAL_GEOM}
 echo ">>> running geometry modifications...."
 python 0_shrink_cave_volume.py
 #python 1_rename_ITOFSensor_make_TOF_sensors_thinner.py
-python 2_change_material_by_pattern.py
+# python 2_change_material_by_pattern.py
 python 3_shift_z_of_layers_slightly_randomly_for_Geant.py
 
 #echo ">>> generating FT3 disks...."
